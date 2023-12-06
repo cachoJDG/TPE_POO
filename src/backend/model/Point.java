@@ -2,11 +2,19 @@ package backend.model;
 
 public class Point {
 
-    public double x, y;
+    private double x, y;
 
     public Point(double x, double y) {
         this.x = x;
         this.y = y;
+    }
+
+    public void setdiffX(double diff) {
+        this.x += diff;
+    }
+
+    public void setdiffY(double diff) {
+        this.y += diff;
     }
 
     public double getX() {

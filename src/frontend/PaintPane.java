@@ -7,11 +7,15 @@ import javafx.scene.Cursor;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+
+import javafx.beans.value.ObservableValue; //agruego gagitogol
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -67,6 +71,9 @@ public class PaintPane extends BorderPane {
 		buttonsBox.setStyle("-fx-background-color: #999");
 		buttonsBox.setPrefWidth(100);
 		gc.setLineWidth(1);
+
+
+		tools.selectedToggleProperty().addListener(this::onSelectedButtonChanged);
 
 		canvas.setOnMousePressed(event -> {
 			startPoint = new Point(event.getX(), event.getY());
@@ -183,6 +190,15 @@ public class PaintPane extends BorderPane {
 
 		setLeft(buttonsBox);
 		setRight(canvas);
+	}
+
+	private void onSelectedButtonChanged(ObservableValue<? extends Toggle> observableValue, Toggle value, Toggle newValue) {
+		if (newValue != null) {
+			ToggleButton selectedButton = (ToggleButton) newValue;
+			ToggleButton lastSelect = (ToggleButton) value;
+			System.out.println("anterior Button: " + lastSelect.getText());
+			System.out.println("Selected Button: " + selectedButton.getText());
+		}
 	}
 
 	void redrawCanvas() {

@@ -7,8 +7,8 @@ import javafx.scene.control.ToggleGroup;
 
 public class SquareButton extends FigureButton {
 
-    public SquareButton(ToggleGroup tools){
-        super(tools);
+    public SquareButton(String name,ToggleGroup tools){
+        super(name,tools);
     }
 
     @Override

@@ -7,9 +7,8 @@ import javafx.scene.control.ToggleGroup;
 
 public class CircleButton extends EllipseButton{
 
-    public CircleButton(ToggleGroup tools){
-        super(tools
-        );
+    public CircleButton(String name,ToggleGroup tools){
+        super(name,tools);
     }
 
     @Override

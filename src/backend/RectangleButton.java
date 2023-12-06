@@ -7,8 +7,8 @@ import javafx.scene.control.ToggleGroup;
 
 public class RectangleButton extends FigureButton {
 
-    public RectangleButton(ToggleGroup tools){
-        super(tools);
+    public RectangleButton(String name,ToggleGroup tools){
+        super(name,tools);
     }
 
     @Override

@@ -1,13 +1,15 @@
 package frontend;
 
-import backend.*;
+import backend.BOTTONS.*;
 import backend.model.*;
+import backend.CanvasState;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
 
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -26,18 +28,14 @@ public class PaintPane extends BorderPane {
 	GraphicsContext gc = canvas.getGraphicsContext2D();
 	Color lineColor = Color.BLACK;
 	Color defaultFillColor = Color.YELLOW;
-
 	// Botones Barra Izquierda
-	ToggleGroup tools = new ToggleGroup();
-	ToolButton selectionButton = new SelectButton("Seleccionar",tools) {
-	};
-	FigureButton rectangleButton = new RectangleButton("Rectángulo",tools) {
-	};
-	FigureButton circleButton = new CircleButton("Círculo",tools);
-	FigureButton squareButton = new SquareButton("Cuadrado",tools);
-	ToolButton ellipseButton = new EllipseButton("Elipse",tools);
-	ToolButton deleteButton = new SelectButton("Borrar",tools);
+	FigureButton rectangleButton = new RectangleButton("Rectángulo");
+	FigureButton circleButton = new CircleButton("Círculo");
+	FigureButton squareButton = new SquareButton("Cuadrado");
+	FigureButton ellipseButton = new EllipseButton("Elipse");
 
+	ToggleButton selectionButton = new ToggleButton("Seleccionar");
+	ToggleButton deleteButton = new ToggleButton("Borrar");
 	// Selector de color de relleno
 	ColorPicker fillColorPicker = new ColorPicker(defaultFillColor);
 
@@ -56,9 +54,9 @@ public class PaintPane extends BorderPane {
 	public PaintPane(CanvasState canvasState, StatusPane statusPane) {
 		this.canvasState = canvasState;
 		this.statusPane = statusPane;
-		ToolButton[] toolsArr = {selectionButton, rectangleButton, circleButton, squareButton, ellipseButton, deleteButton};
-
-		for (ToolButton tool : toolsArr) {
+		ToggleButton[] toolsArr = {selectionButton, rectangleButton, circleButton, squareButton, ellipseButton, deleteButton};
+		ToggleGroup tools = new ToggleGroup();
+		for (ToggleButton tool : toolsArr) {
 			tool.setMinWidth(90);
 			tool.setToggleGroup(tools);
 			tool.setCursor(Cursor.HAND);
@@ -83,37 +81,14 @@ public class PaintPane extends BorderPane {
 			if(endPoint.getX() < startPoint.getX() || endPoint.getY() < startPoint.getY()) {
 				return ;
 			}
-
-
-
-			ToolButton selected = (ToolButton) tools.getSelectedToggle();
-
-		/*	Figure newFigure = null;
-			if(rectangleButton.isSelected()) {
-				newFigure = new Rectangle(startPoint, endPoint);
+			if(selectionButton.isSelected() || deleteButton.isSelected()){
+				return;
 			}
-			else if(circleButton.isSelected()) {
-				double circleRadius = Math.abs(endPoint.getX() - startPoint.getX());
-				newFigure = new Circle(startPoint, circleRadius);
-			} else if(squareButton.isSelected()) {
-				double size = Math.abs(endPoint.getX() - startPoint.getX());
-				newFigure = new Square(startPoint, size);
-			} else if(ellipseButton.isSelected()) {
-				Point centerPoint = new Point(Math.abs(endPoint.getX() + startPoint.getX()) / 2, (Math.abs((endPoint.getY() + startPoint.getY())) / 2));
-				double sMayorAxis = Math.abs(endPoint.getX() - startPoint.getX());
-				double sMinorAxis = Math.abs(endPoint.getY() - startPoint.getY());
-				newFigure = new Ellipse(centerPoint, sMayorAxis, sMinorAxis);
-			} else {
-				return ;
-			}
-
-		 */
-		//	figureColorMap.put(newFigure, fillColorPicker.getValue());
-			//canvasState.addFigure(newFigure);
+			FigureButton selected =  (FigureButton) tools.getSelectedToggle();
+			Figure newFigure = selected.createFigure(startPoint, endPoint);
+			figureColorMap.put(newFigure, fillColorPicker.getValue());
+			canvasState.addFigure(newFigure);
 			startPoint = null;
-
-
-
 			redrawCanvas();
 		});
 
@@ -231,7 +206,8 @@ public class PaintPane extends BorderPane {
 			}
 		}
 	}
-
+//Podria ser calcular el contains de la figura y ver si el punto cae adentro de ella, entonces no importa la figura
+	//cada figura implementa su contains con sus dimensiones
 	boolean figureBelongs(Figure figure, Point eventPoint) {
 		boolean found = false;
 		if(figure instanceof Rectangle) {

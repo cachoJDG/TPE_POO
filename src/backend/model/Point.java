@@ -1,6 +1,8 @@
 package backend.model;
 
-public class Point {
+import backend.Movable;
+
+public class Point implements Movable {
 
     private double x, y;
 
@@ -30,4 +32,19 @@ public class Point {
         return String.format("{%.2f , %.2f}", x, y);
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if(this == other)
+            return true;
+        if (!(other instanceof Point ))
+            return false;
+        Point o = (Point) other;
+        return Double.compare(o.x, x) == 0 && Double.compare(o.y, y) == 0;
+    }
+
+    @Override
+    public void move(double deltaX, double deltaY) {
+        x += deltaX;
+        y += deltaY;
+    }
 }

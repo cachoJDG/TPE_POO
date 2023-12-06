@@ -1,10 +1,11 @@
 package backend.model;
 
-public class Rectangle implements Figure {
+public class Rectangle extends Figure {
 
     private final Point topLeft, bottomRight;
 
     public Rectangle(Point topLeft, Point bottomRight) {
+        super(new Point[]{topLeft});
         this.topLeft = topLeft;
         this.bottomRight = bottomRight;
     }

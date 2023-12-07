@@ -29,4 +29,9 @@ public class Ellipse extends Figure {
         return sMinorAxis;
     }
 
+    @Override
+    public boolean contains(Point eventPoint) {
+        return ((Math.pow(eventPoint.getX() - this.getCenterPoint().getX(), 2) / Math.pow(this.getsMayorAxis(), 2)) +
+                (Math.pow(eventPoint.getY() - this.getCenterPoint().getY(), 2) / Math.pow(this.getsMinorAxis(), 2))) <= 0.30;
+    }
 }

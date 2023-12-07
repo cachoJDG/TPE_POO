@@ -17,6 +17,8 @@ public abstract class Figure implements Movable {
             p.move(deltaX, deltaY);
     }
 
+    public abstract boolean contains(Point eventPoint);
+
 }
 
 

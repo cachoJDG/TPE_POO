@@ -196,7 +196,7 @@ public class PaintPane extends BorderPane {
 		if (newValue != null) {
 			ToggleButton selectedButton = (ToggleButton) newValue;
 			ToggleButton lastSelect = (ToggleButton) value;
-			System.out.println("anterior Button: " + lastSelect.getText());
+//			System.out.println("anterior Button: " + lastSelect.getText());
 			System.out.println("Selected Button: " + selectedButton.getText());
 		}
 	}

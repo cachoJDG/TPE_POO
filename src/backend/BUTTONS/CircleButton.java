@@ -1,12 +1,17 @@
-package backend.BUTTONS;
+package backend.Buttons;
 
 import backend.model.Circle;
 import backend.model.Figure;
 import backend.model.Point;
-public class CircleButton extends FigureButton{
+import frontend.MainFrame;
+import javafx.scene.control.ToggleGroup;
 
-    public CircleButton(String name){
-        super(name);
+public class CircleButton extends FigureButton {
+
+
+
+    public CircleButton(ToggleGroup tools, MainFrame mainFrame) {
+        super(tools,mainFrame);
     }
 
     @Override

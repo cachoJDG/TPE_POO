@@ -1,13 +1,17 @@
-package backend.BUTTONS;
+package backend.Buttons;
 
 import backend.model.Ellipse;
 import backend.model.Figure;
 import backend.model.Point;
+import frontend.MainFrame;
+import javafx.scene.control.ToggleGroup;
 
 public class EllipseButton extends FigureButton {
 
-    public EllipseButton(String name){
-        super(name);
+
+
+    public EllipseButton(ToggleGroup tools, MainFrame mainFrame) {
+        super(tools,mainFrame);
     }
 
     @Override
@@ -17,5 +21,6 @@ public class EllipseButton extends FigureButton {
         double sMinorAxis = Math.abs(endPoint.getY() - startPoint.getY());
         return new Ellipse(centerPoint, sMayorAxis, sMinorAxis);
     }
+
 
 }

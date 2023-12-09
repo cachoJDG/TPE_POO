@@ -1,8 +1,9 @@
 package frontend;
 
-import backend.BUTTONS.*;
+import backend.Buttons.*;
 import backend.CanvasState;
 import backend.model.*;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.canvas.Canvas;
@@ -14,9 +15,6 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-
-import javafx.beans.value.ObservableValue; //agruego gagitogol
-
 
 import java.util.HashMap;
 import java.util.Map;

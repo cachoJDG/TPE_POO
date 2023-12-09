@@ -1,13 +1,17 @@
-package backend.BUTTONS;
+package backend.Buttons;
 
 import backend.model.Figure;
 import backend.model.Point;
 import backend.model.Square;
+import frontend.MainFrame;
+import javafx.scene.control.ToggleGroup;
 
 public class SquareButton extends FigureButton {
 
-    public SquareButton(String name){
-        super(name);
+
+
+    public SquareButton(ToggleGroup tools, MainFrame mainFrame) {
+        super(tools, mainFrame);
     }
 
     @Override

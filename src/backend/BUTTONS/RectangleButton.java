@@ -1,13 +1,17 @@
-package backend.BUTTONS;
+package backend.Buttons;
 
 import backend.model.Figure;
 import backend.model.Point;
 import backend.model.Rectangle;
+import frontend.MainFrame;
+import javafx.scene.control.ToggleGroup;
 
 public class RectangleButton extends FigureButton {
 
-    public RectangleButton(String name){
-        super(name);
+
+
+    public RectangleButton(ToggleGroup tools, MainFrame mainFrame) {
+        super(tools,mainFrame);
     }
 
     @Override

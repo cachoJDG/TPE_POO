@@ -12,9 +12,8 @@ public class AppLauncher extends Application {
 	}
 
 	@Override
-	public void start(Stage primaryStage) {
-		CanvasState canvasState = new CanvasState(); // BackEnd
-		MainFrame frame = new MainFrame(canvasState);
+	public void start(Stage primaryStage) {// BackEnd
+		MainFrame frame = new MainFrame();
 		Scene scene = new Scene(frame);
 		primaryStage.setResizable(false);
 		primaryStage.setScene(scene);

@@ -84,6 +84,7 @@ public class PaintPane_V2 extends BorderPane {
 
             //fireEvent(new CustomOne(CustomOne.MOUSE_REL)); era para probar eventos custom, no lo use
             getCurrentButton().onMouseRelease(startPoint,endPoint);
+            //dibujar
         });
 
 

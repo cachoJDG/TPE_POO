@@ -1,18 +1,12 @@
 package frontend;
 
-import backend.Buttons.*;
 import backend.CanvasState;
 import backend.model.Figure;
 import backend.model.Point;
-import backend.model.Rectangle;
-import javafx.geometry.Insets;
+import frontend.Drawable.Drawable;
 import javafx.scene.control.ColorPicker;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-
-import java.util.Optional;
 
 public class MainFrame extends VBox {
 
@@ -51,9 +45,10 @@ public class MainFrame extends VBox {
     }
 
 
-    public void drawFigure(Figure figure)
+    public void drawFigure(Drawable figure)
     {
-        canvasState.addFigure(figure);
+        canvasState.addFigure((Figure) figure);
+        paintPane.drawFig(figure);
     }
 
     public void OnMouseMoved(Point eventPoint) {
@@ -71,6 +66,8 @@ public class MainFrame extends VBox {
         canvasState.getLabelSelectedText(eventPoint, sb);
         statusPane.updateStatus(sb.toString());
     }
+
+
 
     public void deleteFig()
     {

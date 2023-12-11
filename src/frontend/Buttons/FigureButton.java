@@ -1,26 +1,29 @@
-package backend.Buttons;
+package frontend.Buttons;
 
 import backend.model.Figure;
 import backend.model.Point;
+import frontend.Drawable.Drawable;
 import frontend.MainFrame;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ToggleGroup;
 
 public abstract class FigureButton extends ToolButton {
 
+    GraphicsContext gc;
 
-    public FigureButton(ToggleGroup tools, MainFrame mainFrame) {
+    public FigureButton(ToggleGroup tools, MainFrame mainFrame, GraphicsContext gc) {
         super(tools,mainFrame);
     }
+
 
     @Override
     public void onMouseRelease(Point start, Point end)
     {
-        Figure newFig = createFigure(start,end);
+        Drawable newFig = createFigure(start,end);
         getMainFrame().drawFigure(newFig);
     }
 
-    public abstract Figure createFigure(Point startPoint, Point endPoint);
+    public abstract Drawable createFigure(Point startPoint, Point endPoint);
 
 
 

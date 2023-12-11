@@ -1,4 +1,4 @@
-package backend.Buttons;
+package frontend.Buttons;
 
 import frontend.MainFrame;
 import javafx.scene.control.ToggleGroup;

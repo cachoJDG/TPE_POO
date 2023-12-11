@@ -1,13 +1,10 @@
-package backend.Buttons;
+package frontend.Buttons;
 
 import backend.model.Point;
-import com.sun.tools.javac.Main;
 import frontend.MainFrame;
 import javafx.scene.Cursor;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
-
-import java.awt.*;
 
 public abstract class ToolButton extends ToggleButton {
 

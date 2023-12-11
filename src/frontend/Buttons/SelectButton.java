@@ -1,4 +1,4 @@
-package backend.Buttons;
+package frontend.Buttons;
 
 import backend.model.Point;
 import frontend.MainFrame;

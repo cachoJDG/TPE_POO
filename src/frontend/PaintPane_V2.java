@@ -1,15 +1,10 @@
 package frontend;
 
-import backend.Buttons.*;
-import backend.Buttons.FigureButton;
-import backend.CanvasState;
+import frontend.Buttons.*;
+import frontend.Buttons.FigureButton;
 import backend.model.Figure;
-import backend.Buttons.*;
 import backend.model.Point;
-import com.sun.tools.javac.Main;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventType;
+import frontend.Drawable.Drawable;
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -45,10 +40,10 @@ public class PaintPane_V2 extends BorderPane {
 
     ToggleGroup tools = new ToggleGroup();
     ToggleButton selectionButton = new ToggleButton("Seleccionar");
-    FigureButton rectangleButton = new RectangleButton(tools,mainFrame);
-    FigureButton circleButton = new CircleButton(tools,mainFrame);
-    FigureButton squareButton = new SquareButton(tools,mainFrame);
-    FigureButton ellipseButton = new EllipseButton(tools,mainFrame);
+    FigureButton rectangleButton = new RectangleButton(tools,mainFrame, gc);
+    FigureButton circleButton = new CircleButton(tools,mainFrame, gc);
+    FigureButton squareButton = new SquareButton(tools,mainFrame, gc);
+    FigureButton ellipseButton = new EllipseButton(tools,mainFrame, gc);
 
     ToggleButton[] toolsArr  = {selectionButton, rectangleButton, circleButton, squareButton, ellipseButton};
 
@@ -104,6 +99,12 @@ public class PaintPane_V2 extends BorderPane {
             //redrawCanvas();
         });
 
+    }
+
+
+    public void drawFig(Drawable fig)
+    {
+        fig.draw(gc);
     }
 
 

@@ -80,6 +80,8 @@ public class CanvasState {
         return ret;
     }
 
+
+
     public void moveFig(double diffX, double diffY){
         if(selectedFigure.isEmpty()){
             return;

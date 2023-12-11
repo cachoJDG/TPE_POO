@@ -16,8 +16,6 @@ import java.util.Optional;
 
 public class MainFrame extends VBox {
 
-
-
     Color lineColor = Color.BLACK;
 
     /* ToggleGroup tools = new ToggleGroup();
@@ -37,7 +35,6 @@ public class MainFrame extends VBox {
 
 
     CanvasState canvasState;
-    ButtonManager buttonManager;
     StatusPane statusPane;
     PaintPane_V2 paintPane;
 
@@ -64,10 +61,19 @@ public class MainFrame extends VBox {
         statusPane.updateStatus(label);
     }
 
+    public void onMouseDragged(double diffX, double diffY){
+        canvasState.moveFig(diffX,diffY);
+    }
+
     public void selectFig(Point eventPoint)
     {
         StringBuilder sb = new StringBuilder("Se selecciono");
         canvasState.getLabelSelectedText(eventPoint, sb);
         statusPane.updateStatus(sb.toString());
+    }
+
+    public void deleteFig()
+    {
+        canvasState.deleteFigure();
     }
 }

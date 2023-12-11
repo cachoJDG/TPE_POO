@@ -1,12 +1,8 @@
 package backend;
 
-import backend.Buttons.*;
 import backend.model.Figure;
 import backend.model.Point;
 import frontend.MainFrame;
-import frontend.PaintPane;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +19,9 @@ public class CanvasState {
         list.add(figure);
     }
 
-    public void deleteFigure(Figure figure) {
-        list.remove(figure);
+    public void deleteFigure() {
+        if(selectedFigure.isEmpty()){return;}
+        list.remove(selectedFigure.get());
     }
 
     public Iterable<Figure> figures() {
@@ -32,8 +29,6 @@ public class CanvasState {
     }
 
     Optional<Figure> selectedFigure;
-
-
 
     public CanvasState(MainFrame mainFrame)
     {
@@ -83,6 +78,14 @@ public class CanvasState {
             }
         }
         return ret;
+    }
+
+    public void moveFig(double diffX, double diffY){
+        if(selectedFigure.isEmpty()){
+            return;
+        }
+        selectedFigure.get().move(diffX, diffY);
+
     }
 
 }

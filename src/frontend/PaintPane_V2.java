@@ -1,6 +1,7 @@
 package frontend;
 
 import backend.Buttons.*;
+import backend.Buttons.FigureButton;
 import backend.CanvasState;
 import backend.model.Figure;
 import backend.Buttons.*;
@@ -53,9 +54,6 @@ public class PaintPane_V2 extends BorderPane {
 
     VBox buttonBox;
 
-
-
-
     Map<Figure, Color> figureColorMap = new HashMap<>();
 
 
@@ -97,6 +95,15 @@ public class PaintPane_V2 extends BorderPane {
             Point eventPoint = new Point(event.getX(), event.getY());
             getCurrentButton().onMouseClicked(eventPoint);
         });
+
+        canvas.setOnMouseDragged(event -> {
+            Point eventPoint = new Point(event.getX(), event.getY());
+            double diffX = (eventPoint.getX() - startPoint.getX()) / 100;
+            double diffY = (eventPoint.getY() - startPoint.getY()) / 100;
+            mainFrame.onMouseDragged(diffX, diffY);
+            //redrawCanvas();
+        });
+
     }
 
 

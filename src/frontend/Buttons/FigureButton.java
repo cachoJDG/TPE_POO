@@ -6,7 +6,7 @@ import frontend.MainFrame;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ToggleGroup;
 
-import java.awt.*;
+import javafx.scene.paint.Color;
 
 public abstract class FigureButton extends ToolButton {
 
@@ -24,7 +24,7 @@ public abstract class FigureButton extends ToolButton {
         getMainFrame().drawFigure(newFig);
     }
 
-    public abstract Drawable createFigure(Point startPoint, Point endPoint,Color color);
+    public abstract Drawable createFigure(Point startPoint, Point endPoint, Color color);
 
 
 

@@ -9,6 +9,8 @@ import frontend.MainFrame;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ToggleGroup;
 
+import javafx.scene.paint.Color;
+
 public class SquareButton extends FigureButton {
 
 
@@ -18,8 +20,13 @@ public class SquareButton extends FigureButton {
     }
 
     @Override
-    public Drawable createFigure(Point startPoint, Point endPoint) {
+    public Drawable createFigure(Point startPoint, Point endPoint, Color color) {
         double size = Math.abs(endPoint.getX() - startPoint.getX());
         return new DrawableSquare(startPoint, size);
+    }
+
+    @Override
+    public void onMouseRelease(Point start, Point end, java.awt.Color color) {
+
     }
 }

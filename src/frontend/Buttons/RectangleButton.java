@@ -8,6 +8,7 @@ import frontend.Drawable.DrawableRectangle;
 import frontend.MainFrame;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.paint.Color;
 
 public class RectangleButton extends FigureButton {
 
@@ -19,10 +20,13 @@ public class RectangleButton extends FigureButton {
     }
 
     @Override
-    public Drawable createFigure(Point startPoint, Point endPoint) {
+    public Drawable createFigure(Point startPoint, Point endPoint, Color color) {
         return new DrawableRectangle(startPoint,endPoint);
     }
 
 
+    @Override
+    public void onMouseRelease(Point start, Point end, java.awt.Color color) {
 
+    }
 }

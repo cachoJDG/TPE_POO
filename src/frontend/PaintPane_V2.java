@@ -102,9 +102,9 @@ public class PaintPane_V2 extends BorderPane {
     }
 
 
-    public void drawFig(Drawable fig)
+    public void drawFig(Drawable figure)
     {
-        fig.draw(gc);
+        figure.draw(gc);
     }
 
 

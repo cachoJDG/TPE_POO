@@ -21,12 +21,9 @@ public class RectangleButton extends FigureButton {
 
     @Override
     public Drawable createFigure(Point startPoint, Point endPoint, Color color) {
-        return new DrawableRectangle(startPoint,endPoint);
+        return new DrawableRectangle(startPoint,endPoint, color);
     }
 
 
-    @Override
-    public void onMouseRelease(Point start, Point end, java.awt.Color color) {
 
-    }
 }

@@ -4,7 +4,7 @@ import backend.model.Point;
 import frontend.MainFrame;
 import javafx.scene.control.ToggleGroup;
 
-import java.awt.*;
+import javafx.scene.paint.Color;
 
 public class SelectButton extends ToolButton{
     public SelectButton(ToggleGroup tools, MainFrame mainFrame) {
@@ -23,4 +23,6 @@ public class SelectButton extends ToolButton{
     public void onMouseRelease(Point start, Point end, Color color) {
 
     }
+
+
 }

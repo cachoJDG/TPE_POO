@@ -24,10 +24,9 @@ public abstract class ToolButton extends ToggleButton {
         return mainFrame;
     }
 
-    public void onMouseRelease(Point start, Point end, Color color)
-    {
-
-    }
+//    public void onMouseRelease(Point start, Point end, Color color){
+//
+//    }
 
     public void onMouseClicked(Point eventPoint)
     {
@@ -35,5 +34,6 @@ public abstract class ToolButton extends ToggleButton {
     }
 
 
-    public abstract void onMouseRelease(Point start, Point end, java.awt.Color color);
+    public abstract void onMouseRelease(Point start, Point end, Color color);
+
 }

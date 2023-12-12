@@ -25,13 +25,6 @@ public class CircleButton extends FigureButton {
         return new DrawableCircle(startPoint,radius,color);
     }
 
-    @Override
-    public void onMouseRelease(Point start, Point end, Color color) {
 
-    }
 
-    @Override
-    public void onMouseRelease(Point start, Point end, java.awt.Color color) {
-
-    }
 }

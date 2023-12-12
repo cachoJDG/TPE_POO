@@ -22,11 +22,8 @@ public class SquareButton extends FigureButton {
     @Override
     public Drawable createFigure(Point startPoint, Point endPoint, Color color) {
         double size = Math.abs(endPoint.getX() - startPoint.getX());
-        return new DrawableSquare(startPoint, size);
+        return new DrawableSquare(startPoint, size, color);
     }
 
-    @Override
-    public void onMouseRelease(Point start, Point end, java.awt.Color color) {
 
-    }
 }

@@ -7,6 +7,8 @@ public class Ellipse extends Figure {
 
     public Ellipse(Point centerPoint, double sMayorAxis, double sMinorAxis) {
         super(new Point[]{centerPoint});
+        if (sMayorAxis <= 0 && sMinorAxis <= 0)
+            throw new IllegalArgumentException("Los radios deben ser mayores a 0");
         this.centerPoint = centerPoint;
         this.sMayorAxis = sMayorAxis;
         this.sMinorAxis = sMinorAxis;

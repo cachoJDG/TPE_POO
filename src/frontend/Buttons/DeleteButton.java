@@ -10,6 +10,7 @@ public class DeleteButton extends ToolButton {
         setOnAction(event ->{
             getMainFrame().deleteFig();
         });
+        setText("Delete");
     }
 
 

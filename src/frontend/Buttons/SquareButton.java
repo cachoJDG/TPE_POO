@@ -14,6 +14,7 @@ public class SquareButton extends FigureButton {
 
     public SquareButton(ToggleGroup tools, MainFrame mainFrame, GraphicsContext gc) {
         super(tools, mainFrame, gc);
+        setText("Square");
     }
 
     @Override

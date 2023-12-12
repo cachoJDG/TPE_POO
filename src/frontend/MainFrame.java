@@ -36,7 +36,7 @@ public class MainFrame extends VBox {
         canvasState = new CanvasState(this);
         statusPane = new StatusPane();
         //buttonManager = new ButtonManager(this);
-        paintPane = new PaintPane_V2(statusPane,this);
+        paintPane = new PaintPane_V2(statusPane,this,canvasState);
         getChildren().add(new AppMenuBar());
         getChildren().add(paintPane);
         getChildren().add(statusPane);
@@ -63,14 +63,17 @@ public class MainFrame extends VBox {
     public void selectFig(Point eventPoint)
     {
         StringBuilder sb = new StringBuilder("Se selecciono");
-        canvasState.getLabelSelectedText(eventPoint, sb);
-        statusPane.updateStatus(sb.toString());
+        statusPane.updateStatus(canvasState.getLabelSelectedText(eventPoint, sb));
+        if(canvasState.getSelectedFigure().isPresent()){paintPane.getGc().setStroke(Color.RED);}
     }
+
+
 
 
 
     public void deleteFig()
     {
         canvasState.deleteFigure();
+        paintPane.reDraw();
     }
 }

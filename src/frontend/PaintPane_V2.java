@@ -1,5 +1,6 @@
 package frontend;
 
+import backend.CanvasState;
 import frontend.Buttons.*;
 import frontend.Buttons.FigureButton;
 import backend.model.Figure;
@@ -15,6 +16,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,35 +29,55 @@ public class PaintPane_V2 extends BorderPane {
 
     ColorPicker fillColorPicker = new ColorPicker(defaultFillColor);
 
+
     // Dibujar una figura
     Point startPoint;
 
     // Seleccionar una figura
     Figure selectedFigure;
 
+    CanvasState canvasState;
     // StatusBar
     StatusPane statusPane;
 
     MainFrame mainFrame;
 
     ToggleGroup tools = new ToggleGroup();
-    ToggleButton selectionButton = new ToggleButton("Seleccionar");
-    FigureButton rectangleButton = new RectangleButton(tools,mainFrame, gc);
-    FigureButton circleButton = new CircleButton(tools,mainFrame, gc);
-    FigureButton squareButton = new SquareButton(tools,mainFrame, gc);
-    FigureButton ellipseButton = new EllipseButton(tools,mainFrame, gc);
+    SelectButton selectionButton;
+    FigureButton rectangleButton;
+    FigureButton circleButton;
+    FigureButton squareButton;
+    FigureButton ellipseButton;
+    DeleteButton deleteButton;
 
-    ToggleButton[] toolsArr  = {selectionButton, rectangleButton, circleButton, squareButton, ellipseButton};
+    ArrayList<ToggleButton> toolsArr;
 
     VBox buttonBox;
 
     Map<Figure, Color> figureColorMap = new HashMap<>();
 
 
-    public PaintPane_V2(StatusPane statusPane, MainFrame mainFrame)
+    public PaintPane_V2(StatusPane statusPane, MainFrame mainFrame,CanvasState canvasState)
     {
+
+
         this.mainFrame = mainFrame;
         this.statusPane = statusPane;
+        this.canvasState = canvasState;
+        deleteButton = new DeleteButton(tools,mainFrame);
+        selectionButton = new SelectButton(tools,mainFrame);
+        rectangleButton = new RectangleButton(tools,mainFrame, gc);
+        circleButton = new CircleButton(tools,mainFrame, gc);
+        squareButton = new SquareButton(tools,mainFrame, gc);
+        ellipseButton = new EllipseButton(tools,mainFrame, gc);
+        ToolButton[] arr = {selectionButton,rectangleButton,circleButton,squareButton,ellipseButton};
+        toolsArr = new ArrayList<ToggleButton>();
+        toolsArr.add(selectionButton);
+        toolsArr.add(rectangleButton);
+        toolsArr.add(squareButton);
+        toolsArr.add(ellipseButton);
+        toolsArr.add(circleButton);
+        toolsArr.add(deleteButton);
         gc.setLineWidth(1);
         setRight(canvas);
         buttonBox = createButtonBox();
@@ -76,7 +98,7 @@ public class PaintPane_V2 extends BorderPane {
             }
 
             //fireEvent(new CustomOne(CustomOne.MOUSE_REL)); era para probar eventos custom, no lo use
-            getCurrentButton().onMouseRelease(startPoint,endPoint);
+            getCurrentButton().onMouseRelease(startPoint,endPoint,fillColorPicker.getValue());
             //dibujar
         });
 
@@ -96,9 +118,27 @@ public class PaintPane_V2 extends BorderPane {
             double diffX = (eventPoint.getX() - startPoint.getX()) / 100;
             double diffY = (eventPoint.getY() - startPoint.getY()) / 100;
             mainFrame.onMouseDragged(diffX, diffY);
-            //redrawCanvas();
+            reDraw();
         });
 
+    }
+
+    public void reDraw()
+    {
+        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        if(canvasState.getSelectedFigure().isPresent())
+        {
+            gc.setStroke(Color.RED);
+        }
+        else
+        {
+            gc.setStroke(lineColor);
+        }
+
+        for (Figure fig:canvasState.figures()) {
+            Drawable drawable = (Drawable)fig;
+            drawable.draw(gc);
+        }
     }
 
 
@@ -107,7 +147,9 @@ public class PaintPane_V2 extends BorderPane {
         figure.draw(gc);
     }
 
-
+    public GraphicsContext getGc() {
+        return gc;
+    }
 
     public ToolButton getCurrentButton()
     {

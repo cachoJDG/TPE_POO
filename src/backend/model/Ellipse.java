@@ -34,4 +34,9 @@ public class Ellipse extends Figure {
         return ((Math.pow(eventPoint.getX() - this.getCenterPoint().getX(), 2) / Math.pow(this.getsMayorAxis(), 2)) +
                 (Math.pow(eventPoint.getY() - this.getCenterPoint().getY(), 2) / Math.pow(this.getsMinorAxis(), 2))) <= 0.30;
     }
+
+    @Override
+    public void move(double deltaX, double deltaY) {
+        getCenterPoint().move(deltaX,deltaY);
+    }
 }

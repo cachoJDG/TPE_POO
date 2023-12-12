@@ -7,6 +7,7 @@ import javafx.scene.control.ToggleGroup;
 public class SelectButton extends ToolButton{
     public SelectButton(ToggleGroup tools, MainFrame mainFrame) {
         super(tools, mainFrame);
+        setText("Select");
     }
 
 

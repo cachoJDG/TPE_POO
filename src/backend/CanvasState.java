@@ -15,6 +15,7 @@ public class CanvasState {
 
     private final List<Figure> list = new ArrayList<>();
 
+
     public void addFigure(Figure figure) {
         list.add(figure);
     }
@@ -33,6 +34,7 @@ public class CanvasState {
     public CanvasState(MainFrame mainFrame)
     {
         this.mainFrame = mainFrame;
+        selectedFigure = Optional.empty();
     }
 
     public Optional<Figure> getSelectedFigure() {

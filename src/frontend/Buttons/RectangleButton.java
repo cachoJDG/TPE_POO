@@ -15,11 +15,14 @@ public class RectangleButton extends FigureButton {
 
     public RectangleButton(ToggleGroup tools, MainFrame mainFrame, GraphicsContext gc) {
         super(tools,mainFrame, gc);
+        setText("Rectangle");
     }
 
     @Override
     public Drawable createFigure(Point startPoint, Point endPoint) {
         return new DrawableRectangle(startPoint,endPoint);
     }
+
+
 
 }

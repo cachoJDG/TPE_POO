@@ -15,6 +15,10 @@ public abstract class Figure implements Movable {
 
     public abstract boolean contains(Point eventPoint);
 
+
+    // returns true if this Figure is fully contained
+    public abstract boolean isFullContained(Rectangle rectangle);
+
 }
 
 

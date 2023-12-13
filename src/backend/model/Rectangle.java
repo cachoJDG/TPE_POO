@@ -30,6 +30,11 @@ public class Rectangle extends Figure {
     }
 
     @Override
+    public boolean isFullContained(Rectangle rectangle) {
+        return this.contains(rectangle.getBottomRight()) && this.contains(rectangle.getTopLeft()); // todo test this
+    }
+
+    @Override
     public void move(double deltaX, double deltaY) {
         getTopLeft().move(deltaX,deltaY);
         getBottomRight().move(deltaX,deltaY);

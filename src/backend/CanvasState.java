@@ -43,7 +43,13 @@ public class CanvasState {
     public void emptySelectedFig()
     {
         singleSelectionFig = Optional.empty();
+        for (Figure fig:figures()) {
+            fig.setSelected(false);
+        }
+        //podemos aca setear todos las figuras en que no esten seleccionadas
     }
+
+
 
     public void multipleSelection(Rectangle selectionRect)
     {
@@ -52,7 +58,12 @@ public class CanvasState {
             if(fig.isFullContained(selectionRect))
             {
                 multSelectionFig.add(fig);
+                fig.setSelected(true);
             }
+        }
+        if(multSelectionFig.isEmpty())
+        {
+            emptySelectedFig();
         }
     }
 
@@ -94,9 +105,6 @@ public class CanvasState {
     {
         Optional<Figure> ret = Optional.empty();
         for(Figure figure : figures()) {
-
-            figure.setSelected(false);
-
             if(figure.contains(point)) {
                 ret = Optional.of(figure);
                 label.append(figure.toString());

@@ -37,15 +37,7 @@ public class Ellipse extends Figure {
                 (Math.pow(eventPoint.getY() - this.getCenterPoint().getY(), 2) / Math.pow(this.getsMinorAxis(), 2))) <= 0.30;
     }
 
-//    @Override
-//    public boolean isFullContained(Rectangle rectangle) {
-//        Point tl = rectangle.getTopLeft();
-//        Point br = rectangle.getBottomRight();
-//        // ecuacion de internet para ver si una Ellipse esta completamente adentro de un rectangulo
-//        return tl.getX() <= centerPoint.getX() - sMayorAxis && centerPoint.getX() + sMayorAxis <= br.getX()
-//                && tl.getY() <= centerPoint.getY() - sMinorAxis && centerPoint.getY() + sMinorAxis <= br.getY();
-//
-//    }
+
     @Override
     public boolean isFullContained(Rectangle rectangle)
     {

@@ -19,7 +19,7 @@ public class SelectButton extends ToolButton{
     @Override
     public void onMouseClicked(Point eventPoint)
     {
-        getMainFrame().selectFig(eventPoint);
+       getMainFrame().selectFig(eventPoint);
     }
 
     @Override

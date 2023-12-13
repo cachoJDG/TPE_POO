@@ -3,6 +3,7 @@ package frontend;
 import backend.CanvasState;
 import backend.model.Figure;
 import backend.model.Point;
+import backend.model.Rectangle;
 import frontend.Drawable.Drawable;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.layout.VBox;
@@ -74,6 +75,12 @@ public class MainFrame extends VBox {
             paintPane.getGc().setStroke(Color.RED);
         }
         */
+        paintPane.reDraw();
+    }
+
+    public void selectFig(Rectangle selectionRect)
+    {
+        canvasState.multipleSelection(selectionRect);
         paintPane.reDraw();
     }
 

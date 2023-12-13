@@ -2,6 +2,7 @@ package backend;
 
 import backend.model.Figure;
 import backend.model.Point;
+import backend.model.Rectangle;
 import frontend.MainFrame;
 
 import java.util.ArrayList;
@@ -11,7 +12,9 @@ import java.util.Optional;
 public class CanvasState {
 
 
-    MainFrame mainFrame;
+    private final MainFrame mainFrame;
+    private Optional<Figure> singleSelectionFig;
+    private List<Figure> multSelectionFig;
 
     private final List<Figure> list = new ArrayList<>();
 
@@ -21,29 +24,40 @@ public class CanvasState {
     }
 
     public void deleteFigure() {
-        if(selectedFigure.isEmpty()){return;}
-        list.remove(selectedFigure.get());
+        if(singleSelectionFig.isEmpty()){return;}
+        list.remove(singleSelectionFig.get());
     }
 
     public Iterable<Figure> figures() {
         return new ArrayList<>(list);
     }
 
-    Optional<Figure> selectedFigure;
+
 
     public CanvasState(MainFrame mainFrame)
     {
         this.mainFrame = mainFrame;
-        selectedFigure = Optional.empty();
+        singleSelectionFig = Optional.empty();
     }
 
     public void emptySelectedFig()
     {
-        selectedFigure = Optional.empty();
+        singleSelectionFig = Optional.empty();
+    }
+
+    public void multipleSelection(Rectangle selectionRect)
+    {
+        multSelectionFig = new ArrayList<>();
+        for (Figure fig:figures()) {
+            if(fig.isFullContained(selectionRect))
+            {
+                multSelectionFig.add(fig);
+            }
+        }
     }
 
     public Optional<Figure> getSelectedFigure() {
-        return selectedFigure;
+        return singleSelectionFig;
     }
     public String getLabelMouseMovedText(Point point)
     {
@@ -71,7 +85,8 @@ public class CanvasState {
         //el selectedFig (que por ahora esta en mainframe) y al mismo tiempo tambien devolver
         //el texto correcto
         Optional<Figure> ret = findFig(point,label);
-        selectedFigure = ret;
+        singleSelectionFig = ret;
+        singleSelectionFig.ifPresent(figure -> figure.setSelected(true));
         return ret.isPresent()? label.toString() : defaultStr;
     }
 
@@ -79,6 +94,9 @@ public class CanvasState {
     {
         Optional<Figure> ret = Optional.empty();
         for(Figure figure : figures()) {
+
+            figure.setSelected(false);
+
             if(figure.contains(point)) {
                 ret = Optional.of(figure);
                 label.append(figure.toString());
@@ -90,10 +108,10 @@ public class CanvasState {
 
 
     public void moveFig(double diffX, double diffY){
-        if(selectedFigure.isEmpty()){
+        if(singleSelectionFig.isEmpty()){
             return;
         }
-        selectedFigure.get().move(diffX, diffY);
+        singleSelectionFig.get().move(diffX, diffY);
 
     }
 

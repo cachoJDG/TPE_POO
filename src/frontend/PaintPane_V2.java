@@ -25,7 +25,7 @@ public class PaintPane_V2 extends BorderPane {
     GraphicsContext gc = canvas.getGraphicsContext2D();
     Color lineColor = Color.BLACK;
     Color defaultFillColor = Color.YELLOW;
-
+    private int framesHeld;
     ColorPicker fillColorPicker = new ColorPicker(defaultFillColor);
 
 
@@ -50,7 +50,7 @@ public class PaintPane_V2 extends BorderPane {
     DeleteButton deleteButton;
 
     ArrayList<ToggleButton> toolsArr;
-
+    private final int MINHELDFRAMES = 10;
     VBox buttonBox;
 
 
@@ -88,7 +88,7 @@ public class PaintPane_V2 extends BorderPane {
 
         canvas.setOnMousePressed(event -> {
             startPoint = new Point(event.getX(), event.getY());
-            getCurrentButton().onMouseClicked(startPoint);
+            framesHeld = 0;
         });
 
         canvas.setOnMouseReleased(event -> {
@@ -114,11 +114,17 @@ public class PaintPane_V2 extends BorderPane {
 
 
         canvas.setOnMouseClicked(event -> {
+            if(framesHeld > MINHELDFRAMES){
+                return;
+            }
             Point eventPoint = new Point(event.getX(), event.getY());
-
+            getCurrentButton().onMouseClicked(eventPoint);
+            System.out.println("Click");
         });
 
+
         canvas.setOnMouseDragged(event -> {
+            framesHeld++;
             Point eventPoint = new Point(event.getX(), event.getY());
             double diffX = (eventPoint.getX() - startPoint.getX()) / 100;
             double diffY = (eventPoint.getY() - startPoint.getY()) / 100;

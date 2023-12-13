@@ -152,7 +152,11 @@ public class PaintPane_V2 extends BorderPane {
 
     public ToolButton getCurrentButton()
     {
-        return (ToolButton)tools.getSelectedToggle();
+        ToolButton aux = (ToolButton)tools.getSelectedToggle();
+        if(aux == null){
+            return new DefaultBtn(tools,mainFrame);
+        }
+        return aux;
     }
 
 

@@ -5,6 +5,8 @@ import backend.model.Figure;
 import backend.model.Point;
 import backend.model.Rectangle;
 import frontend.Drawable.Drawable;
+import javafx.geometry.Pos;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -32,6 +34,10 @@ public class MainFrame extends VBox {
 
 
 
+    Label effectsLabel;
+    CheckBox shadow;
+    CheckBox biselado;
+    CheckBox gradiente;
     CanvasState canvasState;
     StatusPane statusPane;
     PaintPane_V2 paintPane;
@@ -41,6 +47,10 @@ public class MainFrame extends VBox {
     public MainFrame() {
         canvasState = new CanvasState(this);
         statusPane = new StatusPane();
+        gradiente = new CheckBox("Gradiente");
+        biselado = new CheckBox("Biselado");
+        shadow = new CheckBox("Sombra");
+        effectsLabel = new Label("Efectos: ");
         //buttonManager = new ButtonManager(this);
         paintPane = new PaintPane_V2(statusPane,this,canvasState);
         checkBox = createHBox();
@@ -49,14 +59,29 @@ public class MainFrame extends VBox {
         getChildren().add(paintPane);
         getChildren().add(statusPane);
 
+        shadow.setOnAction(event -> {
+            System.out.printf("In the shadows ");
+        });
+
+        biselado.setOnAction(event -> {
+            System.out.printf("Biselado ");
+        });
+
+        gradiente.setOnAction(event -> {
+            System.out.printf("Gradiente ");
+        });
 
 
     }
 
+
+
     private HBox createHBox()
     {
-        HBox hbox = new HBox(8); // spacing = 8
-        hbox.getChildren().addAll(new Label("Name:"), new TextField());
+        HBox hbox = new HBox(10,effectsLabel,shadow,gradiente,biselado);// spacing = 8
+        hbox.setStyle("-fx-background-color: #999");
+        hbox.setAlignment(Pos.CENTER);
+        hbox.setPrefHeight(30);
         return hbox;
     }
 

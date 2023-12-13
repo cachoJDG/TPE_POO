@@ -64,10 +64,11 @@ public class MainFrame extends VBox {
     {
         StringBuilder sb = new StringBuilder("Se selecciono: ");
         statusPane.updateStatus(canvasState.getLabelSelectedText(eventPoint, sb));
-        if(canvasState.getSelectedFigure().isPresent()){
+       /* if(canvasState.getSelectedFigure().isPresent()){
             paintPane.getGc().setStroke(Color.RED);
-            paintPane.reDraw();
         }
+        */
+        paintPane.reDraw();
     }
 
 

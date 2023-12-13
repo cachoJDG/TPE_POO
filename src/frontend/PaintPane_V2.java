@@ -126,16 +126,15 @@ public class PaintPane_V2 extends BorderPane {
     public void reDraw()
     {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        if(canvasState.getSelectedFigure().isPresent())
-        {
-            gc.setStroke(Color.RED);
-        }
-        else
-        {
-            gc.setStroke(lineColor);
-        }
-
         for (Figure fig:canvasState.figures()) {
+            if(canvasState.getSelectedFigure().isPresent())
+            {
+                gc.setStroke(Color.RED);
+            }
+            else
+            {
+                gc.setStroke(lineColor);
+            }
             Drawable drawable = (Drawable)fig;
             drawable.draw(gc);
         }

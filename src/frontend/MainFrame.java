@@ -6,6 +6,9 @@ import backend.model.Point;
 import backend.model.Rectangle;
 import frontend.Drawable.Drawable;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
@@ -33,17 +36,30 @@ public class MainFrame extends VBox {
     StatusPane statusPane;
     PaintPane_V2 paintPane;
 
+    private HBox checkBox;
+
     public MainFrame() {
         canvasState = new CanvasState(this);
         statusPane = new StatusPane();
         //buttonManager = new ButtonManager(this);
         paintPane = new PaintPane_V2(statusPane,this,canvasState);
+        checkBox = createHBox();
         getChildren().add(new AppMenuBar());
+        getChildren().add(checkBox);
         getChildren().add(paintPane);
         getChildren().add(statusPane);
 
 
+
     }
+
+    private HBox createHBox()
+    {
+        HBox hbox = new HBox(8); // spacing = 8
+        hbox.getChildren().addAll(new Label("Name:"), new TextField());
+        return hbox;
+    }
+
 
     public void emptySelectedFig()
     {

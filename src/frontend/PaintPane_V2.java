@@ -9,10 +9,9 @@ import frontend.Drawable.Drawable;
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
@@ -54,6 +53,8 @@ public class PaintPane_V2 extends BorderPane {
 
     VBox buttonBox;
 
+
+
     Map<Figure, Color> figureColorMap = new HashMap<>();
 
 
@@ -82,6 +83,8 @@ public class PaintPane_V2 extends BorderPane {
         setRight(canvas);
         buttonBox = createButtonBox();
         setLeft(buttonBox); //dsp vemos
+
+
 
         canvas.setOnMousePressed(event -> {
             startPoint = new Point(event.getX(), event.getY());
@@ -170,4 +173,8 @@ public class PaintPane_V2 extends BorderPane {
         buttonsBox.setPrefWidth(100);
         return buttonsBox;
     }
+
+
+
+
 }

@@ -17,6 +17,10 @@ public class DrawableEllipse extends Ellipse implements Drawable {
 
     @Override
     public void draw(GraphicsContext gc) {
+
+        gc.setFill(Color.GRAY);
+        gc.fillOval(getCenterPoint().getX() - (getsMayorAxis() / 2) + 10, getCenterPoint().getY() - (getsMinorAxis() / 2) +10, getsMayorAxis(), getsMinorAxis());
+
         gc.setFill(color);
         if(isSelected())
         {

@@ -1,5 +1,7 @@
 package backend.model;
 
+import java.util.Objects;
+
 public class Rectangle extends Figure {
 
     private final Point topLeft, bottomRight;
@@ -51,6 +53,11 @@ public class Rectangle extends Figure {
             return false;
         }
         return this.topLeft.equals(aux.getTopLeft()) && this.bottomRight.equals(aux.getBottomRight());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(topLeft, bottomRight);
     }
 
     @Override

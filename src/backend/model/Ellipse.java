@@ -1,5 +1,7 @@
 package backend.model;
 
+import java.util.Objects;
+
 public class Ellipse extends Figure {
 
     private final Point centerPoint;
@@ -58,6 +60,11 @@ public class Ellipse extends Figure {
         }
         return centerPoint.equals(aux.getCenterPoint()) && (Double.compare(sMayorAxis, aux.getsMayorAxis()) == 0) &&
                 (Double.compare(sMinorAxis,aux.getsMinorAxis())==0);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(centerPoint, sMayorAxis, sMinorAxis);
     }
 
     @Override

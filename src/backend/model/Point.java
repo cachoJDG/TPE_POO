@@ -32,6 +32,11 @@ public class Point implements Movable {
         return String.format("{%.2f , %.2f}", x, y);
     }
 
+    public double getDistance(Point p)
+    {
+        return Math.sqrt(Math.pow(x-p.x,2) + Math.pow(y-p.y,2));
+    }
+
     @Override
     public boolean equals(Object other) {
         if(this == other)

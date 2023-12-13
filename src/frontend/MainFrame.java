@@ -110,6 +110,10 @@ public class MainFrame extends VBox {
 
     public void selectFig(Point eventPoint)
     {
+        if(canvasState.getSelectedFigure().isPresent())
+        {
+            return;
+        }
         StringBuilder sb = new StringBuilder("Se selecciono: ");
         statusPane.updateStatus(canvasState.getLabelSelectedText(eventPoint, sb));
        /* if(canvasState.getSelectedFigure().isPresent()){

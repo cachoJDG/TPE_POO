@@ -8,6 +8,13 @@ public class Rectangle extends Figure {
         super(new Point[]{topLeft});
         this.topLeft = topLeft;
         this.bottomRight = bottomRight;
+        System.out.println(small());
+    }
+
+    public boolean small()
+    {
+        double SMALLDELTA = 30;
+        return topLeft.getDistance(bottomRight) < SMALLDELTA;
     }
 
     public Point getTopLeft() {

@@ -56,6 +56,9 @@ public class CanvasState {
 
     public void multipleSelection(Rectangle selectionRect)
     {
+        if(selectionRect.small()){
+            return;
+        }
         multSelectionFig = new MultiSelectList<>();
         for (Figure fig:figures()) {
             if(fig.isFullContained(selectionRect))

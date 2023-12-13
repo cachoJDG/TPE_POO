@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class MultiSelectList <K> extends ArrayList<K> {
-    public Optional<K> getFirst()
+    public Optional<K> getFirstCustom()
     {
         if(isEmpty())
         {

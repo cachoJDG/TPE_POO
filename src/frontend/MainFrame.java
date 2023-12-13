@@ -128,6 +128,11 @@ public class MainFrame extends VBox {
         paintPane.reDraw();
     }
 
+    public void group()
+    {
+        canvasState.group();
+    }
+
 
 
 

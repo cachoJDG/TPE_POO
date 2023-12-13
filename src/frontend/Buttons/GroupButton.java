@@ -12,7 +12,7 @@ public class GroupButton extends ToolButton {
         setText("Group");
         setOnAction(event ->
         {
-
+            mainFrame.group();
         });
     }
 

@@ -44,6 +44,12 @@ public class MainFrame extends VBox {
 
     }
 
+    public void emptySelectedFig()
+    {
+        canvasState.emptySelectedFig();
+        paintPane.reDraw();
+    }
+
 
     public void drawFigure(Drawable figure)
     {

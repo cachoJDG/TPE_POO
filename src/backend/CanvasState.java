@@ -37,6 +37,11 @@ public class CanvasState {
         selectedFigure = Optional.empty();
     }
 
+    public void emptySelectedFig()
+    {
+        selectedFigure = Optional.empty();
+    }
+
     public Optional<Figure> getSelectedFigure() {
         return selectedFigure;
     }

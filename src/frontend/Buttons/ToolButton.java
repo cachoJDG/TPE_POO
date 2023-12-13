@@ -17,6 +17,9 @@ public abstract class ToolButton extends ToggleButton {
         setToggleGroup(tools);
         setCursor(Cursor.HAND);
         this.mainFrame = mainFrame;
+        setOnAction(event -> {
+            mainFrame.emptySelectedFig();
+        });
     }
 
     protected MainFrame getMainFrame()

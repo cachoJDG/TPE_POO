@@ -35,6 +35,17 @@ public class Rectangle extends Figure {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if(this == obj){
+            return true;
+        }
+        if(!(obj instanceof Rectangle aux)){
+            return false;
+        }
+        return this.topLeft.equals(aux.getTopLeft()) && this.bottomRight.equals(aux.getBottomRight());
+    }
+
+    @Override
     public void move(double deltaX, double deltaY) {
         getTopLeft().move(deltaX,deltaY);
         getBottomRight().move(deltaX,deltaY);

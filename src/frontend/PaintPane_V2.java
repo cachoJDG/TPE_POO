@@ -127,7 +127,7 @@ public class PaintPane_V2 extends BorderPane {
     {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         for (Figure fig:canvasState.figures()) {
-            if(canvasState.getSelectedFigure().isPresent())
+            if(canvasState.getSelectedFigure().equals(fig))
             {
                 gc.setStroke(Color.RED);
             }

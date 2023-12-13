@@ -48,6 +48,18 @@ public class Ellipse extends Figure {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if(this == obj){
+            return true;
+        }
+        if(!(obj instanceof Ellipse aux)){
+            return false;
+        }
+        return centerPoint.equals(aux.getCenterPoint()) && (Double.compare(sMayorAxis, aux.getsMayorAxis()) == 0) &&
+                (Double.compare(sMinorAxis,aux.getsMinorAxis())==0);
+    }
+
+    @Override
     public void move(double deltaX, double deltaY) {
         getCenterPoint().move(deltaX,deltaY);
     }

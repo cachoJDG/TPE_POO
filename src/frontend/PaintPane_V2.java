@@ -88,6 +88,7 @@ public class PaintPane_V2 extends BorderPane {
 
         canvas.setOnMousePressed(event -> {
             startPoint = new Point(event.getX(), event.getY());
+            getCurrentButton().onMouseClicked(startPoint);
         });
 
         canvas.setOnMouseReleased(event -> {
@@ -111,9 +112,10 @@ public class PaintPane_V2 extends BorderPane {
             mainFrame.OnMouseMoved(eventPoint);
         });
 
+
         canvas.setOnMouseClicked(event -> {
             Point eventPoint = new Point(event.getX(), event.getY());
-            getCurrentButton().onMouseClicked(eventPoint);
+
         });
 
         canvas.setOnMouseDragged(event -> {
@@ -121,7 +123,7 @@ public class PaintPane_V2 extends BorderPane {
             double diffX = (eventPoint.getX() - startPoint.getX()) / 100;
             double diffY = (eventPoint.getY() - startPoint.getY()) / 100;
             mainFrame.onMouseDragged(diffX, diffY);
-            reDraw();
+           reDraw();
         });
 
     }

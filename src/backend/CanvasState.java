@@ -96,9 +96,7 @@ public class CanvasState {
     {
         String defaultStr = "Ninguna figura Encontrada";
         multSelectionFig = new MultiSelectList<>();
-        //aca deberia hacer findFig de nuevo, el problema es que este tendria que actualizar
-        //el selectedFig (que por ahora esta en mainframe) y al mismo tiempo tambien devolver
-        //el texto correcto
+        emptySelectedFig();
         Optional<Figure> ret = findFig(point,label);
        // singleSelectionFig = ret;
         ret.ifPresent(figure -> {figure.setSelected(true);

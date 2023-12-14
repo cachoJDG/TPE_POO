@@ -1,11 +1,15 @@
 package frontend;
 
+import java.util.EnumMap;
 import backend.CanvasState;
 import backend.model.Figure;
+import backend.model.FigureEffects;
 import backend.model.Point;
 import backend.model.Rectangle;
+import frontend.Buttons.EffectButtons.EffectsCheckBox;
 import frontend.Drawable.Drawable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
@@ -13,6 +17,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+
+import java.util.List;
 
 public class MainFrame extends VBox {
 
@@ -35,9 +41,13 @@ public class MainFrame extends VBox {
 
 
     Label effectsLabel;
-    CheckBox shadow;
-    CheckBox belved;
-    CheckBox gradient;
+    EffectsCheckBox shadow;
+    EffectsCheckBox belved;
+    EffectsCheckBox gradient;
+
+    private EnumMap<FigureEffects,EffectsCheckBox> effectsBoxMap;
+
+   // List<EffectsCheckBox> effects;
     CanvasState canvasState;
     StatusPane statusPane;
     PaintPane_V2 paintPane;
@@ -47,9 +57,16 @@ public class MainFrame extends VBox {
     public MainFrame() {
         canvasState = new CanvasState(this);
         statusPane = new StatusPane();
-        gradient = new CheckBox("gradient");
-        belved = new CheckBox("belved");
-        shadow = new CheckBox("Sombra");
+//        gradient = new CheckBox("gradient");
+//        belved = new CheckBox("belved");
+//        shadow = new CheckBox("Sombra");
+
+        gradient = new EffectsCheckBox("gradient",FigureEffects.GRADIENT,paintPane, canvasState);
+        belved = new EffectsCheckBox("belved",FigureEffects.BELVED,paintPane, canvasState);
+        shadow = new EffectsCheckBox("belved",FigureEffects.SHADOW,paintPane, canvasState);
+
+
+       // effects = List.of(gradient,belved,shadow);
         effectsLabel = new Label("Efectos: ");
         //buttonManager = new ButtonManager(this);
         paintPane = new PaintPane_V2(statusPane,this,canvasState);
@@ -59,27 +76,51 @@ public class MainFrame extends VBox {
         getChildren().add(paintPane);
         getChildren().add(statusPane);
 
-        shadow.setOnAction(event -> {
+//        shadow.setOnAction(event -> {
+//
+//           // canvasState.shadow(shadow.isSelected());
+//            canvasState.setEffect(FigureEffects.SHADOW,shadow.isSelected());
+//            paintPane.reDraw();
+//        });
+//
+//
+//        belved.setOnAction(event -> {
+//
+//           // shadow.setIndeterminate(true);
+//           // canvasState.belved(belved.isSelected());
+//            canvasState.setEffect(FigureEffects.BELVED,belved.isSelected());
+//            paintPane.reDraw();
+//        });
+//
+//        gradient.setOnAction(event -> {
+//
+//           // canvasState.gradient(gradient.isSelected());
+//            canvasState.setEffect(FigureEffects.GRADIENT,gradient.isSelected());
+//            paintPane.reDraw();
+//        });
 
-            canvasState.shadow(shadow.isSelected());
-            paintPane.reDraw();
-        });
 
+    }
 
-        belved.setOnAction(event -> {
-
-           // shadow.setIndeterminate(true);
-            canvasState.belved(belved.isSelected());
-            paintPane.reDraw();
-        });
-
-        gradient.setOnAction(event -> {
-
-            canvasState.gradient(gradient.isSelected());
-            paintPane.reDraw();
-        });
-
-
+    public void updateCheckBox(FigureEffects effect,int state)
+    {
+        //si tienen ganas se podria hacer un enum que sea solo para los posibles estados
+        //de las checkBoxes. en el switch en vez de usar -1, 0 , 1 usamos el enum
+        //seria mas POO pero por ahora veamos q ande esto
+        //lo tendriamos que tambien entonces actualizar en el SelectionFigureSet
+        //cuando buscamos el estado de la checkBox
+        
+        EffectsCheckBox box = effectsBoxMap.get(effect);
+        switch(state){
+            case -1:
+                box.setSelected(false);
+                break;
+            case 0:
+                box.setIndeterminate(true);
+                break;
+            default:
+                box.setSelected(true);
+        }
     }
 
 
@@ -87,6 +128,11 @@ public class MainFrame extends VBox {
     private HBox createHBox()
     {
         HBox hbox = new HBox(10,effectsLabel,shadow,gradient,belved);// spacing = 8
+        //capaz lo podemos cambiar y usar directamente el mapa
+        effectsBoxMap = new EnumMap<>(FigureEffects.class);
+        effectsBoxMap.put(FigureEffects.SHADOW,shadow);
+        effectsBoxMap.put(FigureEffects.BELVED,belved);
+        effectsBoxMap.put(FigureEffects.GRADIENT,gradient);
         hbox.setStyle("-fx-background-color: #999");
         hbox.setAlignment(Pos.CENTER);
         hbox.setPrefHeight(30);

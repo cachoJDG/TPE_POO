@@ -75,32 +75,23 @@ public class Rectangle extends Figure {
 
     public void moveVertical(){
         double heigth = getHeigth();
-        getTopLeft().move(heigth,0);
-        getBottomRight().move(heigth, 0 );
+        getTopLeft().move(0,heigth);
+        getBottomRight().move(0, heigth );
     }
 
     public void turnR(){
 
-//        double diffx = (getTopLeft().getX() + getTopLeft().getY()) * -1;
-//        double diffy = getTopLeft().getX();
-//        getTopLeft().move(diffx, diffy);
-//
-//         diffx = (getBottomRight().getX() + getBottomRight().getY()) * -1;
-//         diffy = getBottomRight().getX();
-//        getBottomRight().move(diffx, diffy);
 
-        Point toRot = new Point( -getTopLeft().getY(), getTopLeft().getX());
-        getTopLeft().setXY( toRot );
-        toRot = new Point( -getBottomRight().getY(), getBottomRight().getX());
-        getBottomRight().setXY( toRot );
-        getTopLeft().move(0, 0);
+
     }
 
     public void scaleUp(){
 
+        double base = getBase();
+        double heigh = getHeigth();
         double multiplier = 1.25;
-        getTopLeft().move(-getBase() * multiplier, getHeigth() * multiplier);
-        getBottomRight().move(getBase() * multiplier, -getHeigth() * multiplier);
+        getTopLeft().move(-base * multiplier, heigh * multiplier);
+        getBottomRight().move(base * multiplier, -heigh * multiplier);
     }
 
     private double getBase(){

@@ -11,9 +11,9 @@ public class Point implements Movable {
         this.y = y;
     }
 
-    public void setXY(Point p) {
-        this.x = p.getX();
-        this.y = p.getY();
+    public void setXY(double x, double y) {
+        this.x = x;
+        this.y = y;
     }
 
 //    public void setY(double y) {

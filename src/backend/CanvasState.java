@@ -1,6 +1,7 @@
 package backend;
 
 import backend.model.Figure;
+import backend.model.FigureEffects;
 import backend.model.Point;
 import backend.model.Rectangle;
 import frontend.MainFrame;
@@ -25,18 +26,12 @@ public class CanvasState {
         // singleSelectionFig = Optional.empty();
     }
 
-    public void shadow(boolean activated) {
-        getExtendedSelectionSet().shadow(activated);
+
+    public void setEffect(FigureEffects effect, Boolean activated)
+    {
+        getExtendedSelectionSet().setEffect(effect, activated);
     }
 
-
-    public void belved(boolean activated) {
-        getExtendedSelectionSet().belved(activated);
-    }
-
-    public void gradient(boolean activated) {
-        getExtendedSelectionSet().gradient(activated);
-    }
 
 
     public void addFigure(Figure figure) {
@@ -88,6 +83,7 @@ public class CanvasState {
         {
             emptySelectedFig();
         }
+        updateCheckBoxes();
     }
 
     public Optional<Figure> getSelectedFigure() {
@@ -121,14 +117,18 @@ public class CanvasState {
        // singleSelectionFig = ret;
         ret.ifPresent(figure -> {figure.setSelected(true);
         multSelectionFig.add(figure);});
+
+        updateCheckBoxes();
         return ret.isPresent()? label.toString() : defaultStr;
     }
 
     private void updateCheckBoxes()
     {
         SelectionFigureSet set = getExtendedSelectionSet();
-       // mainFrame.updateShadowBox()
-       // mainFrame.updateCheckBoxes(shadow,belved,gradient);
+        for (FigureEffects effect : FigureEffects.values()){
+            mainFrame.updateCheckBox(effect ,set.getEffectState(effect));
+        }
+
     }
 
     private Optional<Figure> findFig(Point point, StringBuilder label)

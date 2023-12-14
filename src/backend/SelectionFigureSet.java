@@ -1,6 +1,7 @@
 package backend;
 
 import backend.model.Figure;
+import backend.model.FigureEffects;
 
 import java.util.HashSet;
 
@@ -10,13 +11,6 @@ public class SelectionFigureSet extends HashSet<Figure> {
         super(multSelectionFig);
     }
 
-    public void belved(boolean activated)
-    {
-        for (Figure fig:this) {
-            fig.belved(activated);
-        }
-    }
-
     public void move(double diffX, double diffY)
     {
         for (Figure fig:this) {
@@ -24,19 +18,36 @@ public class SelectionFigureSet extends HashSet<Figure> {
         }
     }
 
-    public void shadow(boolean activated)
+
+    public void setEffect(FigureEffects effect, Boolean activated)
     {
         for (Figure fig:this) {
-            fig.shadow(activated);
+            fig.setEffect(effect,activated);
         }
     }
 
-    public void gradient(boolean activated)
+    public int getEffectState(FigureEffects effect)
     {
+        int activated = 0;
+        int deActivated = 0;
         for (Figure fig:this) {
-            fig.gradient(activated);
+            if(fig.hasEffect(effect))
+            {
+                activated++;
+            }
+            else {
+                deActivated++;
+            }
+        }
+
+        if(activated > 0 && deActivated > 0){
+            return 0; //devuelve Indeterminado
+        }
+        if(activated > 0){
+            return 1; //solo hay activadas
+        }
+        else{
+            return -1; //solo hay desactivadas
         }
     }
-
-
 }

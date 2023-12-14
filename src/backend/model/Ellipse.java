@@ -67,7 +67,7 @@ public class Ellipse extends Figure {
         double aux = sMayorAxis;
         sMayorAxis = sMinorAxis;
         sMinorAxis = aux;
-        centerPoint.move(0, 0);
+        move(0, 0);
     }
 
     @Override
@@ -90,5 +90,12 @@ public class Ellipse extends Figure {
     @Override
     public void move(double deltaX, double deltaY) {
         getCenterPoint().move(deltaX,deltaY);
+    }
+
+    @Override
+    public void scaleUp() {
+        sMinorAxis *= 1.25;
+        sMayorAxis *= 1.25;
+
     }
 }

@@ -1,6 +1,7 @@
 package frontend.Drawable;
 
 import backend.model.Ellipse;
+import backend.model.FigureEffects;
 import backend.model.Point;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -27,14 +28,14 @@ public class DrawableEllipse extends Ellipse implements Drawable {
     @Override
     public void draw() {
 
-        if(hasShadow()){
+        if(hasEffect(FigureEffects.SHADOW)){
             drawShadow();
         }
-        if(hasBelved()){
+        if(hasEffect(FigureEffects.BELVED)){
             drawBelved();
         }
         gc.setFill(color);
-        if(hasGradient()){
+        if(hasEffect(FigureEffects.SHADOW)){
             drawGradient();
         }
 

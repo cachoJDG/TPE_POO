@@ -1,5 +1,6 @@
 package frontend.Drawable;
 
+import backend.model.FigureEffects;
 import backend.model.Point;
 import backend.model.Rectangle;
 import javafx.scene.canvas.GraphicsContext;
@@ -24,14 +25,14 @@ public class DrawableRectangle extends Rectangle implements Drawable {
     }
     @Override
     public void draw() {//Podriamos sacar esta peticion del gc
-        if(hasShadow()){
+        if(hasEffect(FigureEffects.SHADOW)){
             drawShadow();
         }
-        if(hasBelved()){
+        if(hasEffect(FigureEffects.BELVED)){
             drawBelved();
         }
         gc.setFill(color);
-        if(hasGradient()){
+        if(hasEffect(FigureEffects.SHADOW)){
             drawGradient();
         }
         if(isSelected())

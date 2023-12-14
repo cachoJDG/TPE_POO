@@ -1,6 +1,11 @@
 package backend.model;
 
 import backend.Movable;
+import frontend.Buttons.ScaleUp;
+import javafx.scene.transform.Scale;
+
+import java.util.EnumMap;
+import java.util.Map;
 
 
 public abstract class Figure implements Movable {
@@ -10,27 +15,8 @@ public abstract class Figure implements Movable {
      private boolean isSelected;
      private int groupNumber;
 
-    public boolean hasShadow() {
-        return hasShadow;
-    }
 
-
-
-    public boolean hasBelved() {
-        return hasBelved;
-    }
-
-
-
-    public boolean hasGradient() {
-        return hasGradient;
-    }
-
-
-
-    private boolean hasShadow;
-     private boolean hasBelved;
-     private boolean hasGradient;
+     private EnumMap<FigureEffects,Boolean> effectsMap;
 
 
     protected Figure(Point[] points) {
@@ -38,6 +24,18 @@ public abstract class Figure implements Movable {
         groupedFig = false;
         isSelected = false;
         groupNumber = 0;
+        effectsMap = new EnumMap<>(FigureEffects.class);
+    }
+
+
+    public boolean hasEffect(FigureEffects effect)
+    {
+        return effectsMap.get(effect);
+    }
+
+    public void setEffect(FigureEffects effect,Boolean activated)
+    {
+        effectsMap.put(effect,activated);
     }
 
     public boolean isSelected() {
@@ -58,20 +56,6 @@ public abstract class Figure implements Movable {
 
     public abstract boolean contains(Point eventPoint);
 
-    public void shadow(boolean activated)
-    {
-        hasShadow = activated;
-    }
-
-    public void belved(boolean activated)
-    {
-        hasBelved = activated;
-    }
-
-    public void gradient(boolean activated)
-    {
-        hasGradient = activated;
-    }
 
 
     public boolean isGroupedFig() {
@@ -90,6 +74,8 @@ public abstract class Figure implements Movable {
     public abstract void moveVertical();
 
     public abstract void turnR();
+
+    public abstract void scaleUp();
 
 }
 

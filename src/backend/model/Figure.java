@@ -26,6 +26,21 @@ public abstract class Figure implements Movable {
 
     public abstract boolean contains(Point eventPoint);
 
+    public void shadow()
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    public void belved()
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    public void gradient()
+    {
+        throw new UnsupportedOperationException();
+    }
+
 
     public boolean isGroupedFig() {
         return groupedFig;

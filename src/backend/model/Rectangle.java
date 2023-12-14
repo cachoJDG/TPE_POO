@@ -102,4 +102,9 @@ public class Rectangle extends Figure {
     private double getHeigth(){
         return Math.abs(getTopLeft().getY()-getBottomRight().getY());
     }
+
+    private Point getCenterPoint(){
+        return new Point(getBase() / 2, getHeigth() / 2);
+    }
+
 }

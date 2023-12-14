@@ -153,11 +153,11 @@ public class CanvasState {
         if(multSelectionFig.isEmpty()){return;}
         Set<Figure> aux = new HashSet<>();
         for (Figure fig:multSelectionFig) {
-            if(!fig.isGroupedFig())
-            {
-                aux.add(fig);
-                fig.setGroupedFig(true);
+            if(fig.isGroupedFig()) {
+                return;
             }
+            aux.add(fig);
+            fig.setGroupedFig(true);
         }
         groupMap.putIfAbsent(groupNum,aux);
         groupNum++;

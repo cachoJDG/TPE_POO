@@ -23,7 +23,7 @@ public class DrawableRectangle extends Rectangle implements Drawable {
 
     }
     @Override
-    public void draw(GraphicsContext gc) {//Podriamos sacar esta peticion del gc
+    public void draw() {//Podriamos sacar esta peticion del gc
         if(hasShadow()){
             drawShadow();
         }

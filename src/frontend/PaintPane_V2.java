@@ -11,7 +11,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
@@ -159,7 +158,7 @@ public class PaintPane_V2 extends BorderPane {
 //                }
 //            }
             Drawable drawable = (Drawable)fig;
-            drawable.draw(gc);
+            drawable.draw();
             gc.setStroke(lineColor);
         }
     }
@@ -167,7 +166,7 @@ public class PaintPane_V2 extends BorderPane {
 
     public void drawFig(Drawable figure)
     {
-        figure.draw(gc);
+        figure.draw();
     }
 
     public GraphicsContext getGc() {

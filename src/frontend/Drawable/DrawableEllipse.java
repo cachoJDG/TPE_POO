@@ -25,7 +25,7 @@ public class DrawableEllipse extends Ellipse implements Drawable {
     }
 
     @Override
-    public void draw(GraphicsContext gc) {
+    public void draw() {
 
         if(hasShadow()){
             drawShadow();

@@ -14,19 +14,33 @@ public class DrawableEllipse extends Ellipse implements Drawable {
 
     private final Color color;
 
-    private GraphicsContext draw;
+    private GraphicsContext gc;
+
+    boolean hasShadow;
+    boolean hasGradient;
+    boolean hasBelved;
 
     public DrawableEllipse(Point centerPoint, double sMayorAxis, double sMinorAxis, Color color1, GraphicsContext gc) {
         super(centerPoint, sMayorAxis, sMinorAxis);
         this.color = color1;
-        draw = gc;
+        this.gc = gc;
     }
 
     @Override
     public void draw(GraphicsContext gc) {
 
+        if(hasShadow){
+            drawShadow();
+        }
+        if(hasBelved){
+            drawBelved();
+        }
+        gc.setFill(color);
+        if(hasGradient){
+            drawGradient();
+        }
 
-        draw.setFill(color);
+
         if(isSelected())
         {
             gc.setStroke(Color.RED);
@@ -36,33 +50,52 @@ public class DrawableEllipse extends Ellipse implements Drawable {
 
 
     }
-
-    public void shadow()
-    {
-        draw.setFill(Color.GRAY);
-        draw.fillOval(getCenterPoint().getX() - (getsMayorAxis() / 2) + 10, getCenterPoint().getY() - (getsMinorAxis() / 2) +10, getsMayorAxis(), getsMinorAxis());
+    @Override
+    public void shadow() {
+        hasShadow = true;
+        draw(gc);
     }
 
-    public void belved()
+    @Override
+    public void gradient() {
+        hasGradient = true;
+        draw(gc);
+    }
+
+    @Override
+    public void belved() {
+        hasBelved = true;
+        draw(gc);
+    }
+
+
+
+    public void drawShadow()
+    {
+        gc.setFill(Color.GRAY);
+        gc.fillOval(getCenterPoint().getX() - (getsMayorAxis() / 2) + 10, getCenterPoint().getY() - (getsMinorAxis() / 2) +10, getsMayorAxis(), getsMinorAxis());
+    }
+
+    public void drawBelved()
     {
         double arcX = getCenterPoint().getX() - (getsMayorAxis() / 2);
         double arcY = getCenterPoint().getY() - (getsMinorAxis() / 2);
-        draw.setLineWidth(10);
-        draw.setStroke(Color.LIGHTGRAY);
-        draw.strokeArc(arcX, arcY, getsMayorAxis(), getsMinorAxis() , 45, 180, ArcType.OPEN);
-        draw.setStroke(Color.BLACK);
-        draw.strokeArc(arcX, arcY, getsMayorAxis(), getsMinorAxis(), 225, 180, ArcType.OPEN);
-        draw.setLineWidth(1);
+        gc.setLineWidth(10);
+        gc.setStroke(Color.LIGHTGRAY);
+        gc.strokeArc(arcX, arcY, getsMayorAxis(), getsMinorAxis() , 45, 180, ArcType.OPEN);
+        gc.setStroke(Color.BLACK);
+        gc.strokeArc(arcX, arcY, getsMayorAxis(), getsMinorAxis(), 225, 180, ArcType.OPEN);
+        gc.setLineWidth(1);
 
     }
 
-    public void gradient()
+    public void drawGradient()
     {
         RadialGradient radialGradient = new RadialGradient(0.5, 0, 0.5, 0.5, 0.5, true,
                 CycleMethod.NO_CYCLE,
                 new Stop(0, color),
                 new Stop(1, color.invert()));
-        draw.setFill(radialGradient);
+        gc.setFill(radialGradient);
     }
 
 

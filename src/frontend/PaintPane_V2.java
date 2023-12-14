@@ -53,6 +53,7 @@ public class PaintPane_V2 extends BorderPane {
 
     TurnR turnR;
     RotateV rotateV;
+    ScaleUp scaleUp;
 
     ArrayList<ToggleButton> toolsArr;
     private final int MINHELDFRAMES = 10;
@@ -81,6 +82,7 @@ public class PaintPane_V2 extends BorderPane {
         rotateH = new RotateH(tools, mainFrame);
         rotateV = new RotateV(tools, mainFrame);
         turnR = new TurnR(tools, mainFrame);
+        scaleUp = new ScaleUp(tools, mainFrame);
         ToolButton[] arr = {selectionButton,rectangleButton,circleButton,squareButton,ellipseButton};
         toolsArr = new ArrayList<ToggleButton>();
         toolsArr.add(selectionButton);
@@ -94,6 +96,7 @@ public class PaintPane_V2 extends BorderPane {
         toolsArr.add(rotateH);
         toolsArr.add(rotateV);
         toolsArr.add(turnR);
+        toolsArr.add(scaleUp);
         gc.setLineWidth(1);
         setRight(canvas);
         buttonBox = createButtonBox();

@@ -221,4 +221,14 @@ public class CanvasState {
             fig.turnR();
         }
     }
+
+    public void scaleUp(){
+        if (multSelectionFig.isEmpty()){
+            return;
+        }
+        for(Figure fig: multSelectionFig){
+            fig.scaleUp();
+        }
+    }
+
 }

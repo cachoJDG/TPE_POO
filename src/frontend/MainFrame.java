@@ -61,15 +61,13 @@ public class MainFrame extends VBox {
 //        belved = new CheckBox("belved");
 //        shadow = new CheckBox("Sombra");
 
-        gradient = new EffectsCheckBox("gradient",FigureEffects.GRADIENT,paintPane, canvasState);
-        belved = new EffectsCheckBox("belved",FigureEffects.BELVED,paintPane, canvasState);
-        shadow = new EffectsCheckBox("belved",FigureEffects.SHADOW,paintPane, canvasState);
-
-
        // effects = List.of(gradient,belved,shadow);
         effectsLabel = new Label("Efectos: ");
         //buttonManager = new ButtonManager(this);
         paintPane = new PaintPane_V2(statusPane,this,canvasState);
+        gradient = new EffectsCheckBox("Gradient",FigureEffects.GRADIENT,paintPane, canvasState);
+        belved = new EffectsCheckBox("Belved",FigureEffects.BELVED,paintPane, canvasState);
+        shadow = new EffectsCheckBox("Shadow",FigureEffects.SHADOW,paintPane, canvasState);
         checkBox = createHBox();
         getChildren().add(new AppMenuBar());
         getChildren().add(checkBox);
@@ -238,6 +236,11 @@ public class MainFrame extends VBox {
 
     public void turnR(){
         canvasState.turnR();
+        paintPane.reDraw();
+    }
+
+    public void scaleUp(){
+        canvasState.scaleUp();
         paintPane.reDraw();
     }
 }

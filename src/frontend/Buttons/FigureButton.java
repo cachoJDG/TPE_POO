@@ -24,7 +24,7 @@ public abstract class FigureButton extends ToolButton {
         getMainFrame().drawFigure(newFig);
     }
 
-    public abstract Drawable createFigure(Point startPoint, Point endPoint, Color color);
+    public abstract Drawable createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc);
 
 
 

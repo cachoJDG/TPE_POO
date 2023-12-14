@@ -179,4 +179,12 @@ public class MainFrame extends VBox {
     {
         shadow.setIndeterminate(true);
     }
+
+    public void rotateH() {
+        canvasState.rotateH();
+    }
+
+    public void rotateV() {
+        canvasState.rotateV();
+    }
 }

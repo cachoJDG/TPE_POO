@@ -197,6 +197,21 @@ public class CanvasState {
         }
     }
 
+    private void rotateHoV(){
 
+    }
 
+    public void rotateH() {
+        if (multSelectionFig.isEmpty()){return;}
+        for (Figure fig : multSelectionFig) {
+            fig.moveHorizontal();
+        }
+    }
+
+    public void rotateV() {
+        if (multSelectionFig.isEmpty()){return;}
+        for (Figure fig : multSelectionFig) {
+            fig.moveVertical();
+        }
+    }
 }

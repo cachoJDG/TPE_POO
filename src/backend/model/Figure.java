@@ -85,6 +85,10 @@ public abstract class Figure implements Movable {
     // returns true if this Figure is fully contained
     public abstract boolean isFullContained(Rectangle rectangle);
 
+    public abstract void moveHorizontal();
+
+    public abstract void moveVertical();
+
 }
 
 

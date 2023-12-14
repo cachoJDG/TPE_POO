@@ -50,6 +50,9 @@ public class PaintPane_V2 extends BorderPane {
     DeleteButton deleteButton;
     GroupButton groupButton;
     UnGroup unGroupButton;
+    RotateH rotateH;
+
+    RotateV rotateV;
 
     ArrayList<ToggleButton> toolsArr;
     private final int MINHELDFRAMES = 10;
@@ -75,6 +78,8 @@ public class PaintPane_V2 extends BorderPane {
         ellipseButton = new EllipseButton(tools,mainFrame, gc);
         groupButton = new GroupButton(tools,mainFrame);
         unGroupButton = new UnGroup(tools, mainFrame);
+        rotateH = new RotateH(tools, mainFrame);
+        rotateV = new RotateV(tools, mainFrame);
         ToolButton[] arr = {selectionButton,rectangleButton,circleButton,squareButton,ellipseButton};
         toolsArr = new ArrayList<ToggleButton>();
         toolsArr.add(selectionButton);
@@ -85,6 +90,8 @@ public class PaintPane_V2 extends BorderPane {
         toolsArr.add(deleteButton);
         toolsArr.add(groupButton);
         toolsArr.add(unGroupButton);
+        toolsArr.add(rotateH);
+        toolsArr.add(rotateV);
         gc.setLineWidth(1);
         setRight(canvas);
         buttonBox = createButtonBox();

@@ -65,4 +65,17 @@ public class Rectangle extends Figure {
         getTopLeft().move(deltaX,deltaY);
         getBottomRight().move(deltaX,deltaY);
     }
+
+
+    public void moveHorizontal(){
+        double diffx = Math.abs(getTopLeft().getX()-getBottomRight().getX());
+        getTopLeft().move(diffx, 0);
+        getBottomRight().move(diffx, 0);
+    }
+
+    public void moveVertical(){
+        double diffY = Math.abs(getTopLeft().getY()-getBottomRight().getY());
+        getTopLeft().move(0, diffY);
+        getBottomRight().move(0, diffY);
+    }
 }

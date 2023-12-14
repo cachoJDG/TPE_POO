@@ -51,6 +51,16 @@ public class Ellipse extends Figure {
     }
 
     @Override
+    public void moveHorizontal() {
+
+    }
+
+    @Override
+    public void moveVertical() {
+
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if(this == obj){
             return true;

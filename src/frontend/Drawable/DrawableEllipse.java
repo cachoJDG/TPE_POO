@@ -24,6 +24,7 @@ public class DrawableEllipse extends Ellipse implements Drawable {
     @Override
     public void draw(GraphicsContext gc) {
 
+        draw.setFill(color);
         if(isSelected())
         {
             gc.setStroke(Color.RED);
@@ -42,7 +43,13 @@ public class DrawableEllipse extends Ellipse implements Drawable {
 
     public void belved()
     {
-
+//        double arcX = this.getCenterPoint().getX() - this.getRadius();
+//        double arcY = this.getCenterPoint().getY() - this.getRadius();
+//        gc.setLineWidth(10);
+//        gc.setStroke(Color.LIGHTGRAY);
+//        gc.strokeArc(arcX, arcY, diameter, diameter, 45, 180, ArcType.OPEN);
+//        gc.setStroke(Color.BLACK);
+//        gc.strokeArc(arcX, arcY, diameter, diameter, 225, 180, ArcType.OPEN);
 
     }
 

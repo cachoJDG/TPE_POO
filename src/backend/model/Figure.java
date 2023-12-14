@@ -8,16 +8,26 @@ public abstract class Figure implements Movable {
      final Point[] points;
      private boolean groupedFig;
      private boolean isSelected;
+     private int groupNumber;
 
 
     protected Figure(Point[] points) {
         this.points = points;
         groupedFig = false;
         isSelected = false;
+        groupNumber = 0;
     }
 
     public boolean isSelected() {
         return isSelected;
+    }
+
+    public int getGroupNumber(){
+        return groupNumber;
+    }
+
+    public void setGroupNumber(int n) {
+        groupNumber = n;
     }
 
     public void setSelected(boolean selected) {

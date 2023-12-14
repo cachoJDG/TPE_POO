@@ -12,7 +12,7 @@ public class CanvasState {
 
     private final MainFrame mainFrame;
   //  private Optional<Figure> singleSelectionFig;
-    private int groupNum = 0;
+    private int groupNum = 1;
     private MultiSelectList<Figure> multSelectionFig;
     private GroupFigureMap<Figure> groupMap;
     private final List<Figure> list = new ArrayList<>();
@@ -156,6 +156,7 @@ public class CanvasState {
             if(!fig.isGroupedFig()) {
                 aux.add(fig);
                 fig.setGroupedFig(true);
+                fig.setGroupNumber(groupNum);
             }
 
         }
@@ -169,8 +170,9 @@ public class CanvasState {
             if (fig.isGroupedFig()){
                 for (Figure figGrouped: groupMap.findGroup(fig)){
                     figGrouped.setGroupedFig(false);
+                    fig.setGroupNumber(0);
                 }
-                groupMap.remove(1); // aca se me ocurre q cada figura tenga guardado un numero q indique a q numero de grupo pertenece
+                groupMap.remove(fig.getGroupNumber());
             }
         }
     }

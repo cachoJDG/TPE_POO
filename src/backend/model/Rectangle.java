@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Rectangle extends Figure {
 
-    private final Point topLeft, bottomRight;
+    private  final Point topLeft, bottomRight;
 
 
 
@@ -82,7 +82,6 @@ public class Rectangle extends Figure {
     }
 
     public void turnR(){
-
 
 
     }

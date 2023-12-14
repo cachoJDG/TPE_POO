@@ -12,8 +12,9 @@ public class CanvasState {
 
     private final MainFrame mainFrame;
   //  private Optional<Figure> singleSelectionFig;
+    private int groupNum = 0;
     private MultiSelectList<Figure> multSelectionFig;
-
+    private GroupFigureMap<Figure> groupMap;
     private final List<Figure> list = new ArrayList<>();
 
 
@@ -39,6 +40,7 @@ public class CanvasState {
     {
         this.mainFrame = mainFrame;
         multSelectionFig = new MultiSelectList<>();
+        groupMap = new GroupFigureMap<>();
        // singleSelectionFig = Optional.empty();
     }
 
@@ -74,7 +76,7 @@ public class CanvasState {
     }
 
     public Optional<Figure> getSelectedFigure() {
-        return multSelectionFig.getFirst();
+        return multSelectionFig.getFirstCustom();
     }
     public String getLabelMouseMovedText(Point point)
     {
@@ -122,18 +124,34 @@ public class CanvasState {
 
 
     public void moveFig(double diffX, double diffY){
-      //  if(singleSelectionFig.isEmpty() && multSelectionFig.isEmpty()){
-      //      return;
-     //   }
-//        singleSelectionFig.ifPresent(figure -> figure.move(diffX, diffY));
-//        for (:
-//             ) {
-//
-//        }
+        Set<Figure> multSelectionExtended = new HashSet<>(multSelectionFig);
         for (Figure fig:multSelectionFig) {
-            fig.move(diffX,diffY);
+            if(fig.isGroupedFig())
+            {
+                multSelectionExtended.addAll(groupMap.findGroup(fig));
+            }
         }
-
+        moveGroup(multSelectionExtended,diffX,diffY);
     }
 
+    private void moveGroup(Set<Figure> multiSelectionExtended,double diffx,double diffY)
+    {
+        for (Figure fig:multiSelectionExtended) {
+            fig.move(diffx,diffY);
+        }
+    }
+
+    public void group() {
+        if(multSelectionFig.isEmpty()){return;}
+        Set<Figure> aux = new HashSet<>();
+        for (Figure fig:multSelectionFig) {
+            if(!fig.isGroupedFig())
+            {
+                aux.add(fig);
+                fig.setGroupedFig(true);
+            }
+        }
+        groupMap.putIfAbsent(groupNum,aux);
+        groupNum++;
+    }
 }

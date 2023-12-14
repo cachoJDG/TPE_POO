@@ -162,4 +162,16 @@ public class CanvasState {
         groupMap.putIfAbsent(groupNum,aux);
         groupNum++;
     }
+
+    public void ungroup() {
+        if (multSelectionFig.isEmpty()){return;}
+        for (Figure fig : multSelectionFig) {
+            if (fig.isGroupedFig()){
+                for (Figure figGrouped: groupMap.findGroup(fig)){
+                    figGrouped.setGroupedFig(false);
+                }
+                groupMap.remove(1); // aca se me ocurre q cada figura tenga guardado un numero q indique a q numero de grupo pertenece
+            }
+        }
+    }
 }

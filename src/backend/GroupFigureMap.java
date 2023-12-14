@@ -16,4 +16,16 @@ public class GroupFigureMap<K> extends HashMap<Integer, Set<K>>
         }
         return new HashSet<>();
     }
+    public int numGroup(K fig){
+
+        for (Entry<Integer, Set<K>> map: entrySet()) {
+            for (Set<K> set:values()) {
+                if(set.contains(fig))
+                {
+                    return map.getKey();
+                }
+            }
+        }
+        return 0;
+    }
 }

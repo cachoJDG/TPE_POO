@@ -133,6 +133,11 @@ public class MainFrame extends VBox {
         canvasState.group();
     }
 
+    public void ungroup()
+    {
+        canvasState.ungroup();
+    }
+
 
 
 

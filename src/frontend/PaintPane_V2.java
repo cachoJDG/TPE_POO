@@ -49,6 +49,8 @@ public class PaintPane_V2 extends BorderPane {
     FigureButton ellipseButton;
     DeleteButton deleteButton;
     GroupButton groupButton;
+    UnGroup unGroupButton;
+
     ArrayList<ToggleButton> toolsArr;
     private final int MINHELDFRAMES = 10;
     VBox buttonBox;
@@ -72,6 +74,7 @@ public class PaintPane_V2 extends BorderPane {
         squareButton = new SquareButton(tools,mainFrame, gc);
         ellipseButton = new EllipseButton(tools,mainFrame, gc);
         groupButton = new GroupButton(tools,mainFrame);
+        unGroupButton = new UnGroup(tools, mainFrame);
         ToolButton[] arr = {selectionButton,rectangleButton,circleButton,squareButton,ellipseButton};
         toolsArr = new ArrayList<ToggleButton>();
         toolsArr.add(selectionButton);
@@ -81,6 +84,7 @@ public class PaintPane_V2 extends BorderPane {
         toolsArr.add(circleButton);
         toolsArr.add(deleteButton);
         toolsArr.add(groupButton);
+        toolsArr.add(unGroupButton);
         gc.setLineWidth(1);
         setRight(canvas);
         buttonBox = createButtonBox();

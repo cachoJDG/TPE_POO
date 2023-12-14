@@ -14,13 +14,14 @@ public abstract class FigureButton extends ToolButton {
 
     public FigureButton(ToggleGroup tools, MainFrame mainFrame, GraphicsContext gc) {
         super(tools,mainFrame);
+        this.gc = gc;
     }
 
 
     @Override
     public void onMouseRelease(Point start, Point end, Color color)
     {
-        Drawable newFig = createFigure(start,end,color);
+        Drawable newFig = createFigure(start,end,color, gc);
         getMainFrame().drawFigure(newFig);
     }
 

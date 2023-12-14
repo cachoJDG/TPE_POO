@@ -10,10 +10,13 @@ import javafx.scene.paint.Color;
 public class DrawableCircle extends DrawableEllipse implements Drawable {
     private final Color color;
     private final double radio;
-    public DrawableCircle(Point centerPoint, double radius,Color color) {
-        super(centerPoint, radius, radius, color);
+    private GraphicsContext draw;
+
+    public DrawableCircle(Point centerPoint, double radius,Color color, GraphicsContext gc) {
+        super(centerPoint, radius, radius, color, gc);
         this.radio = radius;
         this.color = color;
+        this.draw = gc;
     }
 
 

@@ -14,6 +14,9 @@ public class DrawableRectangle extends Rectangle implements Drawable {
     private final Color color;
     private GraphicsContext gc;
 
+    boolean hasShadow;
+    boolean hasGradient;
+
     public DrawableRectangle(Point topLeft, Point bottomRight, Color color, GraphicsContext gc) {
         super(topLeft, bottomRight);
         this.color = color;
@@ -21,8 +24,14 @@ public class DrawableRectangle extends Rectangle implements Drawable {
 
     }
     @Override
-    public void draw(GraphicsContext gc) {
+    public void draw(GraphicsContext gc) {      //Podriamos sacar esta peticion del gc
+        if(hasShadow){
+            drawShadow();
+        }
         gc.setFill(color);
+        if(hasGradient){
+            drawGradient();
+        }
         if(isSelected())
         {
             gc.setStroke(Color.RED);
@@ -33,9 +42,7 @@ public class DrawableRectangle extends Rectangle implements Drawable {
                 Math.abs(getTopLeft().getX() - getBottomRight().getX()), Math.abs(getTopLeft().getY() - getBottomRight().getY()));
 
     }
-
-    @Override
-    public void shadow() {
+    public void drawShadow() {
         gc.setFill(Color.GRAY);
         gc.fillRect(getTopLeft().getX() + 10.0,
                 getTopLeft().getY() + 10.0,
@@ -44,8 +51,14 @@ public class DrawableRectangle extends Rectangle implements Drawable {
         gc.setFill(color);
 
     }
+
     @Override
-    public void gradient() {
+    public void shadow() {
+        hasShadow = true;
+        draw(gc);
+    }
+
+    public void  drawGradient() {
         LinearGradient linearGradient = new LinearGradient(0, 0, 1, 0, true,
                 CycleMethod.NO_CYCLE,
                 new Stop(0, color),
@@ -53,4 +66,9 @@ public class DrawableRectangle extends Rectangle implements Drawable {
         gc.setFill(linearGradient);
     }
 
+    @Override
+    public void gradient() {
+        hasGradient = true;
+        draw(gc);
+    }
 }

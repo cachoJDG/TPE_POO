@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.RadialGradient;
 import javafx.scene.paint.Stop;
+import javafx.scene.shape.ArcType;
 
 public class DrawableEllipse extends Ellipse implements Drawable {
 
@@ -23,6 +24,7 @@ public class DrawableEllipse extends Ellipse implements Drawable {
 
     @Override
     public void draw(GraphicsContext gc) {
+
 
         draw.setFill(color);
         if(isSelected())
@@ -43,13 +45,14 @@ public class DrawableEllipse extends Ellipse implements Drawable {
 
     public void belved()
     {
-//        double arcX = this.getCenterPoint().getX() - this.getRadius();
-//        double arcY = this.getCenterPoint().getY() - this.getRadius();
-//        gc.setLineWidth(10);
-//        gc.setStroke(Color.LIGHTGRAY);
-//        gc.strokeArc(arcX, arcY, diameter, diameter, 45, 180, ArcType.OPEN);
-//        gc.setStroke(Color.BLACK);
-//        gc.strokeArc(arcX, arcY, diameter, diameter, 225, 180, ArcType.OPEN);
+        double arcX = getCenterPoint().getX() - (getsMayorAxis() / 2);
+        double arcY = getCenterPoint().getY() - (getsMinorAxis() / 2);
+        draw.setLineWidth(10);
+        draw.setStroke(Color.LIGHTGRAY);
+        draw.strokeArc(arcX, arcY, getsMayorAxis(), getsMinorAxis() , 45, 180, ArcType.OPEN);
+        draw.setStroke(Color.BLACK);
+        draw.strokeArc(arcX, arcY, getsMayorAxis(), getsMinorAxis(), 225, 180, ArcType.OPEN);
+        draw.setLineWidth(1);
 
     }
 

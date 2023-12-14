@@ -16,9 +16,7 @@ public class DrawableEllipse extends Ellipse implements Drawable {
 
     private GraphicsContext gc;
 
-    boolean hasShadow;
-    boolean hasGradient;
-    boolean hasBelved;
+
 
     public DrawableEllipse(Point centerPoint, double sMayorAxis, double sMinorAxis, Color color1, GraphicsContext gc) {
         super(centerPoint, sMayorAxis, sMinorAxis);
@@ -29,14 +27,14 @@ public class DrawableEllipse extends Ellipse implements Drawable {
     @Override
     public void draw(GraphicsContext gc) {
 
-        if(hasShadow){
+        if(hasShadow()){
             drawShadow();
         }
-        if(hasBelved){
+        if(hasBelved()){
             drawBelved();
         }
         gc.setFill(color);
-        if(hasGradient){
+        if(hasGradient()){
             drawGradient();
         }
 
@@ -50,23 +48,11 @@ public class DrawableEllipse extends Ellipse implements Drawable {
 
 
     }
-    @Override
-    public void shadow(boolean activated) {
-        hasShadow = activated;
 
-    }
 
-    @Override
-    public void gradient(boolean activated) {
-        hasGradient = activated;
 
-    }
 
-    @Override
-    public void belved(boolean activated) {
-        hasBelved = activated;
 
-    }
 
 
 

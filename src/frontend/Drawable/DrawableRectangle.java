@@ -14,9 +14,7 @@ public class DrawableRectangle extends Rectangle implements Drawable {
     private final Color color;
     private GraphicsContext gc;
 
-    boolean hasShadow;
-    boolean hasGradient;
-    boolean hasBelved;
+
 
     public DrawableRectangle(Point topLeft, Point bottomRight, Color color, GraphicsContext gc) {
         super(topLeft, bottomRight);
@@ -26,14 +24,14 @@ public class DrawableRectangle extends Rectangle implements Drawable {
     }
     @Override
     public void draw(GraphicsContext gc) {//Podriamos sacar esta peticion del gc
-        if(hasShadow){
+        if(hasShadow()){
             drawShadow();
         }
-        if(hasBelved){
+        if(hasBelved()){
             drawBelved();
         }
         gc.setFill(color);
-        if(hasGradient){
+        if(hasGradient()){
             drawGradient();
         }
         if(isSelected())
@@ -56,11 +54,7 @@ public class DrawableRectangle extends Rectangle implements Drawable {
 
     }
 
-    @Override
-    public void shadow(boolean activated) {
-        hasShadow = activated;
 
-    }
 
     public void  drawGradient() {
         LinearGradient linearGradient = new LinearGradient(0, 0, 1, 0, true,
@@ -70,11 +64,7 @@ public class DrawableRectangle extends Rectangle implements Drawable {
         gc.setFill(linearGradient);
     }
 
-    @Override
-    public void gradient(boolean activated) {
-        hasGradient = activated;
 
-    }
 
     public void drawBelved(){
         double x = getTopLeft().getX();
@@ -91,9 +81,5 @@ public class DrawableRectangle extends Rectangle implements Drawable {
         gc.setLineWidth(1);
     }
 
-    @Override
-    public void belved(boolean activated) {
-        hasBelved = activated;
 
-    }
 }

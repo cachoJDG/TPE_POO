@@ -119,7 +119,7 @@ public class MainFrame extends VBox {
     public void selectFig(Point eventPoint)
     {
         StringBuilder sb = new StringBuilder("Se selecciono: ");
-        statusPane.updateStatus(canvasState.getLabelSelectedText(eventPoint, sb));
+        statusPane.updateStatus(canvasState.onSingleSelect(eventPoint, sb));
        /* if(canvasState.getSelectedFigure().isPresent()){
             paintPane.getGc().setStroke(Color.RED);
         }
@@ -166,5 +166,17 @@ public class MainFrame extends VBox {
     {
         canvasState.deleteFigure();
         paintPane.reDraw();
+    }
+
+    public void updateCheckBoxes(int shadowInt, int belved, int gradient) {
+
+    }
+
+    public void updateShadowBox(boolean activated) {
+        shadow.setSelected(activated);
+    }
+    public void updateShadowBox()
+    {
+        shadow.setIndeterminate(true);
     }
 }

@@ -10,6 +10,28 @@ public abstract class Figure implements Movable {
      private boolean isSelected;
      private int groupNumber;
 
+    public boolean hasShadow() {
+        return hasShadow;
+    }
+
+
+
+    public boolean hasBelved() {
+        return hasBelved;
+    }
+
+
+
+    public boolean hasGradient() {
+        return hasGradient;
+    }
+
+
+
+    private boolean hasShadow;
+     private boolean hasBelved;
+     private boolean hasGradient;
+
 
     protected Figure(Point[] points) {
         this.points = points;
@@ -38,17 +60,17 @@ public abstract class Figure implements Movable {
 
     public void shadow(boolean activated)
     {
-        throw new UnsupportedOperationException();
+        hasShadow = activated;
     }
 
     public void belved(boolean activated)
     {
-        throw new UnsupportedOperationException();
+        hasBelved = activated;
     }
 
     public void gradient(boolean activated)
     {
-        throw new UnsupportedOperationException();
+        hasGradient = activated;
     }
 
 

@@ -112,7 +112,7 @@ public class CanvasState {
 
     }
 
-    public String getLabelSelectedText(Point point,StringBuilder label)
+    public String onSingleSelect(Point point,StringBuilder label)
     {
         String defaultStr = "Ninguna figura Encontrada";
         multSelectionFig = new MultiSelectList<>();
@@ -122,6 +122,13 @@ public class CanvasState {
         ret.ifPresent(figure -> {figure.setSelected(true);
         multSelectionFig.add(figure);});
         return ret.isPresent()? label.toString() : defaultStr;
+    }
+
+    private void updateCheckBoxes()
+    {
+        SelectionFigureSet set = getExtendedSelectionSet();
+       // mainFrame.updateShadowBox()
+       // mainFrame.updateCheckBoxes(shadow,belved,gradient);
     }
 
     private Optional<Figure> findFig(Point point, StringBuilder label)

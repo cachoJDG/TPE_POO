@@ -93,4 +93,18 @@ public class Rectangle extends Figure {
 //        getBottomRight().setXY( toRot );
 //        getTopLeft().move(0, 0);
     }
+
+    public void scaleUp(){
+        double multiplier = 1.25;
+        getTopLeft().move(-getBase() * multiplier, getHeigth() * multiplier);
+        getBottomRight().move(getBase() * multiplier, -getHeigth() * multiplier);
+
+    }
+
+    private double getBase(){
+        return Math.abs(bottomRight.getX() - topLeft.getX());
+    }
+    private double getHeigth(){
+        return Math.abs(bottomRight.getY() - topLeft.getY());
+    }
 }

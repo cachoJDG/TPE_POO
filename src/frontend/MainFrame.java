@@ -243,4 +243,9 @@ public class MainFrame extends VBox {
         canvasState.scaleUp();
         paintPane.reDraw();
     }
+
+    public void scaleDown() {
+        canvasState.scaleDown();
+        paintPane.reDraw();
+    }
 }

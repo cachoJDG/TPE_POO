@@ -11,13 +11,14 @@ public class Point implements Movable {
         this.y = y;
     }
 
-    public void setdiffX(double diff) {
-        this.x += diff;
+    public void setXY(Point p) {
+        this.x = p.getX();
+        this.y = p.getY();
     }
 
-    public void setdiffY(double diff) {
-        this.y += diff;
-    }
+//    public void setY(double y) {
+//        this.y = y;
+//    }
 
     public double getX() {
         return x;

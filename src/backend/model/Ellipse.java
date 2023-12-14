@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Ellipse extends Figure {
 
     private final Point centerPoint;
-    private final double sMayorAxis, sMinorAxis;
+    private double sMayorAxis, sMinorAxis; // to rotate we cant put final
 
     public Ellipse(Point centerPoint, double sMayorAxis, double sMinorAxis) {
         super(new Point[]{centerPoint});
@@ -52,17 +52,22 @@ public class Ellipse extends Figure {
 
     @Override
     public void moveHorizontal() {
-
+        double diffx = Math.abs(getsMayorAxis()) * 2;
+        centerPoint.move(diffx, 0);
     }
 
     @Override
     public void moveVertical() {
-
+        double diffY = Math.abs(getsMinorAxis()) * 2;
+        centerPoint.move(0, diffY);
     }
 
     @Override
     public void turnR() {
-
+        double aux = sMayorAxis;
+        sMayorAxis = sMinorAxis;
+        sMinorAxis = aux;
+        centerPoint.move(0, 0);
     }
 
     @Override

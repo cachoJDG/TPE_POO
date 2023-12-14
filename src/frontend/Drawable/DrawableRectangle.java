@@ -26,11 +26,11 @@ public class DrawableRectangle extends Rectangle implements Drawable {
     }
     @Override
     public void draw(GraphicsContext gc) {//Podriamos sacar esta peticion del gc
-        if(hasBelved){
-            drawBelved();
-        }
         if(hasShadow){
             drawShadow();
+        }
+        if(hasBelved){
+            drawBelved();
         }
         gc.setFill(color);
         if(hasGradient){
@@ -88,6 +88,7 @@ public class DrawableRectangle extends Rectangle implements Drawable {
         gc.setStroke(Color.BLACK);
         gc.strokeLine(x + width, y, x + width, y + height);
         gc.strokeLine(x, y + height, x + width, y + height);
+        gc.setLineWidth(1);
     }
 
     @Override

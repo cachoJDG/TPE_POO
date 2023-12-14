@@ -9,17 +9,22 @@ import javafx.scene.paint.Color;
 public class DrawableEllipse extends Ellipse implements Drawable {
 
     private final Color color;
+    private boolean is = false;
 
-    public DrawableEllipse(Point centerPoint, double sMayorAxis, double sMinorAxis, Color color1) {
+    GraphicsContext draw;
+
+    public DrawableEllipse(Point centerPoint, double sMayorAxis, double sMinorAxis, Color color1, GraphicsContext gc) {
         super(centerPoint, sMayorAxis, sMinorAxis);
         this.color = color1;
     }
 
     @Override
     public void draw(GraphicsContext gc) {
-
-        gc.setFill(Color.GRAY);
-        gc.fillOval(getCenterPoint().getX() - (getsMayorAxis() / 2) + 10, getCenterPoint().getY() - (getsMinorAxis() / 2) +10, getsMayorAxis(), getsMinorAxis());
+        draw = gc;
+        if (is){
+            gc.setFill(Color.GRAY);
+            gc.fillOval(getCenterPoint().getX() - (getsMayorAxis() / 2) + 10, getCenterPoint().getY() - (getsMinorAxis() / 2) +10, getsMayorAxis(), getsMinorAxis());
+        }
 
         gc.setFill(color);
         if(isSelected())
@@ -30,4 +35,10 @@ public class DrawableEllipse extends Ellipse implements Drawable {
         gc.fillOval(getCenterPoint().getX() - (getsMayorAxis() / 2), getCenterPoint().getY() - (getsMinorAxis() / 2), getsMayorAxis(), getsMinorAxis());
 
     }
+
+    @Override
+    public void shadow() {
+        is = true;
+    }
+
 }

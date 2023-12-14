@@ -20,9 +20,9 @@ public class CircleButton extends FigureButton {
     }
 
     @Override
-    public Drawable createFigure(Point startPoint, Point endPoint, Color color) {
+    public Drawable createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc) {
         double radius = Math.abs(endPoint.getX() - startPoint.getX());
-        return new DrawableCircle(startPoint,radius,color);
+        return new DrawableCircle(startPoint,radius,color, gc);
     }
 
 

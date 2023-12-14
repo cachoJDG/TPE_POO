@@ -61,6 +61,11 @@ public class Ellipse extends Figure {
     }
 
     @Override
+    public void turnR() {
+
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if(this == obj){
             return true;

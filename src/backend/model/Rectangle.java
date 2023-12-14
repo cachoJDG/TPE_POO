@@ -78,4 +78,8 @@ public class Rectangle extends Figure {
         getTopLeft().move(0, diffY);
         getBottomRight().move(0, diffY);
     }
+
+    public void turnR(){
+
+    }
 }

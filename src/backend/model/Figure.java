@@ -89,6 +89,8 @@ public abstract class Figure implements Movable {
 
     public abstract void moveVertical();
 
+    public abstract void turnR();
+
 }
 
 

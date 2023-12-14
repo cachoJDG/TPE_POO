@@ -189,4 +189,9 @@ public class MainFrame extends VBox {
         canvasState.rotateV();
         paintPane.reDraw();
     }
+
+    public void turnR(){
+        canvasState.turnR();
+        paintPane.reDraw();
+    }
 }

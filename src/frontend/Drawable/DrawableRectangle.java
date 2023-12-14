@@ -57,9 +57,9 @@ public class DrawableRectangle extends Rectangle implements Drawable {
     }
 
     @Override
-    public void shadow() {
-        hasShadow = true;
-        draw(gc);
+    public void shadow(boolean activated) {
+        hasShadow = activated;
+
     }
 
     public void  drawGradient() {
@@ -71,9 +71,9 @@ public class DrawableRectangle extends Rectangle implements Drawable {
     }
 
     @Override
-    public void gradient() {
-        hasGradient = true;
-        draw(gc);
+    public void gradient(boolean activated) {
+        hasGradient = activated;
+
     }
 
     public void drawBelved(){
@@ -92,8 +92,8 @@ public class DrawableRectangle extends Rectangle implements Drawable {
     }
 
     @Override
-    public void belved() {
-        hasBelved = true;
-        draw(gc);
+    public void belved(boolean activated) {
+        hasBelved = activated;
+
     }
 }

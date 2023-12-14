@@ -51,21 +51,21 @@ public class DrawableEllipse extends Ellipse implements Drawable {
 
     }
     @Override
-    public void shadow() {
-        hasShadow = true;
-        draw(gc);
+    public void shadow(boolean activated) {
+        hasShadow = activated;
+
     }
 
     @Override
-    public void gradient() {
-        hasGradient = true;
-        draw(gc);
+    public void gradient(boolean activated) {
+        hasGradient = activated;
+
     }
 
     @Override
-    public void belved() {
-        hasBelved = true;
-        draw(gc);
+    public void belved(boolean activated) {
+        hasBelved = activated;
+
     }
 
 

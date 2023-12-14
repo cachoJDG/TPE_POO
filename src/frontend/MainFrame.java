@@ -60,27 +60,23 @@ public class MainFrame extends VBox {
         getChildren().add(statusPane);
 
         shadow.setOnAction(event -> {
-            System.out.printf("In the shadows ");
-            if(shadow.isSelected())
-            {
-                canvasState.shadow();
-            }
-            else
-            {
-               // canvasState.notShadow();
-            }
+
+            canvasState.shadow(shadow.isSelected());
+            paintPane.reDraw();
         });
 
 
         belved.setOnAction(event -> {
-            System.out.printf("belved ");
+
            // shadow.setIndeterminate(true);
-            canvasState.belved();
+            canvasState.belved(belved.isSelected());
+            paintPane.reDraw();
         });
 
         gradient.setOnAction(event -> {
-            System.out.printf("gradient ");
-            canvasState.gradient();
+
+            canvasState.gradient(gradient.isSelected());
+            paintPane.reDraw();
         });
 
 

@@ -25,16 +25,17 @@ public class CanvasState {
         // singleSelectionFig = Optional.empty();
     }
 
-    public void shadow() {
-        getExtendedSelectionSet().shadow();
+    public void shadow(boolean activated) {
+        getExtendedSelectionSet().shadow(activated);
     }
 
-    public void belved() {
-        getExtendedSelectionSet().belved();
+
+    public void belved(boolean activated) {
+        getExtendedSelectionSet().belved(activated);
     }
 
-    public void gradient() {
-        getExtendedSelectionSet().gradient();
+    public void gradient(boolean activated) {
+        getExtendedSelectionSet().gradient(activated);
     }
 
 
@@ -188,6 +189,7 @@ public class CanvasState {
             }
         }
     }
+
 
 
 }

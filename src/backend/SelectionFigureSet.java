@@ -10,10 +10,10 @@ public class SelectionFigureSet extends HashSet<Figure> {
         super(multSelectionFig);
     }
 
-    public void belved()
+    public void belved(boolean activated)
     {
         for (Figure fig:this) {
-            fig.belved();
+            fig.belved(activated);
         }
     }
 
@@ -24,17 +24,19 @@ public class SelectionFigureSet extends HashSet<Figure> {
         }
     }
 
-    public void shadow()
+    public void shadow(boolean activated)
     {
         for (Figure fig:this) {
-            fig.shadow();
+            fig.shadow(activated);
         }
     }
 
-    public void gradient()
+    public void gradient(boolean activated)
     {
         for (Figure fig:this) {
-            fig.gradient();
+            fig.gradient(activated);
         }
     }
+
+
 }

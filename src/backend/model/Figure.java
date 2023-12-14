@@ -36,17 +36,17 @@ public abstract class Figure implements Movable {
 
     public abstract boolean contains(Point eventPoint);
 
-    public void shadow()
+    public void shadow(boolean activated)
     {
         throw new UnsupportedOperationException();
     }
 
-    public void belved()
+    public void belved(boolean activated)
     {
         throw new UnsupportedOperationException();
     }
 
-    public void gradient()
+    public void gradient(boolean activated)
     {
         throw new UnsupportedOperationException();
     }

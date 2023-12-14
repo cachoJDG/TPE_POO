@@ -128,9 +128,9 @@ public class CanvasState {
         moveGroup(getExtendedSelectionSet(),diffX,diffY);
     }
 
-    private Set<Figure> getExtendedSelectionSet()
+    private SelectionFigureSet getExtendedSelectionSet()
     {
-        Set<Figure> multSelectionExtended = new HashSet<>(multSelectionFig);
+        SelectionFigureSet multSelectionExtended = new SelectionFigureSet(multSelectionFig);
         for (Figure fig:multSelectionFig) {
             if(fig.isGroupedFig())
             {
@@ -142,11 +142,9 @@ public class CanvasState {
         //variable de instancia asi no lo tenemos q estar creando constantemente
     }
 
-    private void moveGroup(Set<Figure> multiSelectionExtended,double diffx,double diffY)
+    private void moveGroup(SelectionFigureSet multiSelectionExtended,double diffx,double diffY)
     {
-        for (Figure fig:multiSelectionExtended) {
-            fig.move(diffx,diffY);
-        }
+        multiSelectionExtended.move(diffx,diffY);
     }
 
     public void group() {

@@ -68,43 +68,45 @@ public class Rectangle extends Figure {
 
 
     public void moveHorizontal(){
-        getTopLeft().move(getBase(), 0);
-        getBottomRight().move(getBase(), 0);
+        double diffx = getBase();
+        getTopLeft().move(diffx, 0);
+        getBottomRight().move(diffx, 0);
     }
 
     public void moveVertical(){
-        getTopLeft().move(0, getHeigth());
-        getBottomRight().move(0, getHeigth());
+        double heigth = getHeigth();
+        getTopLeft().move(heigth,0);
+        getBottomRight().move(heigth, 0 );
     }
 
     public void turnR(){
 
-        double diffx = (getTopLeft().getX() + getTopLeft().getY()) * -1;
-        double diffy = getTopLeft().getX();
-        getTopLeft().move(diffx, diffy);
+//        double diffx = (getTopLeft().getX() + getTopLeft().getY()) * -1;
+//        double diffy = getTopLeft().getX();
+//        getTopLeft().move(diffx, diffy);
+//
+//         diffx = (getBottomRight().getX() + getBottomRight().getY()) * -1;
+//         diffy = getBottomRight().getX();
+//        getBottomRight().move(diffx, diffy);
 
-         diffx = (getBottomRight().getX() + getBottomRight().getY()) * -1;
-         diffy = getBottomRight().getX();
-        getBottomRight().move(diffx, diffy);
-
-//        Point toRot = new Point( -getTopLeft().getY(), getTopLeft().getX());
-//        getTopLeft().setXY( toRot );
-//        toRot = new Point( -getBottomRight().getY(), getBottomRight().getX());
-//        getBottomRight().setXY( toRot );
-//        getTopLeft().move(0, 0);
+        Point toRot = new Point( -getTopLeft().getY(), getTopLeft().getX());
+        getTopLeft().setXY( toRot );
+        toRot = new Point( -getBottomRight().getY(), getBottomRight().getX());
+        getBottomRight().setXY( toRot );
+        getTopLeft().move(0, 0);
     }
 
     public void scaleUp(){
+
         double multiplier = 1.25;
         getTopLeft().move(-getBase() * multiplier, getHeigth() * multiplier);
         getBottomRight().move(getBase() * multiplier, -getHeigth() * multiplier);
-
     }
 
     private double getBase(){
-        return Math.abs(bottomRight.getX() - topLeft.getX());
+        return Math.abs(getTopLeft().getX()-getBottomRight().getX());
     }
     private double getHeigth(){
-        return Math.abs(bottomRight.getY() - topLeft.getY());
+        return Math.abs(getTopLeft().getY()-getBottomRight().getY());
     }
 }

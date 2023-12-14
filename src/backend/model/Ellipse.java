@@ -52,13 +52,13 @@ public class Ellipse extends Figure {
 
     @Override
     public void moveHorizontal() {
-        double diffx = Math.abs(getsMayorAxis()) * 2;
+        double diffx = Math.abs(getsMayorAxis());
         centerPoint.move(diffx, 0);
     }
 
     @Override
     public void moveVertical() {
-        double diffY = Math.abs(getsMinorAxis()) * 2;
+        double diffY = Math.abs(getsMinorAxis());
         centerPoint.move(0, diffY);
     }
 

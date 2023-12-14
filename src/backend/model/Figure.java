@@ -25,6 +25,10 @@ public abstract class Figure implements Movable {
         isSelected = false;
         groupNumber = 0;
         effectsMap = new EnumMap<>(FigureEffects.class);
+        for (FigureEffects effect: FigureEffects.values())
+        {
+            effectsMap.put(effect,false);
+        }
     }
 
 

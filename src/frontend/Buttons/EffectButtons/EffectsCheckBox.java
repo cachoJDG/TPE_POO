@@ -19,8 +19,8 @@ public class EffectsCheckBox extends CheckBox {
         this.canvasState = canvasState;
         setOnAction(event -> {
             // canvasState.shadow(shadow.isSelected());
-            canvasState.setEffect(effect,isSelected());
-            paintPane.reDraw();
+            this.canvasState.setEffect(effect,isSelected());
+            this.paintPane.reDraw();
         });
     }
 }

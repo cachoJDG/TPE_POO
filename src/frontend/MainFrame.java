@@ -36,8 +36,8 @@ public class MainFrame extends VBox {
 
     Label effectsLabel;
     CheckBox shadow;
-    CheckBox biselado;
-    CheckBox gradiente;
+    CheckBox belved;
+    CheckBox gradient;
     CanvasState canvasState;
     StatusPane statusPane;
     PaintPane_V2 paintPane;
@@ -47,8 +47,8 @@ public class MainFrame extends VBox {
     public MainFrame() {
         canvasState = new CanvasState(this);
         statusPane = new StatusPane();
-        gradiente = new CheckBox("Gradiente");
-        biselado = new CheckBox("Biselado");
+        gradient = new CheckBox("gradient");
+        belved = new CheckBox("belved");
         shadow = new CheckBox("Sombra");
         effectsLabel = new Label("Efectos: ");
         //buttonManager = new ButtonManager(this);
@@ -61,14 +61,26 @@ public class MainFrame extends VBox {
 
         shadow.setOnAction(event -> {
             System.out.printf("In the shadows ");
+            if(shadow.isSelected())
+            {
+                canvasState.shadow();
+            }
+            else
+            {
+               // canvasState.notShadow();
+            }
         });
 
-        biselado.setOnAction(event -> {
-            System.out.printf("Biselado ");
+
+        belved.setOnAction(event -> {
+            System.out.printf("belved ");
+           // shadow.setIndeterminate(true);
+            canvasState.belved();
         });
 
-        gradiente.setOnAction(event -> {
-            System.out.printf("Gradiente ");
+        gradient.setOnAction(event -> {
+            System.out.printf("gradient ");
+            canvasState.gradient();
         });
 
 
@@ -78,7 +90,7 @@ public class MainFrame extends VBox {
 
     private HBox createHBox()
     {
-        HBox hbox = new HBox(10,effectsLabel,shadow,gradiente,biselado);// spacing = 8
+        HBox hbox = new HBox(10,effectsLabel,shadow,gradient,belved);// spacing = 8
         hbox.setStyle("-fx-background-color: #999");
         hbox.setAlignment(Pos.CENTER);
         hbox.setPrefHeight(30);
@@ -118,6 +130,18 @@ public class MainFrame extends VBox {
         */
         paintPane.reDraw();
     }
+
+    public void biscelado()
+    {
+        //Set<Figure> set = canvasstate.getSelectedFigs();
+        //foreach fig
+        //fig.biscelar
+    }
+    public void biscelado2()
+    {
+        //canvasState.biscelado
+    }
+
 
     public void selectFig(Rectangle selectionRect)
     {

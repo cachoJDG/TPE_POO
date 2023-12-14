@@ -17,6 +17,26 @@ public class CanvasState {
     private GroupFigureMap<Figure> groupMap;
     private final List<Figure> list = new ArrayList<>();
 
+    public CanvasState(MainFrame mainFrame)
+    {
+        this.mainFrame = mainFrame;
+        multSelectionFig = new MultiSelectList<>();
+        groupMap = new GroupFigureMap<>();
+        // singleSelectionFig = Optional.empty();
+    }
+
+    public void shadow() {
+        getExtendedSelectionSet().shadow();
+    }
+
+    public void belved() {
+        getExtendedSelectionSet().belved();
+    }
+
+    public void gradient() {
+        getExtendedSelectionSet().gradient();
+    }
+
 
     public void addFigure(Figure figure) {
         list.add(figure);
@@ -36,13 +56,7 @@ public class CanvasState {
 
 
 
-    public CanvasState(MainFrame mainFrame)
-    {
-        this.mainFrame = mainFrame;
-        multSelectionFig = new MultiSelectList<>();
-        groupMap = new GroupFigureMap<>();
-       // singleSelectionFig = Optional.empty();
-    }
+
 
     public void emptySelectedFig()
     {
@@ -174,4 +188,6 @@ public class CanvasState {
             }
         }
     }
+
+
 }

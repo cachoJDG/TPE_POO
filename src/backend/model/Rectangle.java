@@ -89,11 +89,11 @@ public class Rectangle extends Figure {
 
     public void scaleUp(){
 
-        double base = getBase();
-        double heigh = getHeigth();
-        double multiplier = 1.25;
-        getTopLeft().move(-base * multiplier, heigh * multiplier);
-        getBottomRight().move(base * multiplier, -heigh * multiplier);
+        double originalbase = getBase();
+        double originalheigh = getHeigth();
+        double multiplier = 0.25;
+        getTopLeft().move(-originalbase * multiplier, -originalheigh * multiplier);
+        getBottomRight().move(originalbase * multiplier, originalheigh * multiplier);
     }
 
     private double getBase(){

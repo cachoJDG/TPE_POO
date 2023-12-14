@@ -9,10 +9,12 @@ import javafx.scene.paint.Color;
 public class DrawableRectangle extends Rectangle implements Drawable {
 
     private final Color color;
+    private GraphicsContext gc;
 
-    public DrawableRectangle(Point topLeft, Point bottomRight, Color color) {
+    public DrawableRectangle(Point topLeft, Point bottomRight, Color color, GraphicsContext gc) {
         super(topLeft, bottomRight);
         this.color = color;
+        this.gc = gc;
 
     }
     @Override
@@ -26,6 +28,11 @@ public class DrawableRectangle extends Rectangle implements Drawable {
                 Math.abs(getTopLeft().getX() - getBottomRight().getX()), Math.abs(getTopLeft().getY() - getBottomRight().getY()));
         gc.strokeRect(getTopLeft().getX(), getTopLeft().getY(),
                 Math.abs(getTopLeft().getX() - getBottomRight().getX()), Math.abs(getTopLeft().getY() - getBottomRight().getY()));
+
+    }
+
+    @Override
+    public void shadow() {
 
     }
 }

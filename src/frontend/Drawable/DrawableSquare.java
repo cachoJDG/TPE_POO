@@ -8,11 +8,12 @@ import javafx.scene.paint.Color;
 public class DrawableSquare extends DrawableRectangle implements Drawable{
 
     private final Color color;
+    private GraphicsContext gc;
 
-    public DrawableSquare(Point topLeft, double size, Color color) {
-        super(topLeft, new Point(topLeft.getX() + size, topLeft.getY() + size), color);
-
+    public DrawableSquare(Point topLeft, double size, Color color, GraphicsContext gc) {
+        super(topLeft, new Point(topLeft.getX() + size, topLeft.getY() + size), color, gc);
         this.color = color;
+        this.gc = gc;
     }
 
 //    @Override

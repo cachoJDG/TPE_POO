@@ -20,9 +20,9 @@ public class SquareButton extends FigureButton {
     }
 
     @Override
-    public Drawable createFigure(Point startPoint, Point endPoint, Color color) {
+    public Drawable createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc) {
         double size = Math.abs(endPoint.getX() - startPoint.getX());
-        return new DrawableSquare(startPoint, size, color);
+        return new DrawableSquare(startPoint, size, color,gc);
     }
 
 

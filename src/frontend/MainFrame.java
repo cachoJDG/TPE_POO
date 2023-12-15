@@ -214,7 +214,7 @@ public class MainFrame extends VBox {
 
     public void rotateH() {
         //canvasState.rotateH();
-        canvasState.rot(fig -> fig.moveHorizontal()); //can be replaced with method reference
+        canvasState.rotAndScale(fig -> fig.moveHorizontal()); //can be replaced with method reference
         // pero para no confundirnos lo dejo asi
 
         paintPane.reDraw(); //agregue esto porque sino esperaba a la proxima para hacerlo
@@ -222,22 +222,24 @@ public class MainFrame extends VBox {
 
     public void rotateV() {
        // canvasState.rotateV();
-        canvasState.rot(fig -> fig.moveVertical());
+        canvasState.rotAndScale(fig -> fig.moveVertical());
         paintPane.reDraw();
     }
 
     public void turnR(){
-        canvasState.rot(fig -> fig.turnR());
+        canvasState.rotAndScale(fig -> fig.turnR());
         paintPane.reDraw();
     }
 
     public void scaleUp(){
         canvasState.scaleUp();
+        //canvasState.rotAndScale(fig -> scaleUp());
         paintPane.reDraw();
     }
 
     public void scaleDown() {
         canvasState.scaleDown();
+        //canvasState.rotAndScale(fig -> scaleDown());
         paintPane.reDraw();
     }
 }

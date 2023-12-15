@@ -202,7 +202,15 @@ public class CanvasState {
             return;
         }
         for (Figure fig : multSelectionFig) {
-            voidFunction.apply();
+         //   voidFunction.apply();
+        }
+    }
+
+    public void rotAndScale(VVoidFunction func)
+    {
+        for (Figure fig : multSelectionFig) {
+           // fig.moveHorizontal();
+            func.apply(fig);
         }
     }
 

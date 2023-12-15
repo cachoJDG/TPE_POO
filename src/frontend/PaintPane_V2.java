@@ -144,7 +144,7 @@ public class PaintPane_V2 extends BorderPane {
             }
             Point eventPoint = new Point(event.getX(), event.getY());
             getCurrentButton().onMouseClicked(eventPoint);
-            System.out.println("Click");
+
         });
 
 

@@ -81,6 +81,8 @@ public abstract class Figure implements Movable {
 
     public abstract void scaleUp();
 
+    public abstract void scaleDown();
+
 }
 
 

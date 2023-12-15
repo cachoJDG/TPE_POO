@@ -96,6 +96,11 @@ public class Ellipse extends Figure {
     public void scaleUp() {
         sMinorAxis *= 1.25;
         sMayorAxis *= 1.25;
+    }
 
+    @Override
+    public void scaleDown() {
+        sMinorAxis *= 0.75;
+        sMayorAxis *= 0.75;
     }
 }

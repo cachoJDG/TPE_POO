@@ -69,25 +69,40 @@ public class Rectangle extends Figure {
     }
 
 
+    @Override
     public void moveHorizontal(){
         double diffx = getBase();
         getTopLeft().move(diffx, 0);
         getBottomRight().move(diffx, 0);
     }
 
+    @Override
     public void moveVertical(){
         double heigth = getHeigth();
         getTopLeft().move(0,heigth);
         getBottomRight().move(0, heigth );
     }
 
+    @Override
     public void turnR(){
 
 
     }
 
+    @Override
     public void scaleUp(){
 
+        double originalbase = getBase();
+        double originalheigh = getHeigth();
+        double multiplier = 0.25;
+        getTopLeft().move(-originalbase * multiplier, -originalheigh * multiplier);
+        getBottomRight().move(originalbase * multiplier, originalheigh * multiplier);
+    }
+
+    @Override
+    public void scaleDown(){
+
+        System.out.println("ScaleDOwn");
         double originalbase = getBase();
         double originalheigh = getHeigth();
         double multiplier = 0.25;

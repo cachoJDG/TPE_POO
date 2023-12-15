@@ -232,14 +232,14 @@ public class MainFrame extends VBox {
     }
 
     public void scaleUp(){
-        canvasState.scaleUp();
-        //canvasState.rotAndScale(fig -> scaleUp());
+        //canvasState.scaleUp();
+        canvasState.rotAndScale(fig -> fig.scaleUp());
         paintPane.reDraw();
     }
 
     public void scaleDown() {
-        canvasState.scaleDown();
-        //canvasState.rotAndScale(fig -> scaleDown());
+        //canvasState.scaleDown();
+        canvasState.rotAndScale(fig -> fig.scaleDown());
         paintPane.reDraw();
     }
 }

@@ -92,6 +92,9 @@ public class MainFrame extends VBox {
         gradient = new EffectsCheckBox("Gradient",FigureEffects.GRADIENT,paintPane, canvasState);
         belved = new EffectsCheckBox("Belved",FigureEffects.BELVED,paintPane, canvasState);
         shadow = new EffectsCheckBox("Shadow",FigureEffects.SHADOW,paintPane, canvasState);
+        layer1 = new LayerCheckBox("Layer 1",paintPane,canvasState,1,true);
+        layer2 = new LayerCheckBox("Layer 2",paintPane,canvasState,2,true);
+        layer3 = new LayerCheckBox("Layer 3",paintPane,canvasState,3,true);
         checkBox = createHBox();
         checkBoxDown = createHBoxDown();
         checkBoxLayer = createHBoxLayers();

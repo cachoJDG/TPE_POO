@@ -249,7 +249,7 @@ public class MainFrame extends VBox {
 
     public void addLabel(Figure fig, String[] lines)
     {
-        CanvasState.setLabels(lines);
+        canvasState.setLabels(lines);
     }
 
     public void UpdateTextArea(boolean activated)

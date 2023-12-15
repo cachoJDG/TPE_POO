@@ -18,6 +18,13 @@ public class SelectionFigureSet extends HashSet<Figure> {
         }
     }
 
+    public void applyToSet(FigureSetApply func)
+    {
+        for (Figure fig : this){
+            func.apply(fig);
+        }
+    }
+
 
     public void setEffect(FigureEffects effect, Boolean activated)
     {

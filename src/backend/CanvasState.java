@@ -26,14 +26,17 @@ public class CanvasState {
         // singleSelectionFig = Optional.empty();
     }
 
-    public static void setLabels(String[] lines) {
+    public void setLabels(String[] lines) {
+        //SelectionFigureSet set =  getExtendedSelectionSet();
+        getExtendedSelectionSet().applyToSet(fig -> setLabels(lines));
 
     }
 
 
     public void setEffect(FigureEffects effect, Boolean activated)
     {
-        getExtendedSelectionSet().setEffect(effect, activated);
+       // getExtendedSelectionSet().setEffect(effect, activated);
+        getExtendedSelectionSet().applyToSet(fig -> setEffect(effect,activated));
     }
 
 
@@ -154,7 +157,8 @@ public class CanvasState {
 
     public void moveFig(double diffX, double diffY){
 
-        moveGroup(getExtendedSelectionSet(),diffX,diffY);
+        //moveGroup(getExtendedSelectionSet(),diffX,diffY);
+        getExtendedSelectionSet().applyToSet(fig -> fig.move(diffX,diffY));
     }
 
     private SelectionFigureSet getExtendedSelectionSet()

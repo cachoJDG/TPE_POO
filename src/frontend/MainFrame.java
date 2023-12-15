@@ -8,6 +8,7 @@ import backend.model.FigureEffects;
 import backend.model.Point;
 import backend.model.Rectangle;
 import frontend.Buttons.EffectButtons.EffectsCheckBox;
+import frontend.Buttons.EffectButtons.LayerCheckBox;
 import frontend.Drawable.Drawable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -62,6 +63,12 @@ public class MainFrame extends VBox {
     private HBox checkBox;
     private HBox checkBoxDown;
 
+    private HBox checkBoxLayer;
+
+    LayerCheckBox layer1;
+    LayerCheckBox layer2;
+    LayerCheckBox layer3;
+
     public MainFrame() {
 
         //Las funciones que son
@@ -87,12 +94,15 @@ public class MainFrame extends VBox {
         shadow = new EffectsCheckBox("Shadow",FigureEffects.SHADOW,paintPane, canvasState);
         checkBox = createHBox();
         checkBoxDown = createHBoxDown();
+        checkBoxLayer = createHBoxLayers();
         getChildren().add(new AppMenuBar());
         getChildren().add(checkBox);
         getChildren().add(paintPane);
 
+        getChildren().add(checkBoxLayer);
         getChildren().add(checkBoxDown);
         getChildren().add(statusPane);
+
 
 //        shadow.setOnAction(event -> {
 //
@@ -169,6 +179,19 @@ public class MainFrame extends VBox {
         return hbox;
     }
 
+    private HBox createHBoxLayers()
+    {
+        HBox hbox = new HBox();
+
+        hbox.getChildren().add(layer1);
+        hbox.getChildren().add(layer2);
+        hbox.getChildren().add(layer3);
+        hbox.setStyle("-fx-background-color: #999");
+        hbox.setAlignment(Pos.CENTER);
+        hbox.setPrefHeight(30);
+        return hbox;
+    }
+
     private HBox createHBoxDown()
     {
         HBox hbox = new HBox();
@@ -213,7 +236,7 @@ public class MainFrame extends VBox {
 
     public void drawFigure(Drawable figure)
     {
-        canvasState.addFigure((Figure) figure);
+        canvasState.addFigure((Figure) figure, 1 ); // todo pasarle el numero de la leyer
         paintPane.drawFig(figure);
     }
 

@@ -14,7 +14,7 @@ public abstract class Figure implements Movable {
 
     private boolean toDraw = true;
 
-    private List<String> Labels;
+    private List<String> labels;
 
 
      private EnumMap<FigureEffects,Boolean> effectsMap;
@@ -38,7 +38,7 @@ public abstract class Figure implements Movable {
         isSelected = false;
         groupNumber = 0;
         effectsMap = map;
-        Labels = new ArrayList<>();
+        labels = new ArrayList<>();
     }
 
     public Figure(Point[] points) {
@@ -46,22 +46,22 @@ public abstract class Figure implements Movable {
     }
     public void setLabels(List<String> labels){
 
-        Labels = new ArrayList<>();
-        Labels.addAll(labels);
+        this.labels = new ArrayList<>();
+        this.labels.addAll(labels);
         System.out.println(labels);
     }
 
     public String getLabelsString()
     {
         StringBuilder sb = new StringBuilder();
-        for (String s:Labels) {
+        for (String s:labels) {
             sb.append(s);
             sb.append("\n");
         }
         return sb.toString();
     }
     public List<String> getLabelsList(){
-        return Labels;
+        return labels;
     }
 
 
@@ -92,6 +92,7 @@ public abstract class Figure implements Movable {
     }
 
     public abstract boolean contains(Point eventPoint);
+
 
 
 

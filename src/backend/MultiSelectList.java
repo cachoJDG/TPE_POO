@@ -25,6 +25,6 @@ public class MultiSelectList extends ArrayList<Figure> {
         if(isEmpty()){return "";}
         StringBuilder sb = new StringBuilder();
         Figure fig = getFirstCustom().get();
-        return fig.getLabels();
+        return fig.getLabelsString();
     }
 }

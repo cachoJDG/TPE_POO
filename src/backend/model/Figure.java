@@ -1,8 +1,6 @@
 package backend.model;
 
 import backend.Movable;
-import frontend.Buttons.ScaleUp;
-import javafx.scene.transform.Scale;
 
 import java.util.*;
 
@@ -32,14 +30,14 @@ public abstract class Figure implements Movable {
     public Figure(Point[] points) {
         this(points, new EnumMap<FigureEffects,Boolean>(FigureEffects.class));
     }
-    public void setLabels(String[] labels){
+    public void setLabels(List<String> labels){
 
         Labels = new ArrayList<>();
-        Labels.addAll(Arrays.stream(labels).toList());
-        System.out.println(Labels);
+        Labels.addAll(labels);
+        System.out.println(labels);
     }
 
-    public String getLabels()
+    public String getLabelsString()
     {
         StringBuilder sb = new StringBuilder();
         for (String s:Labels) {
@@ -47,6 +45,9 @@ public abstract class Figure implements Movable {
             sb.append("\n");
         }
         return sb.toString();
+    }
+    public List<String> getLabelsList(){
+        return Labels;
     }
 
 

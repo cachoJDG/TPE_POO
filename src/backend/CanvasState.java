@@ -26,10 +26,9 @@ public class CanvasState {
         // singleSelectionFig = Optional.empty();
     }
 
-    public void setLabels(String[] lines) {
+    public void setLabels(List<String> lines) {
         //SelectionFigureSet set =  getExtendedSelectionSet();
         getExtendedSelectionSet().applyToSet(fig -> fig.setLabels(lines));
-
     }
 
 
@@ -108,7 +107,7 @@ public class CanvasState {
         StringBuilder textAreaTest = new StringBuilder();
         SelectionFigureSet set = getExtendedSelectionSet();
         for (Figure fig : set){
-            textAreaTest.append(fig.getLabels());
+            textAreaTest.append(fig.getLabelsString());
         }
         return textAreaTest.toString();
     }
@@ -202,16 +201,20 @@ public class CanvasState {
     public void group() {
         if(multSelectionFig.isEmpty() || multSelectionFig.onlyOne()){return;}
         ungroup();
-        Set<Figure> aux = new HashSet<>();
+        List<String> labels = new ArrayList<>();
+        SelectionFigureSet aux = new SelectionFigureSet();
         for (Figure fig:multSelectionFig) {
             if(!fig.isGroupedFig()) {
                 aux.add(fig);
                 fig.setGroupedFig(true);
                 fig.setGroupNumber(groupNum);
+                labels.addAll(fig.getLabelsList());
+
             }
 
         }
         groupMap.putIfAbsent(groupNum,aux);
+        aux.applyToSet(fig -> fig.setLabels(labels));
         groupNum++;
     }
 

@@ -31,7 +31,7 @@ public class SaveButton extends ToolButton {
 //            String[] string = input.split("\n");
 //            System.out.println(Arrays.stream(string).toList());
 //            System.out.println(Arrays.stream(lines).toList());
-            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.setLabels(lines)));
+            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.setLabels(Arrays.stream(lines).toList())));
 
         });
 

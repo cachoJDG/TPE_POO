@@ -10,6 +10,9 @@ public class SelectionFigureSet extends HashSet<Figure> {
     public SelectionFigureSet(MultiSelectList multSelectionFig) {
         super(multSelectionFig);
     }
+    public SelectionFigureSet() {
+        super();
+    }
 
     public void move(double diffX, double diffY)
     {

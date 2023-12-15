@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Rectangle extends Figure {
 
-    private  Point topLeft, bottomRight;
+    private  final Point topLeft, bottomRight;
 
 
 
@@ -86,8 +86,8 @@ public class Rectangle extends Figure {
     @Override
     public void turnR(){
         Point centerPoint = getCenterPoint();
-        Point newTopLeft = new Point(centerPoint.getX() - ((getBottomRight().getY() - getTopLeft().getY())/2) , centerPoint.getY() - ((getBottomRight().getX() - getTopLeft().getX())/2));
-        Point newBottomRight = new Point(centerPoint.getX() + ((getBottomRight().getY() - getTopLeft().getY())/2), centerPoint.getY() + ((getBottomRight().getX() - getTopLeft().getX())/2));
+        Point newTopLeft = new Point(centerPoint.getX() - getHeigth()/2 , centerPoint.getY() - getBase()/2);
+        Point newBottomRight = new Point(centerPoint.getX() + getHeigth()/2, centerPoint.getY() + getBase()/2);
         topLeft.setXY(newTopLeft);
         bottomRight.setXY(newBottomRight);
         move(0,0);

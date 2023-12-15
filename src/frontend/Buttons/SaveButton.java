@@ -10,8 +10,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;
+import java.util.List;
 
 
 public class SaveButton extends ToolButton {
@@ -24,14 +26,19 @@ public class SaveButton extends ToolButton {
             System.out.println(textArea.getText());
             String toSplit = textArea.getText();
             System.out.println(toSplit);
-            String[] lines = toSplit.split(" ");
+            String[] lines = toSplit.split("[ |\n]");
+            List<String> lines2 = new ArrayList<>(Arrays.stream(lines).toList());
+            for (String s:lines2) {
 
-            System.out.println(Arrays.stream(lines).toList());
+            }
+
+            lines2.remove("");
+            System.out.println(lines2);
 //            String input = "Hello\nWorld\n!";
 //            String[] string = input.split("\n");
 //            System.out.println(Arrays.stream(string).toList());
 //            System.out.println(Arrays.stream(lines).toList());
-            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.setLabels(Arrays.stream(lines).toList())));
+            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.setLabels(lines2)));
 
         });
 

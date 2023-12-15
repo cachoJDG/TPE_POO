@@ -1,7 +1,9 @@
 package backend;
 
+import backend.model.Figure;
+
 @FunctionalInterface
-interface VVoidFunction {
-    void apply();
+public interface VVoidFunction {
+    void apply(Figure fig);
 }
 

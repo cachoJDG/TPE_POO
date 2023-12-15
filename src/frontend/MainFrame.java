@@ -204,38 +204,30 @@ public class MainFrame extends VBox {
 
 
 
-
-
     public void deleteFig()
     {
         canvasState.deleteFigure();
         paintPane.reDraw();
     }
 
-    public void updateCheckBoxes(int shadowInt, int belved, int gradient) {
 
-    }
-
-    public void updateShadowBox(boolean activated) {
-        shadow.setSelected(activated);
-    }
-    public void updateShadowBox()
-    {
-        shadow.setIndeterminate(true);
-    }
 
     public void rotateH() {
-        canvasState.rotateH();
+        //canvasState.rotateH();
+        canvasState.rot(fig -> fig.moveHorizontal()); //can be replaced with method reference
+        // pero para no confundirnos lo dejo asi
+
         paintPane.reDraw(); //agregue esto porque sino esperaba a la proxima para hacerlo
     }
 
     public void rotateV() {
-        canvasState.rotateV();
+       // canvasState.rotateV();
+        canvasState.rot(fig -> fig.moveVertical());
         paintPane.reDraw();
     }
 
     public void turnR(){
-        canvasState.turnR();
+        canvasState.rot(fig -> fig.turnR());
         paintPane.reDraw();
     }
 

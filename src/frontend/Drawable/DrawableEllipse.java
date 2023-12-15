@@ -35,7 +35,7 @@ public class DrawableEllipse extends Ellipse implements Drawable {
             drawBelved();
         }
         gc.setFill(color);
-        if(hasEffect(FigureEffects.SHADOW)){
+        if(hasEffect(FigureEffects.GRADIENT)){
             drawGradient();
         }
 

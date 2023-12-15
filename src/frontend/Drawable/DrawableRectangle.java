@@ -32,7 +32,7 @@ public class DrawableRectangle extends Rectangle implements Drawable {
             drawBelved();
         }
         gc.setFill(color);
-        if(hasEffect(FigureEffects.SHADOW)){
+        if(hasEffect(FigureEffects.GRADIENT)){
             drawGradient();
         }
         if(isSelected())

@@ -89,8 +89,8 @@ public class PaintPane_V2 extends BorderPane {
         scaleDown = new ScaleDown(tools, mainFrame);
         txtArea = new TextArea();
         saveButton = new SaveButton(tools, mainFrame, txtArea);
-        ToggleButton[] arr = {selectionButton,rectangleButton,circleButton,squareButton,ellipseButton, circleButton, deleteButton, groupButton, unGroupButton
-                            , rotateH, rotateV, turnR, scaleUp, scaleDown};
+//        ToggleButton[] toolsArr = {selectionButton,rectangleButton,circleButton,squareButton,ellipseButton, circleButton, deleteButton, groupButton, unGroupButton
+//                            , rotateH, rotateV, turnR, scaleUp, scaleDown};
 
         toolsArr = new ArrayList<ToggleButton>();
 //        toolsArr.addAll(List.of(selectionButton,rectangleButton,circleButton,squareButton,ellipseButton, circleButton, deleteButton, groupButton, unGroupButton
@@ -98,6 +98,7 @@ public class PaintPane_V2 extends BorderPane {
 //        for (ToolButton button: arr){
 //            toolsArr.add(button);
 //        }
+
         toolsArr.add(selectionButton);
         toolsArr.add(rectangleButton);
         toolsArr.add(squareButton);

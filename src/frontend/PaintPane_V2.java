@@ -64,7 +64,7 @@ public class PaintPane_V2 extends BorderPane {
 
     private final int MINHELDFRAMES = 10;
     VBox buttonBox;
-    ChoiceBox<String> layerBox;
+    ChoiceBox layerBox;
 
     Map<Figure, Color> figureColorMap = new HashMap<>();
 
@@ -221,6 +221,7 @@ public class PaintPane_V2 extends BorderPane {
         buttonsBox.setPadding(new Insets(5));
         buttonsBox.setStyle("-fx-background-color: #999");
         buttonsBox.setPrefWidth(100);
+        buttonsBox.getChildren().add(new Label("Layers: "));
         layerBox.getItems().addAll("Layer 1", "Layer 2", "Layer 3");
         layerBox.setValue("Layer 1");
         buttonsBox.getChildren().add(layerBox);

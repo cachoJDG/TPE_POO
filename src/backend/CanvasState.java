@@ -197,8 +197,13 @@ public class CanvasState {
         }
     }
 
-    private void rotateHoV(){
-
+    private void applyVoidFunction(VVoidFunction voidFunction) {
+        if (multSelectionFig.isEmpty()) {
+            return;
+        }
+        for (Figure fig : multSelectionFig) {
+            voidFunction.apply();
+        }
     }
 
     public void rotateH() {

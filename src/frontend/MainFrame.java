@@ -174,12 +174,22 @@ public class MainFrame extends VBox {
 
         textAreaDown.setMaxWidth(170);
 
-        button1 = new RadioButton("todas:");
-        button2 = new RadioButton("Sólo:");
-        Label label = new Label("Mostrar Etiquetas");
-        hbox.setPadding(new Insets(10));
+        button1 = new RadioButton("Todas: ");
+        button1.setOnAction(event -> {
+            // canvasState.shadow(shadow.isSelected());
+            this.paintPane.reDraw();
+        });
+        button2 = new RadioButton("Sólo: ");
+        button2.setOnAction(event -> {
+            // canvasState.shadow(shadow.isSelected());
+            this.paintPane.reDraw();
+        });
+        Label label = new Label("Mostrar Etiquetas: ");
+
+        hbox.getChildren().add(label);
         hbox.getChildren().add(button1);
         hbox.getChildren().add(button2);
+        hbox.setPadding(new Insets(10));
         hbox.getChildren().add(textAreaDown);
         hbox.setStyle("-fx-background-color: #999");
         hbox.setAlignment(Pos.CENTER);

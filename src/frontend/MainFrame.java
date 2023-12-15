@@ -54,6 +54,7 @@ public class MainFrame extends VBox {
     PaintPane_V2 paintPane;
 
     private HBox checkBox;
+    private HBox checkBoxDown;
 
     public MainFrame() {
         canvasState = new CanvasState(this);
@@ -70,9 +71,12 @@ public class MainFrame extends VBox {
         belved = new EffectsCheckBox("Belved",FigureEffects.BELVED,paintPane, canvasState);
         shadow = new EffectsCheckBox("Shadow",FigureEffects.SHADOW,paintPane, canvasState);
         checkBox = createHBox();
+        checkBoxDown = createHBoxDown();
         getChildren().add(new AppMenuBar());
         getChildren().add(checkBox);
         getChildren().add(paintPane);
+
+        getChildren().add(checkBoxDown);
         getChildren().add(statusPane);
 
 //        shadow.setOnAction(event -> {
@@ -132,6 +136,15 @@ public class MainFrame extends VBox {
         effectsBoxMap.put(FigureEffects.SHADOW,shadow);
         effectsBoxMap.put(FigureEffects.BELVED,belved);
         effectsBoxMap.put(FigureEffects.GRADIENT,gradient);
+        hbox.setStyle("-fx-background-color: #999");
+        hbox.setAlignment(Pos.CENTER);
+        hbox.setPrefHeight(30);
+        return hbox;
+    }
+
+    private HBox createHBoxDown()
+    {
+        HBox hbox = new HBox();
         hbox.setStyle("-fx-background-color: #999");
         hbox.setAlignment(Pos.CENTER);
         hbox.setPrefHeight(30);

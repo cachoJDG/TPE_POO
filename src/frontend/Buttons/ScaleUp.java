@@ -2,6 +2,7 @@ package frontend.Buttons;
 
 import backend.model.Point;
 import frontend.MainFrame;
+import javafx.scene.control.Label;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;
 

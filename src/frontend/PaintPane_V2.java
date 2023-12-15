@@ -54,6 +54,8 @@ public class PaintPane_V2 extends BorderPane {
     ScaleUp scaleUp;
     ScaleDown scaleDown;
 
+    SaveButton saveButton;
+
     ArrayList<ToggleButton> toolsArr;
     private final int MINHELDFRAMES = 10;
     VBox buttonBox;
@@ -83,6 +85,7 @@ public class PaintPane_V2 extends BorderPane {
         turnR = new TurnR(tools, mainFrame);
         scaleUp = new ScaleUp(tools, mainFrame);
         scaleDown = new ScaleDown(tools, mainFrame);
+        saveButton = new SaveButton(tools, mainFrame);
         ToggleButton[] arr = {selectionButton,rectangleButton,circleButton,squareButton,ellipseButton, circleButton, deleteButton, groupButton, unGroupButton
                             , rotateH, rotateV, turnR, scaleUp, scaleDown};
 
@@ -204,6 +207,13 @@ public class PaintPane_V2 extends BorderPane {
         buttonsBox.setPadding(new Insets(5));
         buttonsBox.setStyle("-fx-background-color: #999");
         buttonsBox.setPrefWidth(100);
+        // lo ultimo
+        TextArea txt = new TextArea();
+        txt.setMaxHeight(55);
+        Label label = new Label("Etiquetas:");
+        buttonsBox.getChildren().add(label);
+        buttonsBox.getChildren().add(txt);
+        buttonsBox.getChildren().add(saveButton);
         return buttonsBox;
     }
 

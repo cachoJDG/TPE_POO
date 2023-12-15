@@ -41,7 +41,7 @@ public class CanvasState {
 
     public void deleteFigure() {
        // if(singleSelectionFig.isEmpty()){return;}
-        for (Figure fig:multSelectionFig) {
+        for (Figure fig:getExtendedSelectionSet()) {
             list.remove(fig);
         }
     }

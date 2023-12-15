@@ -13,7 +13,8 @@ public class RotateV extends ToolButton {
         setText("RotateV");
         setOnAction(event ->
         {
-            mainFrame.rotateV();
+           // mainFrame.rotateV();
+            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.moveVertical()));
         });
     }
 

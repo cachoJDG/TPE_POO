@@ -12,7 +12,8 @@ public class ScaleDown extends OtherButton{
         setText("Scale-");
         setOnAction(event ->
         {
-            mainFrame.scaleDown();
+           // mainFrame.scaleDown();
+            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.scaleDown()));
         });
     }
 

@@ -13,7 +13,8 @@ public class RotateH extends ToolButton {
         setText("RotateH");
         setOnAction(event ->
         {
-            mainFrame.rotateH();
+           // mainFrame.rotateH();
+            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.moveHorizontal()));
         });
     }
 

@@ -2,6 +2,7 @@ package frontend;
 
 import java.util.EnumMap;
 import backend.CanvasState;
+import backend.FigRotAndScale;
 import backend.model.Figure;
 import backend.model.FigureEffects;
 import backend.model.Point;
@@ -212,10 +213,32 @@ public class MainFrame extends VBox {
 
 
 
+    public void rotAndScale(CanvasStateRotAndScale func)
+    {
+       func.apply(canvasState);
+       paintPane.reDraw();
+
+       //cada boton llama a rotAndScale del mainFrame con una interfaz funcional que pide
+        //una funcion del canvasState para hacer apply
+        //la funcion en cuestion es siempre rotAndScale de canvasState pero le cambio el parametro
+        //(la interfaz funcional que toma rotAndScale de canvas state es diferente)
+    }
+
     public void rotateH() {
         //canvasState.rotateH();
+
+
         canvasState.rotAndScale(fig -> fig.moveHorizontal()); //can be replaced with method reference
-        // pero para no confundirnos lo dejo asi
+        // pero para no confundirnos lo dejo asi.
+
+        //le estoy diciendo que cuando haga el apply(fig) a la interfaz funcional
+        //que haga fig.moveHorizontal
+        //lo mismo con las otras pero cada una con su respectiva funcion
+
+        //termine usando la funcion de arriba porque podemos hacer lo mismo que hacemos con el canvas state
+        //pero tambien con el mainFrame entonces queda como una composicion medio rara, pero estas
+        //funciones son mas faciles de entender primero
+
 
         paintPane.reDraw(); //agregue esto porque sino esperaba a la proxima para hacerlo
     }

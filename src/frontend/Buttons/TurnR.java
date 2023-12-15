@@ -12,7 +12,8 @@ public class TurnR extends OtherButton{
         setText("TurnR");
         setOnAction(event ->
         {
-            mainFrame.turnR();
+           // mainFrame.turnR();
+            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.turnR()));
         });
     }
 

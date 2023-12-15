@@ -12,7 +12,8 @@ public class ScaleUp extends OtherButton{
         setText("Scale+");
         setOnAction(event ->
         {
-            mainFrame.scaleUp();
+            //mainFrame.scaleUp();
+            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.scaleUp()));
         });
     }
     @Override

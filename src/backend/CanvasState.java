@@ -197,7 +197,7 @@ public class CanvasState {
         }
     }
 
-    private void applyVoidFunction(VVoidFunction voidFunction) {
+    private void applyVoidFunction(FigRotAndScale voidFunction) {
         if (multSelectionFig.isEmpty()) {
             return;
         }
@@ -206,8 +206,11 @@ public class CanvasState {
         }
     }
 
-    public void rotAndScale(VVoidFunction func)
+    public void rotAndScale(FigRotAndScale func)
     {
+        //le paso a la interfaz funcional la funcion de fig que quiero que aplique
+        //entonces aca solo con hacer func.apply(fig) llama a dicha funcion de fig que
+        //le dije antes que aplique, no se si se entiende. lo llamo desde el mainFrame
         for (Figure fig : getExtendedSelectionSet()) {
            // fig.moveHorizontal();
             func.apply(fig);

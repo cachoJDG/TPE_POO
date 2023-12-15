@@ -3,7 +3,7 @@ package backend;
 import backend.model.Figure;
 
 @FunctionalInterface
-public interface VVoidFunction {
+public interface FigRotAndScale {
     void apply(Figure fig);
 }
 

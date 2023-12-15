@@ -171,7 +171,8 @@ public class CanvasState {
     }
 
     public void group() {
-        if(multSelectionFig.isEmpty()){return;}
+        if(multSelectionFig.isEmpty() || multSelectionFig.onlyOne()){return;}
+        ungroup();
         Set<Figure> aux = new HashSet<>();
         for (Figure fig:multSelectionFig) {
             if(!fig.isGroupedFig()) {
@@ -188,12 +189,13 @@ public class CanvasState {
     public void ungroup() {
         if (multSelectionFig.isEmpty()){return;}
         for (Figure fig : multSelectionFig) {
-            if (fig.isGroupedFig()){
-                for (Figure figGrouped: groupMap.findGroup(fig)){
+            if(fig.isGroupedFig()) {
+                int groupN = fig.getGroupNumber();
+                for (Figure figGrouped : groupMap.findGroup(fig)) {
                     figGrouped.setGroupedFig(false);
                     fig.setGroupNumber(0);
                 }
-                groupMap.remove(fig.getGroupNumber());
+                groupMap.remove(groupN);
             }
         }
     }

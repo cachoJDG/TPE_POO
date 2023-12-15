@@ -12,4 +12,9 @@ public class MultiSelectList <K> extends ArrayList<K> {
         }
         return Optional.of(get(0));
     }
+
+    public boolean onlyOne()
+    {
+        return size() == 1;
+    }
 }

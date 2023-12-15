@@ -7,7 +7,7 @@ import java.util.HashSet;
 
 public class SelectionFigureSet extends HashSet<Figure> {
 
-    public SelectionFigureSet(MultiSelectList<Figure> multSelectionFig) {
+    public SelectionFigureSet(MultiSelectList multSelectionFig) {
         super(multSelectionFig);
     }
 

@@ -14,14 +14,14 @@ public class CanvasState {
     private final MainFrame mainFrame;
   //  private Optional<Figure> singleSelectionFig;
     private int groupNum = 1;
-    private MultiSelectList<Figure> multSelectionFig;
+    private MultiSelectList multSelectionFig;
     private GroupFigureMap<Figure> groupMap;
     private final List<Figure> list = new ArrayList<>();
 
     public CanvasState(MainFrame mainFrame)
     {
         this.mainFrame = mainFrame;
-        multSelectionFig = new MultiSelectList<>();
+        multSelectionFig = new MultiSelectList();
         groupMap = new GroupFigureMap<>();
         // singleSelectionFig = Optional.empty();
     }
@@ -64,7 +64,7 @@ public class CanvasState {
     public void emptySelectedFig()
     {
        // singleSelectionFig = Optional.empty();
-        multSelectionFig = new MultiSelectList<>();
+        multSelectionFig = new MultiSelectList();
         for (Figure fig:figures()) {
             fig.setSelected(false);
         }
@@ -82,7 +82,7 @@ public class CanvasState {
         if(selectionRect.small()){
             return;
         }
-        multSelectionFig = new MultiSelectList<>();
+        multSelectionFig = new MultiSelectList();
         for (Figure fig:figures()) {
             if(fig.isFullContained(selectionRect))
             {
@@ -124,7 +124,7 @@ public class CanvasState {
     {
         String textAreaTxt;
         String defaultStr = "Ninguna figura Encontrada";
-        multSelectionFig = new MultiSelectList<>();
+        multSelectionFig = new MultiSelectList();
         emptySelectedFig();
         Optional<Figure> ret = findFig(point,label);
        // singleSelectionFig = ret;

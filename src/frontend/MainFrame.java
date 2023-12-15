@@ -45,6 +45,10 @@ public class MainFrame extends VBox {
     EffectsCheckBox belved;
     EffectsCheckBox gradient;
 
+    TextArea textAreaDown;
+    RadioButton button1;
+    RadioButton button2;
+
     private EnumMap<FigureEffects,EffectsCheckBox> effectsBoxMap;
 
    // List<EffectsCheckBox> effects;
@@ -165,8 +169,16 @@ public class MainFrame extends VBox {
     private HBox createHBoxDown()
     {
         HBox hbox = new HBox();
-        TextArea textAreaDown = new TextArea();
-//        hbox.getChildren().
+        textAreaDown = new TextArea();
+        textAreaDown.setPrefHeight(10);
+        textAreaDown.setMaxWidth(170);
+
+        button1 = new RadioButton("todas:");
+        button2 = new RadioButton("Sólo:");
+        Label label = new Label("Mo");
+        hbox.getChildren().add(button1);
+        hbox.getChildren().add(button2);
+        hbox.getChildren().add(textAreaDown);
         hbox.setStyle("-fx-background-color: #999");
         hbox.setAlignment(Pos.CENTER);
         hbox.setPrefHeight(30);

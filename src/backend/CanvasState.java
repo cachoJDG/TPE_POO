@@ -201,7 +201,7 @@ public class CanvasState {
     public void group() {
         if(multSelectionFig.isEmpty() || multSelectionFig.onlyOne()){return;}
         ungroup();
-        List<String> labels = new ArrayList<>();
+        Set<String> labels = new HashSet<>();
         SelectionFigureSet aux = new SelectionFigureSet();
         for (Figure fig:multSelectionFig) {
             if(!fig.isGroupedFig()) {
@@ -214,7 +214,7 @@ public class CanvasState {
 
         }
         groupMap.putIfAbsent(groupNum,aux);
-        aux.applyToSet(fig -> fig.setLabels(labels));
+        aux.applyToSet(fig -> fig.setLabels(labels.stream().toList()));
         groupNum++;
     }
 

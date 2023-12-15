@@ -10,6 +10,8 @@ import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 
+import java.util.EnumMap;
+
 public class DrawableRectangle extends Rectangle implements Drawable {
 
     private final Color color;
@@ -17,8 +19,8 @@ public class DrawableRectangle extends Rectangle implements Drawable {
 
 
 
-    public DrawableRectangle(Point topLeft, Point bottomRight, Color color, GraphicsContext gc) {
-        super(topLeft, bottomRight);
+    public DrawableRectangle(Point topLeft, Point bottomRight, Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map) {
+        super(topLeft, bottomRight, map);
         this.color = color;
         this.gc = gc;
 

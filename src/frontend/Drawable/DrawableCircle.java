@@ -2,18 +2,21 @@ package frontend.Drawable;
 
 import backend.model.Circle;
 import backend.model.Ellipse;
+import backend.model.FigureEffects;
 import backend.model.Point;
 import javafx.scene.canvas.GraphicsContext;
 
 import javafx.scene.paint.Color;
+
+import java.util.EnumMap;
 
 public class DrawableCircle extends DrawableEllipse implements Drawable {
     private final Color color;
     private final double radio;
     private GraphicsContext draw;
 
-    public DrawableCircle(Point centerPoint, double radius,Color color, GraphicsContext gc) {
-        super(centerPoint, radius, radius, color, gc);
+    public DrawableCircle(Point centerPoint, double radius,Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map) {
+        super(centerPoint, radius, radius, color, gc, map);
         this.radio = radius;
         this.color = color;
         this.draw = gc;

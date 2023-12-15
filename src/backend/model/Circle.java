@@ -1,10 +1,12 @@
 package backend.model;
 
+import java.util.EnumMap;
+
 public class Circle extends Ellipse {
 
 
-    public Circle(Point centerPoint, double radius) {
-        super(centerPoint, radius, radius);
+    public Circle(Point centerPoint, double radius, EnumMap<FigureEffects,Boolean> map) {
+        super(centerPoint, radius, radius, map);
     }
 
     @Override

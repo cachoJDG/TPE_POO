@@ -1,5 +1,6 @@
 package frontend.Buttons;
 
+import backend.model.FigureEffects;
 import backend.model.Point;
 import frontend.Drawable.Drawable;
 import frontend.Drawable.DrawableEllipse;
@@ -8,6 +9,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ToggleGroup;
 
 import javafx.scene.paint.Color;
+
+import java.util.EnumMap;
 
 public class EllipseButton extends FigureButton {
 
@@ -19,11 +22,11 @@ public class EllipseButton extends FigureButton {
     }
 
     @Override
-    public Drawable createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc) {
+    public Drawable createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map) {
         Point centerPoint = new Point(Math.abs(endPoint.getX() + startPoint.getX()) / 2, (Math.abs((endPoint.getY() + startPoint.getY())) / 2));
         double sMayorAxis = Math.abs(endPoint.getX() - startPoint.getX());
         double sMinorAxis = Math.abs(endPoint.getY() - startPoint.getY());
-        return new DrawableEllipse(centerPoint, sMayorAxis, sMinorAxis, color, gc);
+        return new DrawableEllipse(centerPoint, sMayorAxis, sMinorAxis, color, gc, map);
     }
 
 

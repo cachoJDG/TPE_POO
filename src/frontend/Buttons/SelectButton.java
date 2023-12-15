@@ -1,5 +1,6 @@
 package frontend.Buttons;
 
+import backend.model.FigureEffects;
 import backend.model.Point;
 import backend.model.Rectangle;
 import frontend.MainFrame;
@@ -8,6 +9,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;
 
 import java.security.spec.EncodedKeySpec;
+import java.util.EnumMap;
 
 public class SelectButton extends ToolButton{
     public SelectButton(ToggleGroup tools, MainFrame mainFrame) {
@@ -23,7 +25,7 @@ public class SelectButton extends ToolButton{
     }
 
     @Override
-    public void onMouseRelease(Point start, Point end, Color color)
+    public void onMouseRelease(Point start, Point end, Color color, EnumMap<FigureEffects,Boolean> map)
     {
         System.out.println("Released");
         Rectangle selectionRect = new Rectangle(start,end);

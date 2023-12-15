@@ -11,6 +11,8 @@ import javafx.scene.paint.RadialGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.shape.ArcType;
 
+import java.util.EnumMap;
+
 public class DrawableEllipse extends Ellipse implements Drawable {
 
     private final Color color;
@@ -19,8 +21,8 @@ public class DrawableEllipse extends Ellipse implements Drawable {
 
 
 
-    public DrawableEllipse(Point centerPoint, double sMayorAxis, double sMinorAxis, Color color1, GraphicsContext gc) {
-        super(centerPoint, sMayorAxis, sMinorAxis);
+    public DrawableEllipse(Point centerPoint, double sMayorAxis, double sMinorAxis, Color color1, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map) {
+        super(centerPoint, sMayorAxis, sMinorAxis, map);
         this.color = color1;
         this.gc = gc;
     }

@@ -19,16 +19,16 @@ public abstract class Figure implements Movable {
      private EnumMap<FigureEffects,Boolean> effectsMap;
 
 
-    protected Figure(Point[] points) {
+    protected Figure(Point[] points, EnumMap<FigureEffects,Boolean> map) {
         this.points = points;
         groupedFig = false;
         isSelected = false;
         groupNumber = 0;
-        effectsMap = new EnumMap<>(FigureEffects.class);
-        for (FigureEffects effect: FigureEffects.values())
-        {
-            effectsMap.put(effect,false);
-        }
+        effectsMap = map;
+    }
+
+    public Figure(Point[] points) {
+        this(points, new EnumMap<FigureEffects,Boolean>(FigureEffects.class));
     }
 
 

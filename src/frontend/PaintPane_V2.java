@@ -1,6 +1,7 @@
 package frontend;
 
 import backend.CanvasState;
+import backend.model.FigureEffects;
 import frontend.Buttons.*;
 import frontend.Buttons.FigureButton;
 import backend.model.Figure;
@@ -114,6 +115,7 @@ public class PaintPane_V2 extends BorderPane {
 
 
 
+
         canvas.setOnMousePressed(event -> {
             startPoint = new Point(event.getX(), event.getY());
             framesHeld = 0;
@@ -130,7 +132,7 @@ public class PaintPane_V2 extends BorderPane {
             }
 
             //fireEvent(new CustomOne(CustomOne.MOUSE_REL)); era para probar eventos custom, no lo use
-            getCurrentButton().onMouseRelease(startPoint,endPoint,fillColorPicker.getValue());
+            getCurrentButton().onMouseRelease(startPoint,endPoint,fillColorPicker.getValue(),mainFrame.getEffectsBooleanMap());
             //dibujar
         });
 
@@ -161,6 +163,8 @@ public class PaintPane_V2 extends BorderPane {
         });
 
     }
+
+
 
     public void reDraw()
     {

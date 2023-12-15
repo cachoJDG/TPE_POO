@@ -116,14 +116,26 @@ public class MainFrame extends VBox {
         EffectsCheckBox box = effectsBoxMap.get(effect);
         switch(state){
             case -1:
+                box.setIndeterminate(false);
                 box.setSelected(false);
                 break;
             case 0:
                 box.setIndeterminate(true);
                 break;
             default:
+                box.setIndeterminate(false);
                 box.setSelected(true);
         }
+    }
+
+    public EnumMap<FigureEffects, Boolean> getEffectsBooleanMap()
+    {
+        EnumMap <FigureEffects,Boolean> map = new EnumMap<>(FigureEffects.class);
+        for (FigureEffects effects:FigureEffects.values()) {
+            Boolean state = effectsBoxMap.get(effects).isSelected();
+            map.put(effects,state);
+        }
+        return map;
     }
 
 

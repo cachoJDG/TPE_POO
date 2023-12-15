@@ -1,5 +1,6 @@
 package backend.model;
 
+import java.util.EnumMap;
 import java.util.Objects;
 
 public class Ellipse extends Figure {
@@ -7,8 +8,8 @@ public class Ellipse extends Figure {
     private final Point centerPoint;
     private double sMayorAxis, sMinorAxis; // to rotate we cant put final
 
-    public Ellipse(Point centerPoint, double sMayorAxis, double sMinorAxis) {
-        super(new Point[]{centerPoint});
+    public Ellipse(Point centerPoint, double sMayorAxis, double sMinorAxis, EnumMap<FigureEffects,Boolean> map) {
+        super(new Point[]{centerPoint}, map);
         if (sMayorAxis <= 0 && sMinorAxis <= 0)
             throw new IllegalArgumentException("Los radios deben ser mayores a 0");
         this.centerPoint = centerPoint;

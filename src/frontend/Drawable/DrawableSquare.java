@@ -1,17 +1,20 @@
 package frontend.Drawable;
 
+import backend.model.FigureEffects;
 import backend.model.Point;
 import backend.model.Square;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+
+import java.util.EnumMap;
 
 public class DrawableSquare extends DrawableRectangle implements Drawable{
 
     private final Color color;
     private GraphicsContext gc;
 
-    public DrawableSquare(Point topLeft, double size, Color color, GraphicsContext gc) {
-        super(topLeft, new Point(topLeft.getX() + size, topLeft.getY() + size), color, gc);
+    public DrawableSquare(Point topLeft, double size, Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map) {
+        super(topLeft, new Point(topLeft.getX() + size, topLeft.getY() + size), color, gc, map);
         this.color = color;
         this.gc = gc;
     }

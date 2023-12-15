@@ -1,6 +1,7 @@
 package frontend.Buttons;
 
 import backend.model.Figure;
+import backend.model.FigureEffects;
 import backend.model.Point;
 import backend.model.Square;
 import frontend.Drawable.Drawable;
@@ -11,6 +12,8 @@ import javafx.scene.control.ToggleGroup;
 
 import javafx.scene.paint.Color;
 
+import java.util.EnumMap;
+
 public class SquareButton extends FigureButton {
 
 
@@ -20,9 +23,9 @@ public class SquareButton extends FigureButton {
     }
 
     @Override
-    public Drawable createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc) {
+    public Drawable createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map) {
         double size = Math.abs(endPoint.getX() - startPoint.getX());
-        return new DrawableSquare(startPoint, size, color,gc);
+        return new DrawableSquare(startPoint, size, color,gc, map);
     }
 
 

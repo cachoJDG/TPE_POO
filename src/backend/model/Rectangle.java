@@ -1,5 +1,6 @@
 package backend.model;
 
+import java.util.EnumMap;
 import java.util.Objects;
 
 public class Rectangle extends Figure {
@@ -7,6 +8,13 @@ public class Rectangle extends Figure {
     private  final Point topLeft, bottomRight;
 
 
+
+    public Rectangle(Point topLeft, Point bottomRight, EnumMap<FigureEffects,Boolean> map) {
+        super(new Point[]{topLeft}, map);
+        this.topLeft = topLeft;
+        this.bottomRight = bottomRight;
+        System.out.println(small());
+    }
 
     public Rectangle(Point topLeft, Point bottomRight) {
         super(new Point[]{topLeft});

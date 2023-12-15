@@ -1,5 +1,6 @@
 package frontend.Buttons;
 
+import backend.model.FigureEffects;
 import backend.model.Point;
 import frontend.MainFrame;
 import javafx.scene.Cursor;
@@ -7,6 +8,8 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 
 import javafx.scene.paint.Color;
+
+import java.util.EnumMap;
 
 public abstract class ToolButton extends ToggleButton {
 
@@ -37,6 +40,6 @@ public abstract class ToolButton extends ToggleButton {
     }
 
 
-    public abstract void onMouseRelease(Point start, Point end, Color color);
+    public abstract void onMouseRelease(Point start, Point end, Color color, EnumMap<FigureEffects,Boolean> map);
 
 }

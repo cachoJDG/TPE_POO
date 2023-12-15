@@ -30,6 +30,10 @@ public class DrawableEllipse extends Ellipse implements Drawable {
     @Override
     public void draw() {
 
+        if (! getToDraw()){
+            return;
+        }
+
         if(hasEffect(FigureEffects.SHADOW)){
             drawShadow();
         }
@@ -40,7 +44,6 @@ public class DrawableEllipse extends Ellipse implements Drawable {
         if(hasEffect(FigureEffects.GRADIENT)){
             drawGradient();
         }
-
 
         if(isSelected())
         {

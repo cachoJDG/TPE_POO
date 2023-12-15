@@ -50,6 +50,8 @@ public class MainFrame extends VBox {
     RadioButton button1;
     RadioButton button2;
 
+    ToggleGroup labelGroup = new ToggleGroup();
+
     private EnumMap<FigureEffects,EffectsCheckBox> effectsBoxMap;
 
    // List<EffectsCheckBox> effects;
@@ -175,14 +177,18 @@ public class MainFrame extends VBox {
         textAreaDown.setMaxWidth(170);
 
         button1 = new RadioButton("Todas: ");
-        button1.setOnAction(event -> {
-            // canvasState.shadow(shadow.isSelected());
-            this.paintPane.reDraw();
-        });
         button2 = new RadioButton("Sólo: ");
+        button1.setToggleGroup(labelGroup);
+        button2.setToggleGroup(labelGroup);
+
+        button1.setOnAction(event -> {
+            canvasState.drawAll();
+            paintPane.reDraw();
+        });
+
         button2.setOnAction(event -> {
-            // canvasState.shadow(shadow.isSelected());
-            this.paintPane.reDraw();
+            canvasState.onlyOneLabel(textAreaDown);
+            paintPane.reDraw();
         });
         Label label = new Label("Mostrar Etiquetas: ");
 

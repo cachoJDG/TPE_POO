@@ -12,10 +12,24 @@ public abstract class Figure implements Movable {
      private boolean isSelected;
      private int groupNumber;
 
+    private boolean toDraw = true;
+
     private List<String> Labels;
 
 
      private EnumMap<FigureEffects,Boolean> effectsMap;
+
+     public void setToDraw(Boolean bool){
+         toDraw = bool;
+     }
+
+     public boolean getToDraw(){
+         return toDraw;
+     }
+
+     public boolean hasLabel(String text){
+         return labels.contains(text);
+     }
 
 
     protected Figure(Point[] points, EnumMap<FigureEffects,Boolean> map) {

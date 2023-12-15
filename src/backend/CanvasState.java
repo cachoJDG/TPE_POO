@@ -5,6 +5,7 @@ import backend.model.FigureEffects;
 import backend.model.Point;
 import backend.model.Rectangle;
 import frontend.MainFrame;
+import javafx.scene.control.TextArea;
 
 import java.util.*;
 
@@ -284,6 +285,27 @@ public class CanvasState {
 
     public void scaleDown() {
     }
+
+    public void allLabel(TextArea textAreaDown) {
+            //for
+    }
+
+    public void onlyOneLabel(TextArea textAreaDown) {
+            String text = textAreaDown.getText();
+            String[] parts = text.split("\\s+", 2);
+            text = parts[0];
+            for (Figure fig: figures()){
+                boolean hasLabel = fig.hasLabel(text);
+                fig.setToDraw(hasLabel);
+            }
+    }
+
+    public void drawAll(){
+        for(Figure figure: figures()){
+            figure.setToDraw(true);
+        }
+    }
+
 //    public void saveLabel(String txt) {
 //        if (multSelectionFig.isEmpty()){
 //            return;

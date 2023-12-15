@@ -5,13 +5,15 @@ import backend.model.Point;
 import frontend.Drawable.Drawable;
 import frontend.MainFrame;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 
 import javafx.scene.paint.Color;
 
+import java.util.Collection;
 import java.util.EnumMap;
 
-public abstract class FigureButton extends ToolButton {
+public abstract class FigureButton extends ToolButton{
 
     GraphicsContext gc;
 

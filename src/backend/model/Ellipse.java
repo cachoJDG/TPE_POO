@@ -10,9 +10,12 @@ public class Ellipse extends Figure {
 
     public Ellipse(Point centerPoint, double sMayorAxis, double sMinorAxis, EnumMap<FigureEffects,Boolean> map) {
         super(new Point[]{centerPoint}, map);
-        if (sMayorAxis <= 0 && sMinorAxis <= 0)
-            throw new IllegalArgumentException("Los radios deben ser mayores a 0");
         this.centerPoint = centerPoint;
+        if (sMayorAxis <= 0 && sMinorAxis <= 0){
+            return;
+//            throw new IllegalArgumentException("mal radios");
+        }
+
         this.sMayorAxis = sMayorAxis;
         this.sMinorAxis = sMinorAxis;
     }

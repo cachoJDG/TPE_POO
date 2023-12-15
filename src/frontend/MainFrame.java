@@ -11,10 +11,7 @@ import frontend.Buttons.EffectButtons.EffectsCheckBox;
 import frontend.Drawable.Drawable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -168,6 +165,8 @@ public class MainFrame extends VBox {
     private HBox createHBoxDown()
     {
         HBox hbox = new HBox();
+        TextArea textAreaDown = new TextArea();
+//        hbox.getChildren().
         hbox.setStyle("-fx-background-color: #999");
         hbox.setAlignment(Pos.CENTER);
         hbox.setPrefHeight(30);

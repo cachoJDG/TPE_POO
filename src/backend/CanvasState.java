@@ -208,7 +208,7 @@ public class CanvasState {
 
     public void rotAndScale(VVoidFunction func)
     {
-        for (Figure fig : multSelectionFig) {
+        for (Figure fig : getExtendedSelectionSet()) {
            // fig.moveHorizontal();
             func.apply(fig);
         }

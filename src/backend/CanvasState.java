@@ -61,6 +61,7 @@ public class CanvasState {
         for (Figure fig:figures()) {
             fig.setSelected(false);
         }
+        updateCheckBoxes();
 
     }
 

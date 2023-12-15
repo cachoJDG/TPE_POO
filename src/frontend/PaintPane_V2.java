@@ -64,8 +64,7 @@ public class PaintPane_V2 extends BorderPane {
 
     private final int MINHELDFRAMES = 10;
     VBox buttonBox;
-
-
+    ChoiceBox<String> layerBox;
 
     Map<Figure, Color> figureColorMap = new HashMap<>();
 
@@ -92,6 +91,7 @@ public class PaintPane_V2 extends BorderPane {
         scaleDown = new ScaleDown(tools, mainFrame);
         txtArea = new TextArea();
         saveButton = new SaveButton(tools, mainFrame, txtArea);
+        layerBox = new ChoiceBox<>();
         arr = new ToggleButton[]{selectionButton, rectangleButton, circleButton, squareButton, ellipseButton, circleButton, deleteButton, groupButton, unGroupButton
                 , rotateH, rotateV, turnR, scaleUp, scaleDown};
 
@@ -221,7 +221,6 @@ public class PaintPane_V2 extends BorderPane {
         buttonsBox.setPadding(new Insets(5));
         buttonsBox.setStyle("-fx-background-color: #999");
         buttonsBox.setPrefWidth(100);
-        layerBox.setTe
         layerBox.getItems().addAll("Layer 1", "Layer 2", "Layer 3");
         layerBox.setValue("Layer 1");
         buttonsBox.getChildren().add(layerBox);

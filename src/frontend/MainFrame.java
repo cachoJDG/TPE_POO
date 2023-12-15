@@ -251,10 +251,14 @@ public class MainFrame extends VBox {
         canvasState.setLabels(lines);
     }
 
-    public void UpdateTextArea(boolean activated)
+    public void UpdateTextArea(boolean activated, String text)
     {
         paintPane.txtArea.setDisable(activated);
+
         paintPane.getSaveButton().setDisable(activated);
+        if(!activated){
+            paintPane.txtArea.setText(text);
+        }
     }
 
 

@@ -15,6 +15,6 @@ public class MultiSelectList <K> extends ArrayList<K> {
 
     public boolean onlyOne()
     {
-        return size() == 1;
+        return size() <= 1;
     }
 }

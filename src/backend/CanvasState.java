@@ -28,7 +28,7 @@ public class CanvasState {
 
     public void setLabels(String[] lines) {
         //SelectionFigureSet set =  getExtendedSelectionSet();
-        getExtendedSelectionSet().applyToSet(fig -> setLabels(lines));
+        getExtendedSelectionSet().applyToSet(fig -> fig.setLabels(lines));
 
     }
 
@@ -36,7 +36,7 @@ public class CanvasState {
     public void setEffect(FigureEffects effect, Boolean activated)
     {
        // getExtendedSelectionSet().setEffect(effect, activated);
-        getExtendedSelectionSet().applyToSet(fig -> setEffect(effect,activated));
+        getExtendedSelectionSet().applyToSet(fig -> fig.setEffect(effect,activated));
     }
 
 
@@ -69,7 +69,7 @@ public class CanvasState {
             fig.setSelected(false);
         }
         updateCheckBoxes();
-        mainFrame.UpdateTextArea(false);
+        mainFrame.UpdateTextArea(false, "");
 
     }
 
@@ -77,6 +77,8 @@ public class CanvasState {
 
     public void multipleSelection(Rectangle selectionRect)
     {
+        String textAreaTest;
+
         if(selectionRect.small()){
             return;
         }
@@ -88,11 +90,11 @@ public class CanvasState {
                 fig.setSelected(true);
             }
         }
-        if(multSelectionFig.isEmpty())
-        {
+        if(multSelectionFig.isEmpty()) {
             emptySelectedFig();
         }
-        mainFrame.UpdateTextArea(!multSelectionFig.onlyOne());
+        textAreaTest = multSelectionFig.onlyOne()? "FigLabel" : "";
+        mainFrame.UpdateTextArea(!multSelectionFig.onlyOne(), textAreaTest);
         updateCheckBoxes();
     }
 
@@ -120,6 +122,7 @@ public class CanvasState {
 
     public String onSingleSelect(Point point,StringBuilder label)
     {
+        String textAreaTxt;
         String defaultStr = "Ninguna figura Encontrada";
         multSelectionFig = new MultiSelectList<>();
         emptySelectedFig();
@@ -127,7 +130,8 @@ public class CanvasState {
        // singleSelectionFig = ret;
         ret.ifPresent(figure -> {figure.setSelected(true);
         multSelectionFig.add(figure);});
-        mainFrame.UpdateTextArea(false);
+        textAreaTxt = multSelectionFig.isEmpty()? "" : "Fig Label";
+        mainFrame.UpdateTextArea(false, textAreaTxt);
         updateCheckBoxes();
         return ret.isPresent()? label.toString() : defaultStr;
     }

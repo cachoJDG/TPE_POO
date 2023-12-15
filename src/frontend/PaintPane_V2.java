@@ -19,32 +19,32 @@ import java.util.*;
 
 public class PaintPane_V2 extends BorderPane {
 
-    Canvas canvas = new Canvas(800, 600);
-    GraphicsContext gc = canvas.getGraphicsContext2D();
-    Color lineColor = Color.BLACK;
-    Color defaultFillColor = Color.YELLOW;
+    private final Canvas canvas = new Canvas(800, 600);
+    private final GraphicsContext gc = canvas.getGraphicsContext2D();
+    private final Color lineColor = Color.BLACK;
+    private final Color defaultFillColor = Color.YELLOW;
     private int framesHeld;
-    ColorPicker fillColorPicker = new ColorPicker(defaultFillColor);
+    private final ColorPicker fillColorPicker = new ColorPicker(defaultFillColor);
 
 
     // Dibujar una figura
-    Point startPoint;
+    private Point startPoint;
 
     // Seleccionar una figura
-    Figure selectedFigure;
+    private Figure selectedFigure;
 
-    CanvasState canvasState;
+    private final CanvasState canvasState;
     // StatusBar
-    StatusPane statusPane;
+    private StatusPane statusPane;
 
-    MainFrame mainFrame;
+    private final MainFrame mainFrame;
 
-    ToggleGroup tools = new ToggleGroup();
-    SelectButton selectionButton;
-    FigureButton rectangleButton;
-    FigureButton circleButton;
-    FigureButton squareButton;
-    FigureButton ellipseButton;
+    private final ToggleGroup tools = new ToggleGroup();
+    private SelectButton selectionButton;
+    private FigureButton rectangleButton;
+    private FigureButton circleButton;
+    private FigureButton squareButton;
+    private FigureButton ellipseButton;
     DeleteButton deleteButton;
     GroupButton groupButton;
     UnGroup unGroupButton;
@@ -167,6 +167,9 @@ public class PaintPane_V2 extends BorderPane {
 
     }
 
+    public SaveButton getSaveButton(){
+        return saveButton;
+    }
 
 
     public void reDraw()

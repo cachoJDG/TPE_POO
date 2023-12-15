@@ -23,13 +23,15 @@ public class SaveButton extends ToolButton {
         setOnAction(event -> {
             System.out.println(textArea.getText());
             String toSplit = textArea.getText();
-            String[] lines = toSplit.split("\n");
-            
+            System.out.println(toSplit);
+            String[] lines = toSplit.split(" ");
+
+            System.out.println(Arrays.stream(lines).toList());
 //            String input = "Hello\nWorld\n!";
 //            String[] string = input.split("\n");
 //            System.out.println(Arrays.stream(string).toList());
 //            System.out.println(Arrays.stream(lines).toList());
-//            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.setLabels(lines)));
+            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.setLabels(lines)));
 
         });
 

@@ -290,4 +290,8 @@ public class MainFrame extends VBox {
         canvasState.rotAndScale(fig -> fig.scaleDown());
         paintPane.reDraw();
     }
+
+    public void save(String txt) {
+        canvasState.saveLabel(txt);
+    }
 }

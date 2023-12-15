@@ -4,7 +4,9 @@ import backend.Movable;
 import frontend.Buttons.ScaleUp;
 import javafx.scene.transform.Scale;
 
+import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -14,6 +16,8 @@ public abstract class Figure implements Movable {
      private boolean groupedFig;
      private boolean isSelected;
      private int groupNumber;
+
+    private List<String> Labels;
 
 
      private EnumMap<FigureEffects,Boolean> effectsMap;
@@ -25,10 +29,15 @@ public abstract class Figure implements Movable {
         isSelected = false;
         groupNumber = 0;
         effectsMap = map;
+        Labels = new ArrayList<>();
     }
 
     public Figure(Point[] points) {
         this(points, new EnumMap<FigureEffects,Boolean>(FigureEffects.class));
+    }
+    public void setLabels(String labels){
+        Labels.add(labels);
+        System.out.println(labels);
     }
 
 

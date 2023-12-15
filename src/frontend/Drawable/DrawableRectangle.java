@@ -27,25 +27,26 @@ public class DrawableRectangle extends Rectangle implements Drawable {
     }
     @Override
     public void draw() {//Podriamos sacar esta peticion del gc
-        if(hasEffect(FigureEffects.SHADOW)){
-            drawShadow();
+        if(!getToDraw()) {
+            return;
         }
-        if(hasEffect(FigureEffects.BELVED)){
-            drawBelved();
-        }
-        gc.setFill(color);
-        if(hasEffect(FigureEffects.GRADIENT)){
-            drawGradient();
-        }
-        if(isSelected())
-        {
-            gc.setStroke(Color.RED);
-        }
-        gc.fillRect(getTopLeft().getX(), getTopLeft().getY(),
-                Math.abs(getTopLeft().getX() - getBottomRight().getX()), Math.abs(getTopLeft().getY() - getBottomRight().getY()));
-        gc.strokeRect(getTopLeft().getX(), getTopLeft().getY(),
-                Math.abs(getTopLeft().getX() - getBottomRight().getX()), Math.abs(getTopLeft().getY() - getBottomRight().getY()));
-
+            if (hasEffect(FigureEffects.SHADOW)) {
+                drawShadow();
+            }
+            if (hasEffect(FigureEffects.BELVED)) {
+                drawBelved();
+            }
+            gc.setFill(color);
+            if (hasEffect(FigureEffects.GRADIENT)) {
+                drawGradient();
+            }
+            if (isSelected()) {
+                gc.setStroke(Color.RED);
+            }
+            gc.fillRect(getTopLeft().getX(), getTopLeft().getY(),
+                    Math.abs(getTopLeft().getX() - getBottomRight().getX()), Math.abs(getTopLeft().getY() - getBottomRight().getY()));
+            gc.strokeRect(getTopLeft().getX(), getTopLeft().getY(),
+                    Math.abs(getTopLeft().getX() - getBottomRight().getX()), Math.abs(getTopLeft().getY() - getBottomRight().getY()));
     }
     public void drawShadow() {
         gc.setFill(Color.GRAY);

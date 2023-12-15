@@ -11,13 +11,15 @@ import java.util.EnumMap;
 
 public class ScaleUp extends OtherButton{
 
+    private final double SCALEUPMULTIPLIER = 1.25;
+
     public ScaleUp(ToggleGroup tools, MainFrame mainFrame) {
         super(tools, mainFrame);
         setText("Scale+");
         setOnAction(event ->
         {
             //mainFrame.scaleUp();
-            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.scale(1.25)));
+            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.scale(SCALEUPMULTIPLIER)));
         });
     }
 

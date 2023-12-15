@@ -9,6 +9,9 @@ import javafx.scene.paint.Color;
 import java.util.EnumMap;
 
 public class ScaleDown extends OtherButton{
+
+    private final double SCALEDOWNMULTIPLIER = 0.75;
+
     public ScaleDown(ToggleGroup tools, MainFrame mainFrame) {
         super(tools, mainFrame);
 
@@ -16,7 +19,7 @@ public class ScaleDown extends OtherButton{
         setOnAction(event ->
         {
            // mainFrame.scaleDown();
-            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.scale(0.75)));
+            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.scale(SCALEDOWNMULTIPLIER)));
         });
     }
 

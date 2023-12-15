@@ -280,7 +280,7 @@ public class MainFrame extends VBox {
     {
       //  canvasState.setLabels(lines);
     }
-
+//Diego me fui a duchar Saludos!
     public void UpdateTextArea(boolean activated, String text)
     {
         paintPane.txtArea.setDisable(activated);

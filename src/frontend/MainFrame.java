@@ -9,6 +9,7 @@ import backend.model.Point;
 import backend.model.Rectangle;
 import frontend.Buttons.EffectButtons.EffectsCheckBox;
 import frontend.Drawable.Drawable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -170,12 +171,13 @@ public class MainFrame extends VBox {
     {
         HBox hbox = new HBox();
         textAreaDown = new TextArea();
-        textAreaDown.setPrefHeight(10);
+
         textAreaDown.setMaxWidth(170);
 
         button1 = new RadioButton("todas:");
         button2 = new RadioButton("Sólo:");
-        Label label = new Label("Mo");
+        Label label = new Label("Mostrar Etiquetas");
+        hbox.setPadding(new Insets(10));
         hbox.getChildren().add(button1);
         hbox.getChildren().add(button2);
         hbox.getChildren().add(textAreaDown);

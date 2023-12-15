@@ -291,7 +291,7 @@ public class MainFrame extends VBox {
         paintPane.reDraw();
     }
 
-    public void save(String txt) {
-        canvasState.saveLabel(txt);
-    }
+//    public void save(String txt) {
+//        canvasState.saveLabel(txt);
+//    }
 }

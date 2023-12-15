@@ -250,12 +250,12 @@ public class CanvasState {
 
     public void scaleDown() {
     }
-    public void saveLabel(String txt) {
-        if (multSelectionFig.isEmpty()){
-            return;
-        }
-        for(Figure fig: multSelectionFig){
-            fig.setLabels(txt);
-        }
-    }
+//    public void saveLabel(String txt) {
+//        if (multSelectionFig.isEmpty()){
+//            return;
+//        }
+//        for(Figure fig: multSelectionFig){
+//            fig.setLabels(txt);
+//        }
+//    }
 }

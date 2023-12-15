@@ -20,8 +20,9 @@ public class SaveButton extends ToolButton {
         super(tools, mainFrame);
         setText("Guardar");
         setOnAction(event -> {
-            mainFrame.save(textArea.getText());
-//            System.out.println( txt.getText());
+            System.out.println(textArea.getText());
+            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.setLabels(getText())));
+
         });
 
     }

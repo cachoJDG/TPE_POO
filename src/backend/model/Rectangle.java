@@ -1,5 +1,7 @@
 package backend.model;
 
+import frontend.Layer;
+
 import java.util.EnumMap;
 import java.util.Objects;
 
@@ -9,18 +11,18 @@ public class Rectangle extends Figure {
 
 
 
-    public Rectangle(Point topLeft, Point bottomRight, EnumMap<FigureEffects,Boolean> map) {
-        super(new Point[]{topLeft}, map);
+    public Rectangle(Point topLeft, Point bottomRight, EnumMap<FigureEffects,Boolean> map, int layer) {
+        super(new Point[]{topLeft}, map,layer);
         this.topLeft = topLeft;
         this.bottomRight = bottomRight;
-        System.out.println(small());
+
     }
 
     public Rectangle(Point topLeft, Point bottomRight) {
         super(new Point[]{topLeft});
         this.topLeft = topLeft;
         this.bottomRight = bottomRight;
-        System.out.println(small());
+
     }
 
     public boolean small()
@@ -120,7 +122,6 @@ public class Rectangle extends Figure {
     @Override
     public void scaleDown(){
 
-        System.out.println("ScaleDOwn");
         //falta implementar, era para testear que se llamen bien los metodos
         double originalbase = getBase();
         double originalheigh = getHeigth();

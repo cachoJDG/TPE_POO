@@ -11,6 +11,7 @@ public abstract class Figure implements Movable {
      private boolean groupedFig;
      private boolean isSelected;
      private int groupNumber;
+     private int layer;
 
     private boolean toDraw = true;
 
@@ -32,23 +33,24 @@ public abstract class Figure implements Movable {
      }
 
 
-    protected Figure(Point[] points, EnumMap<FigureEffects,Boolean> map) {
+    protected Figure(Point[] points, EnumMap<FigureEffects,Boolean> map, int layer) {
         this.points = points;
         groupedFig = false;
         isSelected = false;
         groupNumber = 0;
         effectsMap = map;
         labels = new ArrayList<>();
+        this.layer = layer;
     }
 
     public Figure(Point[] points) {
-        this(points, new EnumMap<FigureEffects,Boolean>(FigureEffects.class));
+        this(points, new EnumMap<FigureEffects,Boolean>(FigureEffects.class),0);
     }
     public void setLabels(List<String> labels){
 
         this.labels = new ArrayList<>();
         this.labels.addAll(labels);
-        System.out.println(labels);
+
     }
 
     public String getLabelsString()
@@ -89,6 +91,7 @@ public abstract class Figure implements Movable {
 
     public void setSelected(boolean selected) {
         isSelected = selected;
+
     }
 
     public abstract boolean contains(Point eventPoint);
@@ -117,6 +120,13 @@ public abstract class Figure implements Movable {
 
     public abstract void scaleDown();
 
+    public int getLayer() {
+        return layer;
+    }
+
+    public void setLayer(int layer) {
+        this.layer = layer;
+    }
 }
 
 

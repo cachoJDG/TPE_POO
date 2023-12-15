@@ -178,7 +178,7 @@ public class MainFrame extends VBox {
         effectsBoxMap.put(FigureEffects.GRADIENT,gradient);
         hbox.setStyle("-fx-background-color: #999");
         hbox.setAlignment(Pos.CENTER);
-        hbox.setPrefHeight(30);
+        hbox.setPrefHeight(5); //lo cambie a 5 xq sino no me entra en la pantalla
         return hbox;
     }
 

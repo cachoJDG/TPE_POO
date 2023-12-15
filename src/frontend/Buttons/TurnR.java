@@ -20,10 +20,7 @@ public class TurnR extends OtherButton{
         });
     }
 
-    @Override
-    public void onMouseRelease(Point start, Point end, Color color, EnumMap<FigureEffects, Boolean> map) {
 
-    }
 
 
 }

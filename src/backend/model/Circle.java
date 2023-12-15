@@ -5,8 +5,8 @@ import java.util.EnumMap;
 public class Circle extends Ellipse {
 
 
-    public Circle(Point centerPoint, double radius, EnumMap<FigureEffects,Boolean> map) {
-        super(centerPoint, radius, radius, map);
+    public Circle(Point centerPoint, double radius, EnumMap<FigureEffects,Boolean> map, int layer) {
+        super(centerPoint, radius, radius, map,layer);
     }
 
     @Override

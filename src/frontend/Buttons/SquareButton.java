@@ -23,9 +23,9 @@ public class SquareButton extends FigureButton {
     }
 
     @Override
-    public Drawable createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map) {
+    public Drawable createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map, int layer) {
         double size = Math.abs(endPoint.getX() - startPoint.getX());
-        return new DrawableSquare(startPoint, size, color,gc, map);
+        return new DrawableSquare(startPoint, size, color,gc, map,layer);
     }
 
 

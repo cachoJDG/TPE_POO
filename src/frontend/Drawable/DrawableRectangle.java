@@ -19,8 +19,8 @@ public class DrawableRectangle extends Rectangle implements Drawable {
 
 
 
-    public DrawableRectangle(Point topLeft, Point bottomRight, Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map) {
-        super(topLeft, bottomRight, map);
+    public DrawableRectangle(Point topLeft, Point bottomRight, Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map, int layer) {
+        super(topLeft, bottomRight, map,layer);
         this.color = color;
         this.gc = gc;
 

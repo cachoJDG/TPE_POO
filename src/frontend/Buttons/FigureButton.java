@@ -24,13 +24,13 @@ public abstract class FigureButton extends ToolButton{
 
 
     @Override
-    public void onMouseRelease(Point start, Point end, Color color,EnumMap<FigureEffects,Boolean> map)
+    public void onMouseRelease(Point start, Point end, Color color,EnumMap<FigureEffects,Boolean> map, int layer)
     {
-        Drawable newFig = createFigure(start,end,color, gc, map);
+        Drawable newFig = createFigure(start,end,color, gc, map, layer);
         getMainFrame().drawFigure(newFig);
     }
 
-    public abstract Drawable createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc,EnumMap<FigureEffects,Boolean> map);
+    public abstract Drawable createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc,EnumMap<FigureEffects,Boolean> map, int layer);
 
 
 

@@ -5,9 +5,9 @@ import java.util.EnumMap;
 public class Square extends Rectangle {
 
 
-    public Square(Point topLeft, double size, EnumMap<FigureEffects,Boolean> map) {
+    public Square(Point topLeft, double size, EnumMap<FigureEffects,Boolean> map, int layer) {
 
-        super(topLeft, new Point(topLeft.getX() + size, topLeft.getY() + size), map);
+        super(topLeft, new Point(topLeft.getX() + size, topLeft.getY() + size), map,layer);
     }
 
     @Override

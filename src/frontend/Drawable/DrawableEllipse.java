@@ -21,8 +21,8 @@ public class DrawableEllipse extends Ellipse implements Drawable {
 
 
 
-    public DrawableEllipse(Point centerPoint, double sMayorAxis, double sMinorAxis, Color color1, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map) {
-        super(centerPoint, sMayorAxis, sMinorAxis, map);
+    public DrawableEllipse(Point centerPoint, double sMayorAxis, double sMinorAxis, Color color1, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map, int layer) {
+        super(centerPoint, sMayorAxis, sMinorAxis, map,layer);
         this.color = color1;
         this.gc = gc;
     }

@@ -20,14 +20,14 @@ public class SelectButton extends ToolButton{
 
     @Override
     public void onMouseClicked(Point eventPoint)
-    { System.out.println("Clicked");
+    {
        getMainFrame().selectFig(eventPoint);
     }
 
     @Override
-    public void onMouseRelease(Point start, Point end, Color color, EnumMap<FigureEffects,Boolean> map)
+    public void onMouseRelease(Point start, Point end, Color color, EnumMap<FigureEffects,Boolean> map, int layer)
     {
-        System.out.println("Released");
+
         Rectangle selectionRect = new Rectangle(start,end);
         mainFrame.selectFig(selectionRect);
     }

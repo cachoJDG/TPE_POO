@@ -8,8 +8,8 @@ public class Ellipse extends Figure {
     private final Point centerPoint;
     private double sMayorAxis, sMinorAxis; // to rotate we cant put final
 
-    public Ellipse(Point centerPoint, double sMayorAxis, double sMinorAxis, EnumMap<FigureEffects,Boolean> map) {
-        super(new Point[]{centerPoint}, map);
+    public Ellipse(Point centerPoint, double sMayorAxis, double sMinorAxis, EnumMap<FigureEffects,Boolean> map, int layer) {
+        super(new Point[]{centerPoint}, map,layer);
         this.centerPoint = centerPoint;
         if (sMayorAxis <= 0 && sMinorAxis <= 0){
             return;

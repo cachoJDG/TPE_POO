@@ -19,10 +19,7 @@ public class DeleteButton extends ToolButton {
         setText("Delete");
     }
 
-    @Override
-    public void onMouseRelease(Point start, Point end, Color color, EnumMap<FigureEffects, Boolean> map) {
 
-    }
 
 
 

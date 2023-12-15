@@ -18,14 +18,14 @@ public class CanvasState {
   //  private Optional<Figure> singleSelectionFig;
     private int groupNum = 1;
     private MultiSelectList multSelectionFig;
-    private GroupFigureMap<Figure> groupMap;
+    private GroupFigureMap groupMap;
     private final FigureMap figMap = new FigureMap();
 
     public CanvasState(MainFrame mainFrame)
     {
         this.mainFrame = mainFrame;
         multSelectionFig = new MultiSelectList();
-        groupMap = new GroupFigureMap<>();
+        groupMap = new GroupFigureMap();
         // singleSelectionFig = Optional.empty();
     }
 
@@ -56,13 +56,25 @@ public class CanvasState {
     public void deleteFigure() {
        // if(singleSelectionFig.isEmpty()){return;}
         for (Figure fig:getExtendedSelectionSet()) {
-            figMap.remove(fig);
+            figMap.get(fig.getLayer()).remove(fig);
         }
     }
 
-    public Iterable<Figure> figures() {
-       // return new ArrayList<>(figMap);
-        return null;
+    public Collection<Figure> figures() {
+        List<Figure> figs = new ArrayList<>();
+        for (Integer i : figMap.keySet()) {
+            figs.addAll(figures(i));
+        }
+        return figs;
+    }
+
+    public Collection<Figure> figures(int layer)
+    {
+        if(!figMap.containsKey(layer))
+        {
+            return  new ArrayList<>();
+        }
+        return figMap.get(layer);
     }
 
 
@@ -93,7 +105,7 @@ public class CanvasState {
         }
         multSelectionFig = new MultiSelectList();
         for (Figure fig:figures()) {
-            if(fig.isFullContained(selectionRect))
+            if(fig.isFullContained(selectionRect) && fig.getToDraw())
             {
                 multSelectionFig.add(fig);
                 fig.setSelected(true);
@@ -172,7 +184,7 @@ public class CanvasState {
     {
         Optional<Figure> ret = Optional.empty();
         for(Figure figure : figures()) {
-            if(figure.contains(point)) {
+            if(figure.contains(point) && figure.getToDraw()) {
                 ret = Optional.of(figure);
                 label.append(figure.toString());
             }
@@ -195,6 +207,7 @@ public class CanvasState {
             if(fig.isGroupedFig())
             {
                 multSelectionExtended.addAll(groupMap.findGroup(fig));
+                multSelectionExtended.applyToSet(fig1 -> fig.setSelected(true));
             }
         }
         return multSelectionExtended;

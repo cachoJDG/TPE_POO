@@ -105,19 +105,22 @@ public class PaintPane_V2 extends BorderPane {
 
 //        toolsArr.addAll(List.of(arr));
 
+
+        //hay un par de botones que los desactive xq no me entran en la pantalla
+        //ojo despues habria q devolverlos
         toolsArr.add(selectionButton);
         toolsArr.add(rectangleButton);
-        toolsArr.add(squareButton);
+     //   toolsArr.add(squareButton);
         toolsArr.add(ellipseButton);
-        toolsArr.add(circleButton);
+     //   toolsArr.add(circleButton);
         toolsArr.add(deleteButton);
         toolsArr.add(groupButton);
         toolsArr.add(unGroupButton);
         toolsArr.add(rotateH);
-        toolsArr.add(rotateV);
-        toolsArr.add(turnR);
-        toolsArr.add(scaleUp);
-        toolsArr.add(scaleDown);
+    //    toolsArr.add(rotateV);
+      //  toolsArr.add(turnR);
+     //   toolsArr.add(scaleUp);
+      //  toolsArr.add(scaleDown);
         gc.setLineWidth(1);
         setRight(canvas);
         buttonBox = createButtonBox();
@@ -142,7 +145,11 @@ public class PaintPane_V2 extends BorderPane {
             }
 
             //fireEvent(new CustomOne(CustomOne.MOUSE_REL)); era para probar eventos custom, no lo use
-            getCurrentButton().onMouseRelease(startPoint,endPoint,fillColorPicker.getValue(),mainFrame.getEffectsBooleanMap());
+            getCurrentButton().onMouseRelease(startPoint,
+                    endPoint,
+                    fillColorPicker.getValue(),
+                    mainFrame.getEffectsBooleanMap(),
+                    layerBox.getValue().getValue());
             //dibujar
         });
 
@@ -229,7 +236,7 @@ public class PaintPane_V2 extends BorderPane {
         layerBox.getItems().addAll(new Layer(1),new Layer(2),new Layer(3));
 
         layerBox.setValue(new Layer(1));
-        layerBox.setOnAction(event -> System.out.println(layerBox.getValue().getValue()));
+
         buttonsBox.getChildren().add(layerBox);
 
 

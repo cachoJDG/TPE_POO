@@ -13,8 +13,8 @@ public class DrawableSquare extends DrawableRectangle implements Drawable{
     private final Color color;
     private GraphicsContext gc;
 
-    public DrawableSquare(Point topLeft, double size, Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map) {
-        super(topLeft, new Point(topLeft.getX() + size, topLeft.getY() + size), color, gc, map);
+    public DrawableSquare(Point topLeft, double size, Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map, int layer) {
+        super(topLeft, new Point(topLeft.getX() + size, topLeft.getY() + size), color, gc, map,layer);
         this.color = color;
         this.gc = gc;
     }

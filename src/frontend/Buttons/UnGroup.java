@@ -19,10 +19,7 @@ public class UnGroup extends ToolButton{
         });
     }
 
-    @Override
-    public void onMouseRelease(Point start, Point end, Color color, EnumMap<FigureEffects, Boolean> map) {
 
-    }
 
 
 }

@@ -23,9 +23,7 @@ public class SaveButton extends ToolButton {
         super(tools, mainFrame);
         setText("Guardar");
         setOnAction(event -> {
-            System.out.println(textArea.getText());
             String toSplit = textArea.getText();
-            System.out.println(toSplit);
             String[] lines = toSplit.split("[ |\n]");
             List<String> lines2 = new ArrayList<>(Arrays.stream(lines).toList());
             for (String s:lines2) {
@@ -33,7 +31,7 @@ public class SaveButton extends ToolButton {
             }
 
             lines2.remove("");
-            System.out.println(lines2);
+
 //            String input = "Hello\nWorld\n!";
 //            String[] string = input.split("\n");
 //            System.out.println(Arrays.stream(string).toList());
@@ -45,10 +43,7 @@ public class SaveButton extends ToolButton {
     }
 
 
-    @Override
-    public void onMouseRelease(Point start, Point end, Color color, EnumMap<FigureEffects, Boolean> map) {
 
-    }
 
 
 }

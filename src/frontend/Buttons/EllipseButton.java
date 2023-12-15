@@ -22,11 +22,11 @@ public class EllipseButton extends FigureButton {
     }
 
     @Override
-    public Drawable createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map) {
+    public Drawable createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map, int layer) {
         Point centerPoint = new Point(Math.abs(endPoint.getX() + startPoint.getX()) / 2, (Math.abs((endPoint.getY() + startPoint.getY())) / 2));
         double sMayorAxis = Math.abs(endPoint.getX() - startPoint.getX());
         double sMinorAxis = Math.abs(endPoint.getY() - startPoint.getY());
-        return new DrawableEllipse(centerPoint, sMayorAxis, sMinorAxis, color, gc, map);
+        return new DrawableEllipse(centerPoint, sMayorAxis, sMinorAxis, color, gc, map,layer);
     }
 
 

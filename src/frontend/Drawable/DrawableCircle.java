@@ -15,8 +15,8 @@ public class DrawableCircle extends DrawableEllipse implements Drawable {
     private final double radio;
     private GraphicsContext draw;
 
-    public DrawableCircle(Point centerPoint, double radius,Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map) {
-        super(centerPoint, radius, radius, color, gc, map);
+    public DrawableCircle(Point centerPoint, double radius,Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map, int layer) {
+        super(centerPoint, radius, radius, color, gc, map,layer);
         this.radio = radius;
         this.color = color;
         this.draw = gc;

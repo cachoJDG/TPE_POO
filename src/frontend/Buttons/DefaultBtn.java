@@ -13,9 +13,5 @@ public class DefaultBtn extends ToolButton{
         super(tools, mainFrame);
     }
 
-    @Override
-    public void onMouseRelease(Point start, Point end, Color color, EnumMap<FigureEffects, Boolean> map) {
-
-    }
 
 }

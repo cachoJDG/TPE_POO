@@ -16,7 +16,7 @@ public abstract class ToolButton extends ToggleButton {
     MainFrame mainFrame;
     public ToolButton(ToggleGroup tools, MainFrame mainFrame){
         super("default");
-        setMinWidth(90);
+        setMinWidth(30);
         setToggleGroup(tools);
         setCursor(Cursor.HAND);
         this.mainFrame = mainFrame;
@@ -40,6 +40,9 @@ public abstract class ToolButton extends ToggleButton {
     }
 
 
-    public abstract void onMouseRelease(Point start, Point end, Color color, EnumMap<FigureEffects,Boolean> map);
+    public void onMouseRelease(Point start, Point end, Color color, EnumMap<FigureEffects,Boolean> map, int layer)
+    {
+
+    }
 
 }

@@ -23,8 +23,8 @@ public class RectangleButton extends FigureButton {
     }
 
     @Override
-    public Drawable createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map) {
-        return new DrawableRectangle(startPoint,endPoint, color, gc, map);
+    public Drawable createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map,int layer) {
+        return new DrawableRectangle(startPoint,endPoint, color, gc, map,layer);
     }
 
 

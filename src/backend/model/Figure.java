@@ -34,8 +34,19 @@ public abstract class Figure implements Movable {
     }
     public void setLabels(String[] labels){
 
+        Labels = new ArrayList<>();
         Labels.addAll(Arrays.stream(labels).toList());
         System.out.println(Labels);
+    }
+
+    public String getLabels()
+    {
+        StringBuilder sb = new StringBuilder();
+        for (String s:Labels) {
+            sb.append(s);
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 
 

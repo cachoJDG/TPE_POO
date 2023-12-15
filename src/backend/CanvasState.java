@@ -77,7 +77,8 @@ public class CanvasState {
 
     public void multipleSelection(Rectangle selectionRect)
     {
-        String textAreaTest;
+        String textAreaTest = "";
+        boolean deActivate;
 
         if(selectionRect.small()){
             return;
@@ -93,9 +94,23 @@ public class CanvasState {
         if(multSelectionFig.isEmpty()) {
             emptySelectedFig();
         }
-        textAreaTest = multSelectionFig.onlyOne()? "FigLabel" : "";
-        mainFrame.UpdateTextArea(!multSelectionFig.onlyOne(), textAreaTest);
+        deActivate = multSelectionFig.onlyOne();
+        if(deActivate){
+            textAreaTest = getLabels();
+        }
+
+        mainFrame.UpdateTextArea(!deActivate, textAreaTest);
         updateCheckBoxes();
+    }
+
+    private String getLabels()
+    {
+        StringBuilder textAreaTest = new StringBuilder();
+        SelectionFigureSet set = getExtendedSelectionSet();
+        for (Figure fig : set){
+            textAreaTest.append(fig.getLabels());
+        }
+        return textAreaTest.toString();
     }
 
     public Optional<Figure> getSelectedFigure() {
@@ -122,7 +137,7 @@ public class CanvasState {
 
     public String onSingleSelect(Point point,StringBuilder label)
     {
-        String textAreaTxt;
+
         String defaultStr = "Ninguna figura Encontrada";
         multSelectionFig = new MultiSelectList();
         emptySelectedFig();
@@ -130,8 +145,8 @@ public class CanvasState {
        // singleSelectionFig = ret;
         ret.ifPresent(figure -> {figure.setSelected(true);
         multSelectionFig.add(figure);});
-        textAreaTxt = multSelectionFig.isEmpty()? "" : "Fig Label";
-        mainFrame.UpdateTextArea(false, textAreaTxt);
+
+        mainFrame.UpdateTextArea(false, multSelectionFig.getSelectedFigLabel());
         updateCheckBoxes();
         return ret.isPresent()? label.toString() : defaultStr;
     }

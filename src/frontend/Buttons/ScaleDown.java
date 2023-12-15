@@ -8,6 +8,12 @@ import javafx.scene.paint.Color;
 public class ScaleDown extends OtherButton{
     public ScaleDown(ToggleGroup tools, MainFrame mainFrame) {
         super(tools, mainFrame);
+
+        setText("Scale-");
+        setOnAction(event ->
+        {
+            mainFrame.scaleDown();
+        });
     }
 
     @Override

@@ -14,9 +14,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class PaintPane_V2 extends BorderPane {
 
@@ -85,8 +83,14 @@ public class PaintPane_V2 extends BorderPane {
         turnR = new TurnR(tools, mainFrame);
         scaleUp = new ScaleUp(tools, mainFrame);
         scaleDown = new ScaleDown(tools, mainFrame);
-        ToolButton[] arr = {selectionButton,rectangleButton,circleButton,squareButton,ellipseButton};
+        ToggleButton[] arr = {selectionButton,rectangleButton,circleButton,squareButton,ellipseButton, circleButton, deleteButton, groupButton, unGroupButton
+                            , rotateH, rotateV, turnR, scaleUp, scaleDown};
+
         toolsArr = new ArrayList<ToggleButton>();
+//        toolsArr.addAll(List.of(arr));
+//        for (ToolButton button: arr){
+//            toolsArr.add(button);
+//        }
         toolsArr.add(selectionButton);
         toolsArr.add(rectangleButton);
         toolsArr.add(squareButton);

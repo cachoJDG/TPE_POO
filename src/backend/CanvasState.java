@@ -231,4 +231,6 @@ public class CanvasState {
         }
     }
 
+    public void scaleDown() {
+    }
 }

@@ -103,6 +103,7 @@ public class Rectangle extends Figure {
     public void scaleDown(){
 
         System.out.println("ScaleDOwn");
+        //falta implementar, era para testear que se llamen bien los metodos
         double originalbase = getBase();
         double originalheigh = getHeigth();
         double multiplier = 0.25;

@@ -26,6 +26,10 @@ public class CanvasState {
         // singleSelectionFig = Optional.empty();
     }
 
+    public static void setLabels(String[] lines) {
+
+    }
+
 
     public void setEffect(FigureEffects effect, Boolean activated)
     {
@@ -62,6 +66,7 @@ public class CanvasState {
             fig.setSelected(false);
         }
         updateCheckBoxes();
+        mainFrame.UpdateTextArea(false);
 
     }
 
@@ -84,6 +89,7 @@ public class CanvasState {
         {
             emptySelectedFig();
         }
+        mainFrame.UpdateTextArea(!multSelectionFig.onlyOne());
         updateCheckBoxes();
     }
 
@@ -118,7 +124,7 @@ public class CanvasState {
        // singleSelectionFig = ret;
         ret.ifPresent(figure -> {figure.setSelected(true);
         multSelectionFig.add(figure);});
-
+        mainFrame.UpdateTextArea(false);
         updateCheckBoxes();
         return ret.isPresent()? label.toString() : defaultStr;
     }

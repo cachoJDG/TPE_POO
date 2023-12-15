@@ -218,7 +218,7 @@ public class PaintPane_V2 extends BorderPane {
         buttonsBox.setStyle("-fx-background-color: #999");
         buttonsBox.setPrefWidth(100);
         // lo ultimo
-        
+
         txtArea.setMaxHeight(55);
         Label label = new Label("Etiquetas:");
         buttonsBox.getChildren().add(label);

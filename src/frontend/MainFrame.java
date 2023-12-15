@@ -23,6 +23,8 @@ import java.util.List;
 
 public class MainFrame extends VBox {
 
+
+
     Color lineColor = Color.BLACK;
 
     /* ToggleGroup tools = new ToggleGroup();
@@ -57,6 +59,15 @@ public class MainFrame extends VBox {
     private HBox checkBoxDown;
 
     public MainFrame() {
+
+        //Las funciones que son
+        // Boton le dice a MainFrame "Decile a canvas State que corra X func y Le diga la PaintPane.reDraw"
+        //las podemos hacer todas esa bajo una solo funcion con interfaz funcional
+        //asi como hicimos Rot And Scale pero con el resto
+        //creo que tambien los parametros que le pasamos y eso son posiblemente variables
+        //asi que serviria bastate
+
+
         canvasState = new CanvasState(this);
         statusPane = new StatusPane();
 //        gradient = new CheckBox("gradient");
@@ -234,6 +245,17 @@ public class MainFrame extends VBox {
     {
         canvasState.deleteFigure();
         paintPane.reDraw();
+    }
+
+    public void addLabel(Figure fig, String[] lines)
+    {
+        CanvasState.setLabels(lines);
+    }
+
+    public void UpdateTextArea(boolean activated)
+    {
+        paintPane.txtArea.setDisable(activated);
+        paintPane.getSaveButton().setDisable(activated);
     }
 
 

@@ -4,6 +4,7 @@ import backend.model.Figure;
 import backend.model.FigureEffects;
 import backend.model.Point;
 import backend.model.Rectangle;
+import com.sun.source.tree.Tree;
 import frontend.MainFrame;
 import javafx.scene.control.TextArea;
 
@@ -17,7 +18,7 @@ public class CanvasState {
     private int groupNum = 1;
     private MultiSelectList multSelectionFig;
     private GroupFigureMap<Figure> groupMap;
-    private final List<Figure> list = new ArrayList<>();
+    private final Map<Integer, Figure> figMap = new TreeMap<>();
 
     public CanvasState(MainFrame mainFrame)
     {
@@ -42,19 +43,20 @@ public class CanvasState {
 
 
     public void addFigure(Figure figure) {
-        list.add(figure);
+        figMap.put(1, figure);
 
     }
 
     public void deleteFigure() {
        // if(singleSelectionFig.isEmpty()){return;}
         for (Figure fig:getExtendedSelectionSet()) {
-            list.remove(fig);
+            figMap.remove(fig);
         }
     }
 
     public Iterable<Figure> figures() {
-        return new ArrayList<>(list);
+       // return new ArrayList<>(figMap);
+        return null;
     }
 
 

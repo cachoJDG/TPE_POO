@@ -10,6 +10,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;
 
+import java.util.Arrays;
 import java.util.EnumMap;
 
 
@@ -21,7 +22,14 @@ public class SaveButton extends ToolButton {
         setText("Guardar");
         setOnAction(event -> {
             System.out.println(textArea.getText());
-            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.setLabels(getText())));
+            String toSplit = textArea.getText();
+            String[] lines = toSplit.split("\n");
+            
+//            String input = "Hello\nWorld\n!";
+//            String[] string = input.split("\n");
+//            System.out.println(Arrays.stream(string).toList());
+//            System.out.println(Arrays.stream(lines).toList());
+//            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.setLabels(lines)));
 
         });
 

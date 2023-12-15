@@ -4,10 +4,7 @@ import backend.Movable;
 import frontend.Buttons.ScaleUp;
 import javafx.scene.transform.Scale;
 
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public abstract class Figure implements Movable {
@@ -35,9 +32,10 @@ public abstract class Figure implements Movable {
     public Figure(Point[] points) {
         this(points, new EnumMap<FigureEffects,Boolean>(FigureEffects.class));
     }
-    public void setLabels(String labels){
-        Labels.add(labels);
-        System.out.println(labels);
+    public void setLabels(String[] labels){
+
+        Labels.addAll(Arrays.stream(labels).toList());
+        System.out.println(Labels);
     }
 
 

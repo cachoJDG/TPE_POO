@@ -260,7 +260,7 @@ public class CanvasState {
             return;
         }
         for(Figure fig: multSelectionFig){
-            fig.scaleUp();
+            fig.scale(1.25);
         }
     }
 

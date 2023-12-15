@@ -318,7 +318,7 @@ public class MainFrame extends VBox {
 
     public void scaleUp(){
         //canvasState.scaleUp();
-        canvasState.rotAndScale(fig -> fig.scaleUp());
+        canvasState.rotAndScale(fig -> fig.scale(1.25));
         paintPane.reDraw();
     }
 

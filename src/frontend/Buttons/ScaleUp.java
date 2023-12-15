@@ -17,7 +17,7 @@ public class ScaleUp extends OtherButton{
         setOnAction(event ->
         {
             //mainFrame.scaleUp();
-            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.scaleUp()));
+            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.scale(1.25)));
         });
     }
 

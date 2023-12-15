@@ -102,13 +102,19 @@ public class Rectangle extends Figure {
     }
 
     @Override
-    public void scaleUp(){
+    public void scale(double multiplier){
 
         double originalbase = getBase();
         double originalheigh = getHeigth();
-        double multiplier = 0.25;
-        getTopLeft().move(-originalbase * multiplier, -originalheigh * multiplier);
-        getBottomRight().move(originalbase * multiplier, originalheigh * multiplier);
+        double displacement = Math.abs(1 - multiplier);
+        if(multiplier > 1) {
+            getTopLeft().move(-originalbase * displacement, -originalheigh * displacement);
+            getBottomRight().move(originalbase * displacement, originalheigh * displacement);
+        }
+        else{
+            getTopLeft().move(originalbase * displacement, originalheigh * displacement);
+            getBottomRight().move(-originalbase * displacement, -originalheigh * displacement);
+        }
     }
 
     @Override

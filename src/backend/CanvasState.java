@@ -8,6 +8,7 @@ import com.sun.source.tree.Tree;
 import frontend.MainFrame;
 import javafx.scene.control.TextArea;
 
+import java.sql.Array;
 import java.util.*;
 
 public class CanvasState {
@@ -18,7 +19,7 @@ public class CanvasState {
     private int groupNum = 1;
     private MultiSelectList multSelectionFig;
     private GroupFigureMap<Figure> groupMap;
-    private final Map<Integer, Figure> figMap = new TreeMap<>();
+    private final FigureMap figMap = new FigureMap();
 
     public CanvasState(MainFrame mainFrame)
     {
@@ -42,9 +43,14 @@ public class CanvasState {
 
 
 
-    public void addFigure(Figure figure) {
-        figMap.put(1, figure);
+    public void addFigure(Figure figure, int layer) {
+        figMap.putIfAbsent(layer, new ArrayList<Figure>());
+        figMap.get(layer).add(figure);
+    }
 
+    public void setLayerActive(int layer,boolean active)
+    {
+        figMap.setLayerActive(layer, active);
     }
 
     public void deleteFigure() {

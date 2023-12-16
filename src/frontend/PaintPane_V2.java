@@ -1,12 +1,10 @@
 package frontend;
 
 import backend.CanvasState;
-import backend.model.FigureEffects;
 import frontend.Buttons.*;
 import frontend.Buttons.FigureButton;
 import backend.model.Figure;
 import backend.model.Point;
-
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -26,50 +24,30 @@ public class PaintPane_V2 extends BorderPane {
     private int framesHeld;
     private final ColorPicker fillColorPicker = new ColorPicker(defaultFillColor);
 
-
     // Dibujar una figura
     private Point startPoint;
-
     // Seleccionar una figura
-    private Figure selectedFigure;
-
     private final CanvasState canvasState;
     // StatusBar
     private StatusPane statusPane;
-
     private final MainFrame mainFrame;
-
     private final ToggleGroup tools = new ToggleGroup();
-    private SelectButton selectionButton;
-    private FigureButton rectangleButton;
-    private FigureButton circleButton;
-    private FigureButton squareButton;
-    private FigureButton ellipseButton;
     DeleteButton deleteButton;
     GroupButton groupButton;
     UnGroup unGroupButton;
     RotateH rotateH;
-
     TurnR turnR;
     RotateV rotateV;
     ScaleUp scaleUp;
     ScaleDown scaleDown;
-
     SaveButton saveButton;
     TextArea txtArea;
-
     ArrayList<ToggleButton> toolsArr;
-
     ToggleButton[] arr;
-
     private final int MINHELDFRAMES = 10;
     VBox buttonBox;
     ChoiceBox<Layer> layerBox;
-   // LayerBox layerBox = new LayerBox();
 
-
-
-    Map<Figure, Color> figureColorMap = new HashMap<>();
 
 
     public PaintPane_V2(StatusPane statusPane, MainFrame mainFrame,CanvasState canvasState)
@@ -80,11 +58,11 @@ public class PaintPane_V2 extends BorderPane {
         this.statusPane = statusPane;
         this.canvasState = canvasState;
         deleteButton = new DeleteButton(tools,mainFrame);
-        selectionButton = new SelectButton(tools,mainFrame);
-        rectangleButton = new RectangleButton(tools,mainFrame, gc);
-        circleButton = new CircleButton(tools,mainFrame, gc);
-        squareButton = new SquareButton(tools,mainFrame, gc);
-        ellipseButton = new EllipseButton(tools,mainFrame, gc);
+        SelectButton selectionButton = new SelectButton(tools, mainFrame);
+        FigureButton rectangleButton = new RectangleButton(tools, mainFrame, gc);
+        FigureButton circleButton = new CircleButton(tools, mainFrame, gc);
+        FigureButton squareButton = new SquareButton(tools, mainFrame, gc);
+        FigureButton ellipseButton = new EllipseButton(tools, mainFrame, gc);
         groupButton = new GroupButton(tools,mainFrame);
         unGroupButton = new UnGroup(tools, mainFrame);
         rotateH = new RotateH(tools, mainFrame);
@@ -97,17 +75,7 @@ public class PaintPane_V2 extends BorderPane {
         layerBox = new ChoiceBox<>();
         arr = new ToggleButton[]{selectionButton, rectangleButton, circleButton, squareButton, ellipseButton, circleButton, deleteButton, groupButton, unGroupButton
                 , rotateH, rotateV, turnR, scaleUp, scaleDown};
-
-        toolsArr = new ArrayList<ToggleButton>();
-//        toolsArr.addAll(List.of(selectionButton,rectangleButton,circleButton,squareButton,ellipseButton, circleButton, deleteButton, groupButton, unGroupButton
-//                , rotateH, rotateV, turnR, scaleUp, scaleDown));
-//        toolsArr.addAll( rectangleButton, squareButton);
-
-//        toolsArr.addAll(List.of(arr));
-
-
-        //hay un par de botones que los desactive xq no me entran en la pantalla
-        //ojo despues habria q devolverlos
+        toolsArr = new ArrayList<>();
         toolsArr.add(selectionButton);
         toolsArr.add(rectangleButton);
         toolsArr.add(squareButton);
@@ -124,10 +92,7 @@ public class PaintPane_V2 extends BorderPane {
         gc.setLineWidth(1);
         setRight(canvas);
         buttonBox = createButtonBox();
-        setLeft(buttonBox); //dsp vemos
-
-
-
+        setLeft(buttonBox);
 
         canvas.setOnMousePressed(event -> {
             startPoint = new Point(event.getX(), event.getY());
@@ -143,22 +108,17 @@ public class PaintPane_V2 extends BorderPane {
             if (endPoint.getX() < startPoint.getX() || endPoint.getY() < startPoint.getY()) {
                 return;
             }
-
-            //fireEvent(new CustomOne(CustomOne.MOUSE_REL)); era para probar eventos custom, no lo use
             getCurrentButton().onMouseRelease(startPoint,
                     endPoint,
                     fillColorPicker.getValue(),
                     mainFrame.getEffectsBooleanMap(),
                     layerBox.getValue().getValue());
-            //dibujar
         });
-
 
         canvas.setOnMouseMoved(event -> {
             Point eventPoint = new Point(event.getX(), event.getY());
             mainFrame.OnMouseMoved(eventPoint);
         });
-
 
         canvas.setOnMouseClicked(event -> {
             if(framesHeld > MINHELDFRAMES){
@@ -169,13 +129,11 @@ public class PaintPane_V2 extends BorderPane {
 
         });
 
-
         canvas.setOnMouseDragged(event -> {
             framesHeld++;
             Point eventPoint = new Point(event.getX(), event.getY());
             double diffX = (eventPoint.getX() - startPoint.getX()) / 100;
             double diffY = (eventPoint.getY() - startPoint.getY()) / 100;
-           // mainFrame.onMouseDragged(diffX, diffY);
             mainFrame.rotAndScale(canvasState1 -> canvasState1.moveFig(diffX,diffY));
 
         });
@@ -219,19 +177,13 @@ public class PaintPane_V2 extends BorderPane {
         buttonsBox.setStyle("-fx-background-color: #999");
         buttonsBox.setPrefWidth(100);
         buttonsBox.getChildren().add(new Label("Layers: "));
-
         layerBox.getItems().addAll(new Layer(1),new Layer(2),new Layer(3));
-
         layerBox.setValue(new Layer(1));
-
         buttonsBox.getChildren().add(layerBox);
-
         layerBox.setOnAction(event -> {canvasState.changeActiveLayer(layerBox.getValue().getValue());
         reDraw();
         });
 
-
-        // lo ultimo
         txtArea.setMaxHeight(55);
         Label label = new Label("Etiquetas:");
         buttonsBox.getChildren().add(label);

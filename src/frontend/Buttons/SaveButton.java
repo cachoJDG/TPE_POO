@@ -29,14 +29,9 @@ public class SaveButton extends ToolButton {
             for (String s:lines2) {
 
             }
-
             lines2.remove("");
-
-//            String input = "Hello\nWorld\n!";
-//            String[] string = input.split("\n");
-//            System.out.println(Arrays.stream(string).toList());
-//            System.out.println(Arrays.stream(lines).toList());
-            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.setLabels(lines2)));
+            //mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.setLabels(lines2)));
+            mainFrame.applyToSelected(fig -> fig.setLabels(lines2));
 
         });
 

@@ -16,7 +16,6 @@ import java.util.EnumMap;
 
 public class CircleButton extends FigureButton {
 
-
     public CircleButton(ToggleGroup tools, MainFrame mainFrame, GraphicsContext gc) {
         super(tools, mainFrame, gc);
         setText("Circle");

@@ -13,11 +13,8 @@ public class GroupButton extends ToolButton {
     public GroupButton(ToggleGroup tools, MainFrame mainFrame) {
         super(tools, mainFrame);
         setText("Group");
-        setOnAction(event ->
-        {
-            //mainFrame.group();
-            mainFrame.rotAndScale(canvasState -> canvasState.group());
-        });
+        setOnAction(event -> mainFrame.rotAndScale(canvasState -> canvasState.group()));
+       // setOnAction(event -> mainFrame.applyToSelected());
     }
 
 

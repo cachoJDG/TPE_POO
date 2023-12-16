@@ -13,10 +13,7 @@ public class DeleteButton extends ToolButton {
 
     public DeleteButton(ToggleGroup tools, MainFrame mainFrame){
         super(tools, mainFrame);
-        setOnAction(event ->{
-           // getMainFrame().deleteFig();
-            mainFrame.rotAndScale(canvasState -> canvasState.deleteFigure());
-        });
+        setOnAction(event -> mainFrame.rotAndScale(canvasState -> canvasState.deleteFigure()));
         setText("Delete");
     }
 

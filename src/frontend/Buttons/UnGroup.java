@@ -15,11 +15,7 @@ public class UnGroup extends ToolButton{
     public UnGroup(ToggleGroup tools, MainFrame mainFrame) {
         super(tools, mainFrame);
         setText("Ungroup");
-        setOnAction(event ->
-        {
-           // mainFrame.ungroup();
-            mainFrame.rotAndScale(CanvasState::ungroup);
-        });
+        setOnAction(event -> mainFrame.rotAndScale(CanvasState::ungroup));
     }
 
 

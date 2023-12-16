@@ -23,7 +23,6 @@ public abstract class FigureButton extends ToolButton{
         this.gc = gc;
     }
 
-
     @Override
     public void onMouseRelease(Point start, Point end, Color color,EnumMap<FigureEffects,Boolean> map, int layer)
     {
@@ -31,7 +30,6 @@ public abstract class FigureButton extends ToolButton{
             return; //si la layer esta desactivada que no me haga la figura
         }
         Figure newFig = createFigure(start,end,color, gc, map, layer);
-      //  getMainFrame().drawFigure(newFig);
         getMainFrame().rotAndScale(canvasState -> canvasState.addFigure(newFig, newFig.getLayer()));
     }
 

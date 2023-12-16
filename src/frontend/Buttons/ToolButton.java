@@ -20,9 +20,7 @@ public abstract class ToolButton extends ToggleButton {
         setToggleGroup(tools);
         setCursor(Cursor.HAND);
         this.mainFrame = mainFrame;
-        setOnAction(event -> {
-            mainFrame.emptySelectedFig();
-        });
+        setOnAction(event -> mainFrame.emptySelectedFig());
     }
 
     protected MainFrame getMainFrame()
@@ -30,19 +28,8 @@ public abstract class ToolButton extends ToggleButton {
         return mainFrame;
     }
 
-//    public void onMouseRelease(Point start, Point end, Color color){
-//
-//    }
+    public void onMouseClicked(Point eventPoint) {}
 
-    public void onMouseClicked(Point eventPoint)
-    {
-
-    }
-
-
-    public void onMouseRelease(Point start, Point end, Color color, EnumMap<FigureEffects,Boolean> map, int layer)
-    {
-
-    }
+    public void onMouseRelease(Point start, Point end, Color color, EnumMap<FigureEffects,Boolean> map, int layer) {}
 
 }

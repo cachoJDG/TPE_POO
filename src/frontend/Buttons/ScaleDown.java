@@ -18,8 +18,8 @@ public class ScaleDown extends ToolButton{
         setText("Scale-");
         setOnAction(event ->
         {
-           // mainFrame.scaleDown();
-            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.scale(SCALEDOWNMULTIPLIER)));
+            //mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.scale(SCALEDOWNMULTIPLIER)));
+            mainFrame.applyToSelected(fig -> fig.scale(SCALEDOWNMULTIPLIER));
             setSelected(false);
         });
     }

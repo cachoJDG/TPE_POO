@@ -119,17 +119,6 @@ public class Rectangle extends Figure {
         }
     }
 
-    @Override
-    public void scaleDown(){
-
-        //falta implementar, era para testear que se llamen bien los metodos
-        double originalbase = getBase();
-        double originalheigh = getHeigth();
-        double multiplier = 0.25;
-        getTopLeft().move(-originalbase * multiplier, -originalheigh * multiplier);
-        getBottomRight().move(originalbase * multiplier, originalheigh * multiplier);
-    }
-
     private double getBase(){
         return Math.abs(getTopLeft().getX()-getBottomRight().getX());
     }

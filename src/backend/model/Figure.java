@@ -34,9 +34,12 @@ public abstract class Figure implements Movable {
          return isActiveLayer && isActiveLabels;
      }
 
+
+     //Returns true if figure has "text" as label
      public boolean hasLabel(String text){
          return labels.contains(text);
      }
+
 
      public void draw()
      {
@@ -78,6 +81,7 @@ public abstract class Figure implements Movable {
     }
 
 
+    //Returns true if figure has "effect" effect
     public boolean hasEffect(FigureEffects effect)
     {
         return effectsMap.get(effect);
@@ -107,9 +111,6 @@ public abstract class Figure implements Movable {
 
     public abstract boolean contains(Point eventPoint);
 
-
-
-
     public boolean isGroupedFig() {
         return groupedFig;
     }
@@ -129,8 +130,6 @@ public abstract class Figure implements Movable {
 
     public abstract void scale(double multiplier);
 
-    public abstract void scaleDown();
-
     public int getLayer() {
         return layer;
     }
@@ -139,9 +138,3 @@ public abstract class Figure implements Movable {
         this.layer = layer;
     }
 }
-
-
-/*
-public interface Figure {
-
-}*/

@@ -37,10 +37,7 @@ public class MainFrame extends VBox {
     StatusPane statusPane;
     PaintPane_V2 paintPane;
 
-    private HBox checkBox;
-    private HBox checkBoxDown;
-
-    private HBox checkBoxLayer;
+    private final HBox checkBoxLayer;
 
     LayerCheckBox layer1;
     LayerCheckBox layer2;
@@ -59,8 +56,8 @@ public class MainFrame extends VBox {
         layer1 = new LayerCheckBox("Layer 1", paintPane, canvasState, 1);
         layer2 = new LayerCheckBox("Layer 2", paintPane, canvasState, 2);
         layer3 = new LayerCheckBox("Layer 3", paintPane, canvasState, 3);
-        checkBox = createHBox();
-        checkBoxDown = createHBoxDown();
+        HBox checkBox = createHBox(); //IntelliJ me sugeria que en vez de declararla afuera la pusiera directamente aca adentro
+        HBox checkBoxDown = createHBoxDown();
         checkBoxLayer = createHBoxLayers();
         getChildren().add(new AppMenuBar());
         getChildren().add(checkBox);
@@ -179,10 +176,6 @@ public class MainFrame extends VBox {
     public void selectFig(Point eventPoint) {
         StringBuilder sb = new StringBuilder("Se selecciono: ");
         statusPane.updateStatus(canvasState.onSingleSelect(eventPoint, sb));
-       /* if(canvasState.getSelectedFigure().isPresent()){
-            paintPane.getGc().setStroke(Color.RED);
-        }
-        */
         paintPane.reDraw();
     }
 
@@ -195,8 +188,6 @@ public class MainFrame extends VBox {
         paintPane.reDraw();
     }
 
-
-    //Diego me fui a duchar Saludos!
     public void UpdateTextArea(boolean activated, String text) {
         paintPane.txtArea.setDisable(activated);
 

@@ -102,9 +102,4 @@ public class Ellipse extends Figure {
         sMayorAxis *= multiplier;
     }
 
-    @Override
-    public void scaleDown() {
-        sMinorAxis *= 0.75;
-        sMayorAxis *= 0.75;
-    }
 }

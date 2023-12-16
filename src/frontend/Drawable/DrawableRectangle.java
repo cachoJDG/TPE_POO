@@ -27,7 +27,7 @@ public class DrawableRectangle extends Rectangle implements Drawable {
     }
     @Override
     public void draw() {//Podriamos sacar esta peticion del gc
-        if(!getToDraw()) {
+        if(!getActive()) {
             return;
         }
             if (hasEffect(FigureEffects.SHADOW)) {

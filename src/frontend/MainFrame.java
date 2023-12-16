@@ -2,7 +2,6 @@ package frontend;
 
 import java.util.EnumMap;
 import backend.CanvasState;
-import backend.FigRotAndScale;
 import backend.model.Figure;
 import backend.model.FigureEffects;
 import backend.model.Point;
@@ -17,8 +16,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-
-import java.util.List;
 
 public class MainFrame extends VBox {
 
@@ -48,8 +45,8 @@ public class MainFrame extends VBox {
     EffectsCheckBox gradient;
 
     TextArea textAreaDown;
-    RadioButton button1;
-    RadioButton button2;
+    RadioButton allLabelButton;
+    RadioButton onlyOneLabelButton;
 
     ToggleGroup labelGroup = new ToggleGroup();
 
@@ -215,25 +212,25 @@ public class MainFrame extends VBox {
 
         textAreaDown.setMaxWidth(170);
 
-        button1 = new RadioButton("Todas: ");
-        button2 = new RadioButton("Sólo: ");
-        button1.setToggleGroup(labelGroup);
-        button2.setToggleGroup(labelGroup);
+        allLabelButton = new RadioButton("Todas: ");
+        onlyOneLabelButton = new RadioButton("Sólo: ");
+        allLabelButton.setToggleGroup(labelGroup);
+        onlyOneLabelButton.setToggleGroup(labelGroup);
 
-        button1.setOnAction(event -> {
-            canvasState.drawAll();
+        allLabelButton.setOnAction(event -> {
+            canvasState.allLabels();
             paintPane.reDraw();
         });
 
-        button2.setOnAction(event -> {
+        onlyOneLabelButton.setOnAction(event -> {
             canvasState.onlyOneLabel(textAreaDown);
             paintPane.reDraw();
         });
         Label label = new Label("Mostrar Etiquetas: ");
 
         hbox.getChildren().add(label);
-        hbox.getChildren().add(button1);
-        hbox.getChildren().add(button2);
+        hbox.getChildren().add(allLabelButton);
+        hbox.getChildren().add(onlyOneLabelButton);
         hbox.setPadding(new Insets(10));
         hbox.getChildren().add(textAreaDown);
         hbox.setStyle("-fx-background-color: #999");

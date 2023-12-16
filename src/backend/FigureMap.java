@@ -2,7 +2,6 @@ package backend;
 
 import backend.model.Figure;
 
-import java.awt.event.ActionEvent;
 import java.util.List;
 import java.util.TreeMap;
 
@@ -37,7 +36,7 @@ public class FigureMap extends TreeMap<Integer, FigureMap.Pair> {
         public void setActive(Boolean active) {
             this.active = active;
             for (Figure fig:figList) {
-                fig.setToDraw(active);
+                fig.setActiveByLayer(active);
             }
         }
 

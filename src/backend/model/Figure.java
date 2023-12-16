@@ -13,19 +13,25 @@ public abstract class Figure implements Movable {
      private int groupNumber;
      private int layer;
 
-    private boolean toDraw = true;
+     private boolean isActiveLayer = true;
+     private boolean isActiveLabels = true;
 
-    private List<String> labels;
+     private List<String> labels;
 
 
      private EnumMap<FigureEffects,Boolean> effectsMap;
 
-     public void setToDraw(Boolean bool){
-         toDraw = bool;
+     public void setActiveByLayer(boolean bool){
+         isActiveLayer = bool;
      }
 
-     public boolean getToDraw(){
-         return toDraw;
+     public void setActiveByLabelCheck(boolean bool)
+     {
+         isActiveLabels = bool;
+     }
+
+     public boolean getActive(){
+         return isActiveLayer && isActiveLabels;
      }
 
      public boolean hasLabel(String text){

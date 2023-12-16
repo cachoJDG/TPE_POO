@@ -30,7 +30,7 @@ public class DrawableEllipse extends Ellipse implements Drawable {
     @Override
     public void draw() {
 
-        if (! getToDraw()){
+        if (! getActive()){
             return;
         }
 

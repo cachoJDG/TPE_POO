@@ -103,7 +103,7 @@ public class CanvasState {
         }
         multSelectionFig = new MultiSelectList();
         for (Figure fig:figures()) {
-            if(fig.isFullContained(selectionRect) && fig.getToDraw())
+            if(fig.isFullContained(selectionRect) && fig.getActive())
             {
                 multSelectionFig.add(fig);
                 fig.setSelected(true);
@@ -189,7 +189,7 @@ public class CanvasState {
     {
         Optional<Figure> ret = Optional.empty();
         for(Figure figure : figures()) {
-            if(figure.contains(point) && figure.getToDraw()) {
+            if(figure.contains(point) && figure.getActive()) {
                 ret = Optional.of(figure);
                 label.append(figure.toString());
             }
@@ -322,13 +322,13 @@ public class CanvasState {
             text = parts[0];
             for (Figure fig: figures()){
                 boolean hasLabel = fig.hasLabel(text);
-                fig.setToDraw(hasLabel);
+                fig.setActiveByLabelCheck(hasLabel);
             }
     }
 
-    public void drawAll(){
+    public void allLabels(){
         for(Figure figure: figures()){
-            figure.setToDraw(true);
+            figure.setActiveByLabelCheck(true);
         }
     }
 

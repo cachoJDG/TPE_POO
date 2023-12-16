@@ -14,8 +14,8 @@ public class RotateH extends ToolButton {
     public RotateH(ToggleGroup tools, MainFrame mainFrame) {
         super(tools, mainFrame);
         setText("RotateH");
-       // setOnAction(event -> mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.moveHorizontal())));
-        mainFrame.applyToSelected(fig -> fig.moveHorizontal());
+        setOnAction(event -> mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.moveHorizontal())));
+       // mainFrame.applyToSelected(fig -> fig.moveHorizontal());
 
     }
 

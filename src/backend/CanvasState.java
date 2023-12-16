@@ -77,8 +77,6 @@ public class CanvasState {
 
 
 
-
-
     public void emptySelectedFig()
     {
        // singleSelectionFig = Optional.empty();
@@ -207,10 +205,6 @@ public class CanvasState {
         //variable de instancia asi no lo tenemos q estar creando constantemente
     }
 
-    private void moveGroup(SelectionFigureSet multiSelectionExtended,double diffx,double diffY)
-    {
-        multiSelectionExtended.move(diffx,diffY);
-    }
 
     public void group() {
         if(multSelectionFig.isEmpty() || multSelectionFig.onlyOne() || multSelectionFig.checkFigLayer()){return;}
@@ -243,9 +237,17 @@ public class CanvasState {
                 groupMap.remove(groupN);
             }
         }
+
+
     }
 
-    public void rotAndScale(FigRotAndScale func)
+    public void applyToSelected(ApplyToSelected func)
+    {
+       // canvasState.applyToSelected(set -> set.applyToSet(fig -> fig.move(1,2)));
+        func.apply(getExtendedSelectionSet());
+    }
+
+    public void rotAndScale(FigureSetApply func)
     {
         for (Figure fig : getExtendedSelectionSet()) {
            // fig.moveHorizontal();

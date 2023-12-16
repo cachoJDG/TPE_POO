@@ -3,6 +3,7 @@ package frontend.Buttons;
 
 import backend.model.FigureEffects;
 import backend.model.Point;
+import com.sun.tools.javac.Main;
 import frontend.MainFrame;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;

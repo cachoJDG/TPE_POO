@@ -1,9 +1,6 @@
 package backend;
 
-import backend.model.Figure;
-
 @FunctionalInterface
-public interface FigRotAndScale {
+public interface ApplyToSelected {
     void apply(SelectionFigureSet set);
 }
-

@@ -1,8 +1,11 @@
 package frontend;
 
 import java.util.EnumMap;
+
+import backend.ApplyToSelected;
 import backend.CanvasState;
 import backend.CheckBoxState;
+import backend.FigureSetApply;
 import backend.model.Figure;
 import backend.model.FigureEffects;
 import backend.model.Point;
@@ -195,6 +198,12 @@ public class MainFrame extends VBox {
         if (!activated) {
             paintPane.txtArea.setText(text);
         }
+    }
+
+    public void applyToSelected(FigureSetApply func)
+    {
+        canvasState.applyToSelected(set -> set.applyToSet(func));
+        paintPane.reDraw();
     }
 
 

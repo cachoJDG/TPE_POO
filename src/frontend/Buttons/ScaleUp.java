@@ -1,13 +1,7 @@
 package frontend.Buttons;
 
-import backend.model.FigureEffects;
-import backend.model.Point;
 import frontend.MainFrame;
-import javafx.scene.control.Label;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.paint.Color;
-
-import java.util.EnumMap;
 
 public class ScaleUp extends ToolButton{
 
@@ -18,8 +12,7 @@ public class ScaleUp extends ToolButton{
         setText("Scale+");
         setOnAction(event ->
         {
-            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.scale(SCALEUPMULTIPLIER)));
-           // mainFrame.applyToSelected(fig -> fig.scale(SCALEUPMULTIPLIER));
+            mainFrame.applyToSelected(canvasState -> canvasState.applyToSelected(fig -> fig.scale(SCALEUPMULTIPLIER)));
             setSelected(false);
         });
     }

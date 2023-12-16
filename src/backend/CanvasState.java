@@ -13,7 +13,6 @@ public class CanvasState {
 
 
     private final MainFrame mainFrame;
-  //  private Optional<Figure> singleSelectionFig;
     private int groupNum = 1;
     private SelectionFigureSet multSelectionFig;
     private GroupFigureMap groupMap;
@@ -24,7 +23,6 @@ public class CanvasState {
         this.mainFrame = mainFrame;
         multSelectionFig = new SelectionFigureSet();
         groupMap = new GroupFigureMap();
-        // singleSelectionFig = Optional.empty();
     }
 
     public void addFigure(Figure figure, int layer) {
@@ -38,7 +36,6 @@ public class CanvasState {
     }
 
     public void deleteFigure() {
-       // if(singleSelectionFig.isEmpty()){return;}
         for (Figure fig:getExtendedSelectionSet()) {
             figMap.get(fig.getLayer()).remove(fig);
         }
@@ -65,7 +62,6 @@ public class CanvasState {
 
     public void emptySelectedFig()
     {
-       // singleSelectionFig = Optional.empty();
         multSelectionFig = new SelectionFigureSet();
         for (Figure fig:figures()) {
             fig.setSelected(false);
@@ -134,7 +130,6 @@ public class CanvasState {
         multSelectionFig = new SelectionFigureSet();
         emptySelectedFig();
         Optional<Figure> ret = findFig(point,label);
-       // singleSelectionFig = ret;
         ret.ifPresent(figure -> {figure.setSelected(true);
         multSelectionFig.add(figure);});
 
@@ -171,7 +166,6 @@ public class CanvasState {
     }
 
 
-
     public void moveFig(double diffX, double diffY){
         getExtendedSelectionSet().applyToSet(fig -> fig.move(diffX,diffY));
     }
@@ -187,8 +181,6 @@ public class CanvasState {
             }
         }
         return multSelectionExtended;
-        //capaz conviene que el multSelectionExtended sea una
-        //variable de instancia asi no lo tenemos q estar creando constantemente
     }
 
 
@@ -227,16 +219,9 @@ public class CanvasState {
 
     }
 
-    public void applyToSelected(ApplyToSelected func)
-    {
-       // canvasState.applyToSelected(set -> set.applyToSet(fig -> fig.move(1,2)));
-        func.apply(getExtendedSelectionSet());
-    }
-
-    public void rotAndScale(FigureSetApply func)
+    public void applyToSelected(FigureSetApply func)
     {
         for (Figure fig : getExtendedSelectionSet()) {
-           // fig.moveHorizontal();
             func.apply(fig);
         }
     }
@@ -259,18 +244,13 @@ public class CanvasState {
     }
 
     public void changeActiveLayer(int newLayer) {
-        //si llegamos a correr esto se supone que son todas de la misma layer
         Optional<Figure> firstFig = multSelectionFig.getFirstCustom();
         if(firstFig.isEmpty()){
-            return; //no hay nada selected
+            return;
         }
         int oldLayer = firstFig.get().getLayer();
         SelectionFigureSet set = getExtendedSelectionSet();
         figMap.moveToLayer(set,oldLayer, newLayer);
-
-        //primero se llama a esto xq las figs saben en que layer
-        //estaban y se pueden ubicar en el mapa facil.
-
         set.applyToSet(fig -> fig.setLayer(newLayer));
     }
 

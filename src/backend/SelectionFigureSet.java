@@ -34,7 +34,6 @@ public class SelectionFigureSet extends HashSet<Figure> {
         {
             return Optional.empty();
         }
-
         return Optional.of(iterator().next());
     }
 
@@ -46,7 +45,6 @@ public class SelectionFigureSet extends HashSet<Figure> {
     public String getSelectedFigLabel()
     {
         if(isEmpty()){return "";}
-        StringBuilder sb = new StringBuilder();
         Figure fig = getFirstCustom().get();
         return fig.getLabelsString();
     }

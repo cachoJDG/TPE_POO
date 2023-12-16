@@ -13,22 +13,9 @@ public class GroupFigureMap extends HashMap<Integer, SelectionFigureSet>
         for (SelectionFigureSet set:values()) {
             if(set.contains(elem))
             {
-
                 return set;
             }
         }
         return new SelectionFigureSet();
-    }
-    public int numGroup(Figure fig){
-
-        for (Entry<Integer, SelectionFigureSet> map: entrySet()) {
-            for (SelectionFigureSet set:values()) {
-                if(set.contains(fig))
-                {
-                    return map.getKey();
-                }
-            }
-        }
-        return 0;
     }
 }

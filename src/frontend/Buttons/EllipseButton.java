@@ -15,7 +15,6 @@ import java.util.EnumMap;
 
 public class EllipseButton extends FigureButton {
 
-
     public EllipseButton(ToggleGroup tools, MainFrame mainFrame, GraphicsContext gc) {
         super(tools,mainFrame,gc);
         setText("Ellipse");

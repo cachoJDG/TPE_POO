@@ -1,12 +1,7 @@
 package frontend.Buttons;
 
-import backend.model.FigureEffects;
-import backend.model.Point;
 import frontend.MainFrame;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.paint.Color;
-
-import java.util.EnumMap;
 
 public class ScaleDown extends ToolButton{
 
@@ -18,8 +13,7 @@ public class ScaleDown extends ToolButton{
         setText("Scale-");
         setOnAction(event ->
         {
-            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.scale(SCALEDOWNMULTIPLIER)));
-            //mainFrame.applyToSelected(fig -> fig.scale(SCALEDOWNMULTIPLIER));
+            mainFrame.applyToSelected(canvasState -> canvasState.applyToSelected(fig -> fig.scale(SCALEDOWNMULTIPLIER)));
             setSelected(false);
         });
     }

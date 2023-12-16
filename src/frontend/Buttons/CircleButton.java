@@ -20,7 +20,6 @@ public class CircleButton extends FigureButton {
         super(tools, mainFrame, gc);
         setText("Circle");
     }
-
     @Override
     public Figure createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map, int layer) {
         double radius = Math.abs(endPoint.getX() - startPoint.getX());

@@ -2,11 +2,8 @@ package frontend;
 
 import java.util.EnumMap;
 
-import backend.ApplyToSelected;
 import backend.CanvasState;
 import backend.CheckBoxState;
-import backend.FigureSetApply;
-import backend.model.Figure;
 import backend.model.FigureEffects;
 import backend.model.Point;
 import backend.model.Rectangle;
@@ -19,7 +16,6 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 
 public class MainFrame extends VBox {
 
@@ -200,21 +196,9 @@ public class MainFrame extends VBox {
         }
     }
 
-    public void applyToSelected(FigureSetApply func)
-    {
-        canvasState.applyToSelected(set -> set.applyToSet(func));
-        paintPane.reDraw();
-    }
-
-
-    public void rotAndScale(CanvasStateRotAndScale func) {
+    public void applyToSelected(CanvasStateRotAndScale func) {
         func.apply(canvasState);
         paintPane.reDraw();
-
-        //cada boton llama a rotAndScale del mainFrame con una interfaz funcional que pide
-        //una funcion del canvasState para hacer apply
-        //la funcion en cuestion es siempre rotAndScale de canvasState pero le cambio el parametro
-        //(la interfaz funcional que toma rotAndScale de canvas state es diferente)
     }
 
 

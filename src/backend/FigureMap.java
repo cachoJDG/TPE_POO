@@ -32,8 +32,6 @@ public class FigureMap extends TreeMap<Integer, FigureMap.Pair> {
         {
             put(newLayer,new Pair(list,startActiveLayer));
         }
-
-
     }
 
     public void putIfAbsent(Integer layer,Collection<Figure> Collection,boolean startActiveLayer){

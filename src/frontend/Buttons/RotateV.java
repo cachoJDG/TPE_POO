@@ -14,8 +14,8 @@ public class RotateV extends ToolButton {
     public RotateV(ToggleGroup tools, MainFrame mainFrame) {
         super(tools, mainFrame);
         setText("RotateV");
-       // setOnAction(event -> mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.moveVertical())));
-        mainFrame.applyToSelected(fig -> fig.moveVertical());
+       setOnAction(event -> mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.moveVertical())));
+       // mainFrame.applyToSelected(fig -> fig.moveVertical());
     }
 
 

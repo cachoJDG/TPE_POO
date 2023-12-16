@@ -30,8 +30,8 @@ public class SaveButton extends ToolButton {
 
             }
             lines2.remove("");
-            //mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.setLabels(lines2)));
-            mainFrame.applyToSelected(fig -> fig.setLabels(lines2));
+            mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.setLabels(lines2)));
+            //mainFrame.applyToSelected(fig -> fig.setLabels(lines2));
 
         });
 

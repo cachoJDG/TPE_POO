@@ -44,7 +44,7 @@ public class CanvasState {
 
 
     public void addFigure(Figure figure, int layer) {
-        figMap.putIfAbsent(layer, new ArrayList<Figure>());
+        figMap.putIfAbsent(layer,new ArrayList<>());
         figMap.get(layer).add(figure);
     }
 
@@ -74,7 +74,7 @@ public class CanvasState {
         {
             return  new ArrayList<>();
         }
-        return figMap.get(layer);
+        return figMap.get(layer).getFigList();
     }
 
 
@@ -165,6 +165,11 @@ public class CanvasState {
        // singleSelectionFig = ret;
         ret.ifPresent(figure -> {figure.setSelected(true);
         multSelectionFig.add(figure);});
+
+
+        multSelectionFig.getFirstCustom().ifPresent(fig -> System.out.println(fig.getLayer()));
+
+
 
         mainFrame.UpdateTextArea(false, multSelectionFig.getSelectedFigLabel());
         updateCheckBoxes();

@@ -239,8 +239,8 @@ public class MainFrame extends VBox {
 
     public void drawFigure(Drawable figure)
     {
-        canvasState.addFigure((Figure) figure, 1 ); // todo pasarle el numero de la leyer
-        paintPane.drawFig(figure);
+        canvasState.addFigure((Figure) figure, ((Figure) figure).getLayer() ); // todo pasarle el numero de la leyer
+        paintPane.reDraw();
     }
 
     public void OnMouseMoved(Point eventPoint) {

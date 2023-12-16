@@ -19,7 +19,7 @@ public class LayerCheckBox extends CheckBox {
         this.canvasState = canvasState;
         setOnAction(event -> {
             // canvasState.shadow(shadow.isSelected());
-            canvasState.setLayerActive(lay, isActivate);
+            canvasState.setLayerActive(lay, isSelected());
             this.paintPane.reDraw();
         });
     }

@@ -9,7 +9,7 @@ import javafx.scene.paint.Color;
 
 import java.util.EnumMap;
 
-public class ScaleUp extends OtherButton{
+public class ScaleUp extends ToolButton{
 
     private final double SCALEUPMULTIPLIER = 1.25;
 

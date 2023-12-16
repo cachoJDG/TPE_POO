@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 
 import java.util.EnumMap;
 
-public class ScaleDown extends OtherButton{
+public class ScaleDown extends ToolButton{
 
     private final double SCALEDOWNMULTIPLIER = 0.75;
 

@@ -23,21 +23,15 @@ public class MainFrame extends VBox {
     private EffectsCheckBox shadow;
     private EffectsCheckBox belved;
     private EffectsCheckBox gradient;
-
     private TextArea textAreaDown;
     private RadioButton allLabelButton;
     private RadioButton onlyOneLabelButton;
-
     private ToggleGroup labelGroup = new ToggleGroup();
-
     private EnumMap<FigureEffects, EffectsCheckBox> effectsBoxMap;
-
     private CanvasState canvasState;
     private StatusPane statusPane;
     private PaintPane_V2 paintPane;
-
     private final HBox checkBoxLayer;
-
     private LayerCheckBox layer1;
     private LayerCheckBox layer2;
     private LayerCheckBox layer3;
@@ -104,15 +98,14 @@ public class MainFrame extends VBox {
 
 
     private HBox createHBox() {
-        HBox hbox = new HBox(10, effectsLabel, shadow, gradient, belved);// spacing = 8
-        //capaz lo podemos cambiar y usar directamente el mapa
+        HBox hbox = new HBox(10, effectsLabel, shadow, gradient, belved);
         effectsBoxMap = new EnumMap<>(FigureEffects.class);
         effectsBoxMap.put(FigureEffects.SHADOW, shadow);
         effectsBoxMap.put(FigureEffects.BELVED, belved);
         effectsBoxMap.put(FigureEffects.GRADIENT, gradient);
         hbox.setStyle("-fx-background-color: #999");
         hbox.setAlignment(Pos.CENTER);
-        hbox.setPrefHeight(5); //lo cambie a 5 xq sino no me entra en la pantalla
+        hbox.setPrefHeight(5);
         return hbox;
     }
 
@@ -131,7 +124,6 @@ public class MainFrame extends VBox {
     private HBox createHBoxDown() {
         HBox hbox = new HBox();
         textAreaDown = new TextArea();
-
         textAreaDown.setMaxWidth(170);
 
         allLabelButton = new RadioButton("Todas: ");
@@ -149,7 +141,6 @@ public class MainFrame extends VBox {
             paintPane.reDraw();
         });
         Label label = new Label("Mostrar Etiquetas: ");
-
         hbox.getChildren().add(label);
         hbox.getChildren().add(allLabelButton);
         hbox.getChildren().add(onlyOneLabelButton);
@@ -160,7 +151,6 @@ public class MainFrame extends VBox {
         hbox.setPrefHeight(30);
         return hbox;
     }
-
 
     public void emptySelectedFig() {
         canvasState.emptySelectedFig();
@@ -200,7 +190,6 @@ public class MainFrame extends VBox {
         func.apply(canvasState);
         paintPane.reDraw();
     }
-
 
     public void UpdateChoiceBox(boolean active) {
         paintPane.getLayerBox().setDisable(active);

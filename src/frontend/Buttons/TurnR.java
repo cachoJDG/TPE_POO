@@ -11,7 +11,4 @@ public class TurnR extends ToolButton {
         setOnAction(event -> mainFrame.applyToSelected(canvasState -> canvasState.applyToSelected(fig -> fig.turnR())));
     }
 
-
-
-
 }

@@ -12,7 +12,7 @@ public class AppLauncher extends Application {
 	}
 
 	@Override
-	public void start(Stage primaryStage) {// BackEnd
+	public void start(Stage primaryStage) {
 		MainFrame frame = new MainFrame();
 		Scene scene = new Scene(frame);
 		primaryStage.setResizable(false);

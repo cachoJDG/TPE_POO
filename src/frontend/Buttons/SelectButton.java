@@ -16,7 +16,6 @@ public class SelectButton extends ToolButton{
         super(tools, mainFrame);
         setText("Select");
     }
-
     @Override
     public void onMouseClicked(Point eventPoint)
     {

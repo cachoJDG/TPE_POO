@@ -16,7 +16,7 @@ public class AppMenuBar extends MenuBar {
             alert.setContentText("¿Está seguro que desea salir de la aplicación?");
             Optional<ButtonType> result = alert.showAndWait();
             if(result.isPresent()) {
-                if (result.get() == ButtonType.OK) { //asdfsadasd
+                if (result.get() == ButtonType.OK) {
                     System.exit(0);
                 }
             }

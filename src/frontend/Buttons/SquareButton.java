@@ -20,7 +20,6 @@ public class SquareButton extends FigureButton {
         super(tools, mainFrame, gc);
         setText("Square");
     }
-
     @Override
     public Figure createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map, int layer) {
         double size = Math.abs(endPoint.getX() - startPoint.getX());

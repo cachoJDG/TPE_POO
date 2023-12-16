@@ -12,7 +12,4 @@ public class UnGroup extends ToolButton{
         setOnAction(event -> mainFrame.applyToSelected(CanvasState::ungroup));
     }
 
-
-
-
 }

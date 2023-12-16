@@ -22,7 +22,6 @@ public abstract class ToolButton extends ToggleButton {
         this.mainFrame = mainFrame;
         setOnAction(event -> mainFrame.emptySelectedFig());
     }
-
     protected MainFrame getMainFrame()
     {
         return mainFrame;

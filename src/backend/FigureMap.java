@@ -9,12 +9,10 @@ import java.util.TreeMap;
 public class FigureMap extends TreeMap<Integer, FigureMap.Pair> {
     public void setLayerActive(int layer, boolean active)
     {
-        System.out.println("Layer " + layer +" Active :"+ active);
         if(!containsKey(layer)){
             return;
         }
         get(layer).setActive(active);
-
     }
 
     public void moveToLayer(Collection<Figure> list, int oldLayer, int newLayer)
@@ -25,7 +23,17 @@ public class FigureMap extends TreeMap<Integer, FigureMap.Pair> {
     {
         Collection<Figure> oldLayerCollection = get(oldLayer).getFigList();
         oldLayerCollection.removeAll(list);
-        putIfAbsent(newLayer,list);
+        if(containsKey(newLayer))
+        {
+            get(newLayer).getFigList().addAll(list);
+            get(newLayer).setActive(startActiveLayer);
+        }
+        else
+        {
+            put(newLayer,new Pair(list,startActiveLayer));
+        }
+
+
     }
 
     public void putIfAbsent(Integer layer,Collection<Figure> Collection,boolean startActiveLayer){
@@ -33,8 +41,8 @@ public class FigureMap extends TreeMap<Integer, FigureMap.Pair> {
     }
 
 
-    public void putIfAbsent(Integer layer,Collection<Figure> Collection){
-        putIfAbsent(layer,Collection,true);
+    public void putIfAbsent(Integer layer,Collection<Figure> collection){
+        putIfAbsent(layer,collection,true);
     }
     public static class Pair{
         private Collection<Figure> figCollection;

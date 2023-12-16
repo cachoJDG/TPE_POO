@@ -340,7 +340,7 @@ public class CanvasState {
         }
         int oldLayer = firstFig.get().getLayer();
         SelectionFigureSet set = getExtendedSelectionSet();
-        figMap.moveToLayer(set,oldLayer, newLayer, mainFrame.layerActive(newLayer));
+        figMap.moveToLayer(set,oldLayer, newLayer);
 
         //primero se llama a esto xq las figs saben en que layer
         //estaban y se pueden ubicar en el mapa facil.

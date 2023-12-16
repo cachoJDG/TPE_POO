@@ -12,7 +12,7 @@ import javafx.scene.paint.Stop;
 
 import java.util.EnumMap;
 
-public class DrawableRectangle extends Rectangle implements Drawable {
+public class DrawableRectangle extends Rectangle {
 
     private final Color color;
     private GraphicsContext gc;

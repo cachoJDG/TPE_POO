@@ -13,7 +13,7 @@ import javafx.scene.shape.ArcType;
 
 import java.util.EnumMap;
 
-public class DrawableEllipse extends Ellipse implements Drawable {
+public class DrawableEllipse extends Ellipse {
 
     private final Color color;
 

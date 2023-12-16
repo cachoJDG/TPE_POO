@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 
 import java.util.EnumMap;
 
-public class DrawableCircle extends DrawableEllipse implements Drawable {
+public class DrawableCircle extends DrawableEllipse {
     private final Color color;
     private final double radio;
     private GraphicsContext draw;

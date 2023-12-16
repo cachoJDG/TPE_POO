@@ -4,7 +4,7 @@ import backend.model.Figure;
 import backend.model.FigureEffects;
 import backend.model.Point;
 import backend.model.Square;
-import frontend.Drawable.Drawable;
+
 import frontend.Drawable.DrawableSquare;
 import frontend.MainFrame;
 import javafx.scene.canvas.GraphicsContext;
@@ -23,7 +23,7 @@ public class SquareButton extends FigureButton {
     }
 
     @Override
-    public Drawable createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map, int layer) {
+    public Figure createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc, EnumMap<FigureEffects,Boolean> map, int layer) {
         double size = Math.abs(endPoint.getX() - startPoint.getX());
         return new DrawableSquare(startPoint, size, color,gc, map,layer);
     }

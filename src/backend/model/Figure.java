@@ -38,6 +38,11 @@ public abstract class Figure implements Movable {
          return labels.contains(text);
      }
 
+     public void draw()
+     {
+         throw new UnsupportedOperationException();
+     }
+
 
     protected Figure(Point[] points, EnumMap<FigureEffects,Boolean> map, int layer) {
         this.points = points;

@@ -1,8 +1,9 @@
 package frontend.Buttons;
 
+import backend.model.Figure;
 import backend.model.FigureEffects;
 import backend.model.Point;
-import frontend.Drawable.Drawable;
+
 import frontend.MainFrame;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ToggleButton;
@@ -29,11 +30,11 @@ public abstract class FigureButton extends ToolButton{
         if(!getMainFrame().layerActive(layer)){
             return; //si la layer esta desactivada que no me haga la figura
         }
-        Drawable newFig = createFigure(start,end,color, gc, map, layer);
+        Figure newFig = createFigure(start,end,color, gc, map, layer);
         getMainFrame().drawFigure(newFig);
     }
 
-    public abstract Drawable createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc,EnumMap<FigureEffects,Boolean> map, int layer);
+    public abstract Figure createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc,EnumMap<FigureEffects,Boolean> map, int layer);
 
 
 

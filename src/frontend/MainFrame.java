@@ -8,7 +8,7 @@ import backend.model.Point;
 import backend.model.Rectangle;
 import frontend.Buttons.EffectButtons.EffectsCheckBox;
 import frontend.Buttons.EffectButtons.LayerCheckBox;
-import frontend.Drawable.Drawable;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -89,9 +89,9 @@ public class MainFrame extends VBox {
         gradient = new EffectsCheckBox("Gradient",FigureEffects.GRADIENT,paintPane, canvasState);
         belved = new EffectsCheckBox("Belved",FigureEffects.BELVED,paintPane, canvasState);
         shadow = new EffectsCheckBox("Shadow",FigureEffects.SHADOW,paintPane, canvasState);
-        layer1 = new LayerCheckBox("Layer 1",paintPane,canvasState,1,true);
-        layer2 = new LayerCheckBox("Layer 2",paintPane,canvasState,2,true);
-        layer3 = new LayerCheckBox("Layer 3",paintPane,canvasState,3,true);
+        layer1 = new LayerCheckBox("Layer 1",paintPane,canvasState,1);
+        layer2 = new LayerCheckBox("Layer 2",paintPane,canvasState,2);
+        layer3 = new LayerCheckBox("Layer 3",paintPane,canvasState,3);
         checkBox = createHBox();
         checkBoxDown = createHBoxDown();
         checkBoxLayer = createHBoxLayers();
@@ -247,9 +247,9 @@ public class MainFrame extends VBox {
     }
 
 
-    public void drawFigure(Drawable figure)
+    public void drawFigure(Figure figure)
     {
-        canvasState.addFigure((Figure) figure, ((Figure) figure).getLayer() ); // todo pasarle el numero de la leyer
+        canvasState.addFigure(figure,  figure.getLayer()); // todo pasarle el numero de la leyer
         paintPane.reDraw();
     }
 

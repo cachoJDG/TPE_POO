@@ -2,7 +2,7 @@ package frontend.Buttons;
 
 import backend.model.FigureEffects;
 import backend.model.Point;
-import frontend.Drawable.Drawable;
+
 import frontend.Drawable.DrawableRectangle;
 import frontend.MainFrame;
 import javafx.scene.canvas.GraphicsContext;

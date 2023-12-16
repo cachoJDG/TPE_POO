@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 
 import java.util.EnumMap;
 
-public class DrawableSquare extends DrawableRectangle implements Drawable{
+public class DrawableSquare extends DrawableRectangle{
 
     private final Color color;
     private GraphicsContext gc;

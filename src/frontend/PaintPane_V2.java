@@ -6,7 +6,7 @@ import frontend.Buttons.*;
 import frontend.Buttons.FigureButton;
 import backend.model.Figure;
 import backend.model.Point;
-import frontend.Drawable.Drawable;
+
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -190,23 +190,9 @@ public class PaintPane_V2 extends BorderPane {
     {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         for (Figure fig:canvasState.figures()) {
-//            if(canvasState.getSelectedFigure().isPresent()) {
-//                if (canvasState.getSelectedFigure().get().equals(fig)) {
-//                    gc.setStroke(Color.RED);
-//                } else {
-//                    gc.setStroke(lineColor);
-//                }
-//            }
-            Drawable drawable = (Drawable)fig;
-            drawable.draw();
+            fig.draw();
             gc.setStroke(lineColor);
         }
-    }
-
-
-    public void drawFig(Drawable figure)
-    {
-        figure.draw();
     }
 
     public GraphicsContext getGc() {

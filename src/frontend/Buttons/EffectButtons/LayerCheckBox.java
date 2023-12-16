@@ -7,23 +7,20 @@ import javafx.scene.control.CheckBox;
 
 public class LayerCheckBox extends CheckBox {
 
-    private PaintPane_V2 paintPane;
-    private CanvasState canvasState;
+
 
     private int layer;
 
     //capaz ni los usamos estos
-    public LayerCheckBox(String name, PaintPane_V2 paintPane, CanvasState canvasState, int layer, boolean isActivate)
+    public LayerCheckBox(String name, PaintPane_V2 paintPane, CanvasState canvasState, int layer)
     {
         super(name);
         this.layer = layer;
-        this.paintPane = paintPane;
-        this.canvasState = canvasState;
         setSelected(true);
         setOnAction(event -> {
             // canvasState.shadow(shadow.isSelected());
             canvasState.setLayerActive(layer, isSelected());
-            this.paintPane.reDraw();
+            paintPane.reDraw();
         });
     }
     public int getLayer(){

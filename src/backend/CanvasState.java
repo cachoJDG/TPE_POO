@@ -226,7 +226,7 @@ public class CanvasState {
     }
 
     public void group() {
-        if(multSelectionFig.isEmpty() || multSelectionFig.onlyOne()){return;}
+        if(multSelectionFig.isEmpty() || multSelectionFig.onlyOne() || multSelectionFig.checkFigLayer()){return;}
         ungroup();
         Set<String> labels = new HashSet<>();
         SelectionFigureSet aux = new SelectionFigureSet();

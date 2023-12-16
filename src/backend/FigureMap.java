@@ -13,10 +13,7 @@ public class FigureMap extends TreeMap<Integer, FigureMap.Pair> {
         if(!containsKey(layer)){
             return;
         }
-        List<Figure> figs = get(layer).getFigList();
-        for (Figure fig:figs) {
-            fig.setToDraw(active);
-        }
+        get(layer).setActive(active);
 
     }
 

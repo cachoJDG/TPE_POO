@@ -20,6 +20,7 @@ public class ScaleUp extends ToolButton{
         {
             //mainFrame.scaleUp();
             mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.scale(SCALEUPMULTIPLIER)));
+            setSelected(false);
         });
     }
 

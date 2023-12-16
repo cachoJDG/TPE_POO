@@ -6,23 +6,23 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-public class GroupFigureMap extends HashMap<Integer, Set<Figure>>
+public class GroupFigureMap extends HashMap<Integer, SelectionFigureSet>
 {
-    public Set<Figure> findGroup(Figure elem)
+    public SelectionFigureSet findGroup(Figure elem)
     {
-        for (Set<Figure> set:values()) {
+        for (SelectionFigureSet set:values()) {
             if(set.contains(elem))
             {
 
                 return set;
             }
         }
-        return new HashSet<>();
+        return new SelectionFigureSet();
     }
     public int numGroup(Figure fig){
 
-        for (Entry<Integer, Set<Figure>> map: entrySet()) {
-            for (Set<Figure> set:values()) {
+        for (Entry<Integer, SelectionFigureSet> map: entrySet()) {
+            for (SelectionFigureSet set:values()) {
                 if(set.contains(fig))
                 {
                     return map.getKey();

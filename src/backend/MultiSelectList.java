@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class MultiSelectList extends ArrayList<Figure> {
+
     public Optional<Figure> getFirstCustom()
     {
         if(isEmpty())

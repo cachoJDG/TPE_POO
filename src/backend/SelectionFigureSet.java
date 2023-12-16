@@ -3,11 +3,11 @@ package backend;
 import backend.model.Figure;
 import backend.model.FigureEffects;
 
-import java.util.HashSet;
+import java.util.*;
 
 public class SelectionFigureSet extends HashSet<Figure> {
 
-    public SelectionFigureSet(MultiSelectList multSelectionFig) {
+    public SelectionFigureSet(Collection<Figure> multSelectionFig) {
         super(multSelectionFig);
     }
     public SelectionFigureSet() {
@@ -28,13 +28,42 @@ public class SelectionFigureSet extends HashSet<Figure> {
         }
     }
 
-
-    public void setEffect(FigureEffects effect, Boolean activated)
+    public Optional<Figure> getFirstCustom()
     {
-        for (Figure fig:this) {
-            fig.setEffect(effect,activated);
+        if(isEmpty())
+        {
+            return Optional.empty();
         }
+
+        return Optional.of(iterator().next());
     }
+
+    public boolean onlyOne()
+    {
+        return size() <= 1;
+    }
+
+    public String getSelectedFigLabel()
+    {
+        if(isEmpty()){return "";}
+        StringBuilder sb = new StringBuilder();
+        Figure fig = getFirstCustom().get();
+        return fig.getLabelsString();
+    }
+
+    public boolean checkFigLayer() {
+        Optional<Figure> first = getFirstCustom();
+        if(first.isEmpty()){return false;}
+        int firstLayerFound = first.get().getLayer();
+        for (Figure fig : this)
+        {
+            if(fig.getLayer() != firstLayerFound){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public int getEffectState(FigureEffects effect)
     {

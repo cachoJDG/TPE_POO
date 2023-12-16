@@ -2,7 +2,8 @@ package backend;
 
 import backend.model.Figure;
 
-import java.util.List;
+import java.util.Collection;
+import java.util.Collection;
 import java.util.TreeMap;
 
 public class FigureMap extends TreeMap<Integer, FigureMap.Pair> {
@@ -16,17 +17,32 @@ public class FigureMap extends TreeMap<Integer, FigureMap.Pair> {
 
     }
 
+    public void moveToLayer(Collection<Figure> list, int oldLayer, int newLayer)
+    {
+        moveToLayer(list,oldLayer,newLayer,true);
+    }
+    public void moveToLayer(Collection<Figure> list, int oldLayer, int newLayer,boolean startActiveLayer)
+    {
+        Collection<Figure> oldLayerCollection = get(oldLayer).getFigList();
+        oldLayerCollection.removeAll(list);
+        putIfAbsent(newLayer,list);
+    }
 
-    public void putIfAbsent(Integer layer,List<Figure> list){
-        putIfAbsent(layer,new Pair(list, true));
+    public void putIfAbsent(Integer layer,Collection<Figure> Collection,boolean startActiveLayer){
+        putIfAbsent(layer,new Pair(Collection, startActiveLayer));
+    }
+
+
+    public void putIfAbsent(Integer layer,Collection<Figure> Collection){
+        putIfAbsent(layer,Collection,true);
     }
     public static class Pair{
-        private List<Figure> figList;
+        private Collection<Figure> figCollection;
         private Boolean active;
 
-        public Pair(List<Figure> figList, Boolean active) {
-            this.figList = figList;
-            this.active = active;
+        public Pair(Collection<Figure> figCollection, Boolean active) {
+            this.figCollection = figCollection;
+            setActive(active);
         }
 
         public Boolean getActive() {
@@ -35,21 +51,21 @@ public class FigureMap extends TreeMap<Integer, FigureMap.Pair> {
 
         public void setActive(Boolean active) {
             this.active = active;
-            for (Figure fig:figList) {
+            for (Figure fig:figCollection) {
                 fig.setActiveByLayer(active);
             }
         }
 
-        public List<Figure> getFigList() {
-            return figList;
+        public Collection<Figure> getFigList() {
+            return figCollection;
         }
 
         public void add(Figure figure) {
-            figList.add(figure);
+            figCollection.add(figure);
         }
 
         public void remove(Figure fig) {
-            figList.remove(fig);
+            figCollection.remove(fig);
         }
     }
 }

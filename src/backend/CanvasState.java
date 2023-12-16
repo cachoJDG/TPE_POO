@@ -332,6 +332,21 @@ public class CanvasState {
         }
     }
 
+    public void changeActiveLayer(int newLayer) {
+        //si llegamos a correr esto se supone que son todas de la misma layer
+        Optional<Figure> firstFig = multSelectionFig.getFirstCustom();
+        if(firstFig.isEmpty()){
+            return; //no hay nada selected
+        }
+        int oldLayer = firstFig.get().getLayer();
+        SelectionFigureSet set = getExtendedSelectionSet();
+        figMap.moveToLayer(set,oldLayer, newLayer, mainFrame.layerActive(newLayer));
+
+        //primero se llama a esto xq las figs saben en que layer
+        //estaban y se pueden ubicar en el mapa facil.
+
+        set.applyToSet(fig -> fig.setLayer(newLayer));
+    }
 
 
 //    public void saveLabel(String txt) {

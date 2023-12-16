@@ -239,6 +239,10 @@ public class PaintPane_V2 extends BorderPane {
 
         buttonsBox.getChildren().add(layerBox);
 
+        layerBox.setOnAction(event -> {canvasState.changeActiveLayer(layerBox.getValue().getValue());
+        reDraw();
+        });
+
 
         // lo ultimo
         txtArea.setMaxHeight(55);

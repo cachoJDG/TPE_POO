@@ -4,11 +4,9 @@ import backend.model.Figure;
 import backend.model.FigureEffects;
 import backend.model.Point;
 import backend.model.Rectangle;
-import com.sun.source.tree.Tree;
 import frontend.MainFrame;
 import javafx.scene.control.TextArea;
 
-import java.sql.Array;
 import java.util.*;
 
 public class CanvasState {

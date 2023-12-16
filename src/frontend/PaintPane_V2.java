@@ -110,17 +110,17 @@ public class PaintPane_V2 extends BorderPane {
         //ojo despues habria q devolverlos
         toolsArr.add(selectionButton);
         toolsArr.add(rectangleButton);
-     //   toolsArr.add(squareButton);
+        toolsArr.add(squareButton);
         toolsArr.add(ellipseButton);
-     //   toolsArr.add(circleButton);
+        toolsArr.add(circleButton);
         toolsArr.add(deleteButton);
         toolsArr.add(groupButton);
         toolsArr.add(unGroupButton);
         toolsArr.add(rotateH);
-    //    toolsArr.add(rotateV);
-      //  toolsArr.add(turnR);
-     //   toolsArr.add(scaleUp);
-      //  toolsArr.add(scaleDown);
+        toolsArr.add(rotateV);
+        toolsArr.add(turnR);
+        toolsArr.add(scaleUp);
+        toolsArr.add(scaleDown);
         gc.setLineWidth(1);
         setRight(canvas);
         buttonBox = createButtonBox();

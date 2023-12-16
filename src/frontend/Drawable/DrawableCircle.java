@@ -1,7 +1,5 @@
 package frontend.Drawable;
 
-import backend.model.Circle;
-import backend.model.Ellipse;
 import backend.model.FigureEffects;
 import backend.model.Point;
 import javafx.scene.canvas.GraphicsContext;

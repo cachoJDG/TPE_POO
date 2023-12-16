@@ -26,6 +26,4 @@ public class RectangleButton extends FigureButton {
         return new DrawableRectangle(startPoint,endPoint, color, gc, map,layer);
     }
 
-
-
 }

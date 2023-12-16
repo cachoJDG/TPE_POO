@@ -27,20 +27,6 @@ public class CanvasState {
         // singleSelectionFig = Optional.empty();
     }
 
-    public void setLabels(List<String> lines) {
-        //SelectionFigureSet set =  getExtendedSelectionSet();
-        getExtendedSelectionSet().applyToSet(fig -> fig.setLabels(lines));
-    }
-
-
-    public void setEffect(FigureEffects effect, Boolean activated)
-    {
-       // getExtendedSelectionSet().setEffect(effect, activated);
-        getExtendedSelectionSet().applyToSet(fig -> fig.setEffect(effect,activated));
-    }
-
-
-
     public void addFigure(Figure figure, int layer) {
         figMap.putIfAbsent(layer,new ArrayList<>());
         figMap.get(layer).add(figure);

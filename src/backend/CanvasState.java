@@ -141,17 +141,6 @@ public class CanvasState {
         StringBuilder label = new StringBuilder();
         Optional<Figure> ret = findFig(point,label);
         return ret.isPresent()? label.toString() : defaultStr;
-
-
-
-        /*boolean found = false;
-        for(Figure figure : figures()) {
-            if(figure.contains(point)) {
-                found = true;
-                label.append(figure.toString());
-            }
-        }*/
-
     }
 
     public String onSingleSelect(Point point,StringBuilder label)
@@ -238,7 +227,6 @@ public class CanvasState {
                 labels.addAll(fig.getLabelsList());
 
             }
-
         }
         groupMap.putIfAbsent(groupNum,aux);
         aux.applyToSet(fig -> fig.setLabels(labels.stream().toList()));
@@ -259,15 +247,6 @@ public class CanvasState {
         }
     }
 
-    private void applyVoidFunction(FigRotAndScale voidFunction) {
-        if (multSelectionFig.isEmpty()) {
-            return;
-        }
-        for (Figure fig : multSelectionFig) {
-         //   voidFunction.apply();
-        }
-    }
-
     public void rotAndScale(FigRotAndScale func)
     {
         //le paso a la interfaz funcional la funcion de fig que quiero que aplique
@@ -279,42 +258,6 @@ public class CanvasState {
         }
     }
 
-    public void rotateH() {
-        if (multSelectionFig.isEmpty()){return;}
-        for (Figure fig : multSelectionFig) {
-            fig.moveHorizontal();
-        }
-    }
-
-    public void rotateV() {
-        if (multSelectionFig.isEmpty()){return;}
-        for (Figure fig : multSelectionFig) {
-            fig.moveVertical();
-        }
-    }
-
-    public void turnR(){
-        if(multSelectionFig.isEmpty()){return;}
-        for(Figure fig: multSelectionFig){
-            fig.turnR();
-        }
-    }
-
-    public void scaleUp(){
-        if (multSelectionFig.isEmpty()){
-            return;
-        }
-        for(Figure fig: multSelectionFig){
-            fig.scale(1.25);
-        }
-    }
-
-    public void scaleDown() {
-    }
-
-    public void allLabel(TextArea textAreaDown) {
-            //for
-    }
 
     public void onlyOneLabel(TextArea textAreaDown) {
             String text = textAreaDown.getText();
@@ -348,13 +291,4 @@ public class CanvasState {
         set.applyToSet(fig -> fig.setLayer(newLayer));
     }
 
-
-//    public void saveLabel(String txt) {
-//        if (multSelectionFig.isEmpty()){
-//            return;
-//        }
-//        for(Figure fig: multSelectionFig){
-//            fig.setLabels(txt);
-//        }
-//    }
 }

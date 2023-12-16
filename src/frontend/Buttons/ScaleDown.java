@@ -22,7 +22,4 @@ public class ScaleDown extends ToolButton{
             mainFrame.rotAndScale(canvasState -> canvasState.rotAndScale(fig -> fig.scale(SCALEDOWNMULTIPLIER)));
         });
     }
-
-
-
 }

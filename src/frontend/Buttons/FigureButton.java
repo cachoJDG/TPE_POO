@@ -31,7 +31,8 @@ public abstract class FigureButton extends ToolButton{
             return; //si la layer esta desactivada que no me haga la figura
         }
         Figure newFig = createFigure(start,end,color, gc, map, layer);
-        getMainFrame().drawFigure(newFig);
+      //  getMainFrame().drawFigure(newFig);
+        getMainFrame().rotAndScale(canvasState -> canvasState.addFigure(newFig, newFig.getLayer()));
     }
 
     public abstract Figure createFigure(Point startPoint, Point endPoint, Color color, GraphicsContext gc,EnumMap<FigureEffects,Boolean> map, int layer);

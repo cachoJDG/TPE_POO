@@ -189,8 +189,6 @@ public class CanvasState {
 
 
     public void moveFig(double diffX, double diffY){
-
-        //moveGroup(getExtendedSelectionSet(),diffX,diffY);
         getExtendedSelectionSet().applyToSet(fig -> fig.move(diffX,diffY));
     }
 
@@ -249,9 +247,6 @@ public class CanvasState {
 
     public void rotAndScale(FigRotAndScale func)
     {
-        //le paso a la interfaz funcional la funcion de fig que quiero que aplique
-        //entonces aca solo con hacer func.apply(fig) llama a dicha funcion de fig que
-        //le dije antes que aplique, no se si se entiende. lo llamo desde el mainFrame
         for (Figure fig : getExtendedSelectionSet()) {
            // fig.moveHorizontal();
             func.apply(fig);

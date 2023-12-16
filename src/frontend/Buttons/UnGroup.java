@@ -1,7 +1,9 @@
 package frontend.Buttons;
 
+import backend.CanvasState;
 import backend.model.FigureEffects;
 import backend.model.Point;
+import frontend.CanvasStateRotAndScale;
 import frontend.MainFrame;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;
@@ -15,7 +17,8 @@ public class UnGroup extends ToolButton{
         setText("Ungroup");
         setOnAction(event ->
         {
-            mainFrame.ungroup();
+           // mainFrame.ungroup();
+            mainFrame.rotAndScale(CanvasState::ungroup);
         });
     }
 

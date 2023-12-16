@@ -65,7 +65,7 @@ public class SelectionFigureSet extends HashSet<Figure> {
     }
 
 
-    public int getEffectState(FigureEffects effect)
+    public CheckBoxState getEffectState(FigureEffects effect)
     {
         int activated = 0;
         int deActivated = 0;
@@ -80,13 +80,13 @@ public class SelectionFigureSet extends HashSet<Figure> {
         }
 
         if(activated > 0 && deActivated > 0){
-            return 0; //devuelve Indeterminado
+            return CheckBoxState.UNDEFINED; //devuelve Indeterminado
         }
         if(activated > 0){
-            return 1; //solo hay activadas
+            return CheckBoxState.SELECTED; //solo hay activadas
         }
         else{
-            return -1; //solo hay desactivadas
+            return CheckBoxState.NOTSELECTED; //solo hay desactivadas
         }
     }
 }

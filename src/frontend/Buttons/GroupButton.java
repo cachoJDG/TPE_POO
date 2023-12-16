@@ -15,7 +15,8 @@ public class GroupButton extends ToolButton {
         setText("Group");
         setOnAction(event ->
         {
-            mainFrame.group();
+            //mainFrame.group();
+            mainFrame.rotAndScale(canvasState -> canvasState.group());
         });
     }
 

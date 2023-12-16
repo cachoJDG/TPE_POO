@@ -2,6 +2,7 @@ package frontend;
 
 import java.util.EnumMap;
 import backend.CanvasState;
+import backend.CheckBoxState;
 import backend.model.Figure;
 import backend.model.FigureEffects;
 import backend.model.Point;
@@ -19,26 +20,6 @@ import javafx.scene.paint.Color;
 
 public class MainFrame extends VBox {
 
-
-
-    Color lineColor = Color.BLACK;
-
-    /* ToggleGroup tools = new ToggleGroup();
-    ToggleButton selectionButton = new ToggleButton("Seleccionar");
-    FigureButton rectangleButton = new RectangleButton(tools);
-    FigureButton circleButton = new CircleButton(tools);
-    FigureButton squareButton = new SquareButton(tools);
-    FigureButton ellipseButton = new EllipseButton(tools);
-
-    ToggleButton[] toolsArr  = {selectionButton, rectangleButton, circleButton, squareButton, ellipseButton};
-
-
-     */
-    Color defaultFillColor = Color.YELLOW;
-    ColorPicker fillColorPicker = new ColorPicker(defaultFillColor);
-
-
-
     Label effectsLabel;
     EffectsCheckBox shadow;
     EffectsCheckBox belved;
@@ -50,9 +31,8 @@ public class MainFrame extends VBox {
 
     ToggleGroup labelGroup = new ToggleGroup();
 
-    private EnumMap<FigureEffects,EffectsCheckBox> effectsBoxMap;
+    private EnumMap<FigureEffects, EffectsCheckBox> effectsBoxMap;
 
-   // List<EffectsCheckBox> effects;
     CanvasState canvasState;
     StatusPane statusPane;
     PaintPane_V2 paintPane;
@@ -68,96 +48,47 @@ public class MainFrame extends VBox {
 
     public MainFrame() {
 
-        //Las funciones que son
-        // Boton le dice a MainFrame "Decile a canvas State que corra X func y Le diga la PaintPane.reDraw"
-        //las podemos hacer todas esa bajo una solo funcion con interfaz funcional
-        //asi como hicimos Rot And Scale pero con el resto
-        //creo que tambien los parametros que le pasamos y eso son posiblemente variables
-        //asi que serviria bastate
-
 
         canvasState = new CanvasState(this);
         statusPane = new StatusPane();
-//        gradient = new CheckBox("gradient");
-//        belved = new CheckBox("belved");
-//        shadow = new CheckBox("Sombra");
-
-       // effects = List.of(gradient,belved,shadow);
         effectsLabel = new Label("Efectos: ");
-        //buttonManager = new ButtonManager(this);
-        paintPane = new PaintPane_V2(statusPane,this,canvasState);
-        gradient = new EffectsCheckBox("Gradient",FigureEffects.GRADIENT,paintPane, canvasState);
-        belved = new EffectsCheckBox("Belved",FigureEffects.BELVED,paintPane, canvasState);
-        shadow = new EffectsCheckBox("Shadow",FigureEffects.SHADOW,paintPane, canvasState);
-        layer1 = new LayerCheckBox("Layer 1",paintPane,canvasState,1);
-        layer2 = new LayerCheckBox("Layer 2",paintPane,canvasState,2);
-        layer3 = new LayerCheckBox("Layer 3",paintPane,canvasState,3);
+        paintPane = new PaintPane_V2(statusPane, this, canvasState);
+        gradient = new EffectsCheckBox("Gradient", FigureEffects.GRADIENT, paintPane, canvasState);
+        belved = new EffectsCheckBox("Belved", FigureEffects.BELVED, paintPane, canvasState);
+        shadow = new EffectsCheckBox("Shadow", FigureEffects.SHADOW, paintPane, canvasState);
+        layer1 = new LayerCheckBox("Layer 1", paintPane, canvasState, 1);
+        layer2 = new LayerCheckBox("Layer 2", paintPane, canvasState, 2);
+        layer3 = new LayerCheckBox("Layer 3", paintPane, canvasState, 3);
         checkBox = createHBox();
         checkBoxDown = createHBoxDown();
         checkBoxLayer = createHBoxLayers();
         getChildren().add(new AppMenuBar());
         getChildren().add(checkBox);
         getChildren().add(paintPane);
-
         getChildren().add(checkBoxLayer);
         getChildren().add(checkBoxDown);
         getChildren().add(statusPane);
 
-
-//        shadow.setOnAction(event -> {
-//
-//           // canvasState.shadow(shadow.isSelected());
-//            canvasState.setEffect(FigureEffects.SHADOW,shadow.isSelected());
-//            paintPane.reDraw();
-//        });
-//
-//
-//        belved.setOnAction(event -> {
-//
-//           // shadow.setIndeterminate(true);
-//           // canvasState.belved(belved.isSelected());
-//            canvasState.setEffect(FigureEffects.BELVED,belved.isSelected());
-//            paintPane.reDraw();
-//        });
-//
-//        gradient.setOnAction(event -> {
-//
-//           // canvasState.gradient(gradient.isSelected());
-//            canvasState.setEffect(FigureEffects.GRADIENT,gradient.isSelected());
-//            paintPane.reDraw();
-//        });
-
-
     }
 
-    public boolean layerActive(int layer)
-    {
-        for (Node n : checkBoxLayer.getChildren())
-        {
+    public boolean layerActive(int layer) {
+        for (Node n : checkBoxLayer.getChildren()) {
             LayerCheckBox box = (LayerCheckBox) n;
-            if(box.getLayer() == layer)
-            {
+            if (box.getLayer() == layer) {
                 return box.isSelected();
             }
         }
         throw new IllegalStateException("Layer " + layer + " Not found");
     }
 
-    public void updateCheckBox(FigureEffects effect,int state)
-    {
-        //si tienen ganas se podria hacer un enum que sea solo para los posibles estados
-        //de las checkBoxes. en el switch en vez de usar -1, 0 , 1 usamos el enum
-        //seria mas POO pero por ahora veamos q ande esto
-        //lo tendriamos que tambien entonces actualizar en el SelectionFigureSet
-        //cuando buscamos el estado de la checkBox
-        
+    public void updateCheckBox(FigureEffects effect, CheckBoxState state) {
         EffectsCheckBox box = effectsBoxMap.get(effect);
-        switch(state){
-            case -1:
+        switch (state) {
+            case NOTSELECTED:
                 box.setIndeterminate(false);
                 box.setSelected(false);
                 break;
-            case 0:
+            case UNDEFINED:
                 box.setIndeterminate(true);
                 break;
             default:
@@ -166,34 +97,30 @@ public class MainFrame extends VBox {
         }
     }
 
-    public EnumMap<FigureEffects, Boolean> getEffectsBooleanMap()
-    {
-        EnumMap <FigureEffects,Boolean> map = new EnumMap<>(FigureEffects.class);
-        for (FigureEffects effects:FigureEffects.values()) {
+    public EnumMap<FigureEffects, Boolean> getEffectsBooleanMap() {
+        EnumMap<FigureEffects, Boolean> map = new EnumMap<>(FigureEffects.class);
+        for (FigureEffects effects : FigureEffects.values()) {
             Boolean state = effectsBoxMap.get(effects).isSelected();
-            map.put(effects,state);
+            map.put(effects, state);
         }
         return map;
     }
 
 
-
-    private HBox createHBox()
-    {
-        HBox hbox = new HBox(10,effectsLabel,shadow,gradient,belved);// spacing = 8
+    private HBox createHBox() {
+        HBox hbox = new HBox(10, effectsLabel, shadow, gradient, belved);// spacing = 8
         //capaz lo podemos cambiar y usar directamente el mapa
         effectsBoxMap = new EnumMap<>(FigureEffects.class);
-        effectsBoxMap.put(FigureEffects.SHADOW,shadow);
-        effectsBoxMap.put(FigureEffects.BELVED,belved);
-        effectsBoxMap.put(FigureEffects.GRADIENT,gradient);
+        effectsBoxMap.put(FigureEffects.SHADOW, shadow);
+        effectsBoxMap.put(FigureEffects.BELVED, belved);
+        effectsBoxMap.put(FigureEffects.GRADIENT, gradient);
         hbox.setStyle("-fx-background-color: #999");
         hbox.setAlignment(Pos.CENTER);
         hbox.setPrefHeight(5); //lo cambie a 5 xq sino no me entra en la pantalla
         return hbox;
     }
 
-    private HBox createHBoxLayers()
-    {
+    private HBox createHBoxLayers() {
         HBox hbox = new HBox();
 
         hbox.getChildren().add(layer1);
@@ -205,8 +132,7 @@ public class MainFrame extends VBox {
         return hbox;
     }
 
-    private HBox createHBoxDown()
-    {
+    private HBox createHBoxDown() {
         HBox hbox = new HBox();
         textAreaDown = new TextArea();
 
@@ -240,16 +166,8 @@ public class MainFrame extends VBox {
     }
 
 
-    public void emptySelectedFig()
-    {
+    public void emptySelectedFig() {
         canvasState.emptySelectedFig();
-        paintPane.reDraw();
-    }
-
-
-    public void drawFigure(Figure figure)
-    {
-        canvasState.addFigure(figure,  figure.getLayer()); // todo pasarle el numero de la leyer
         paintPane.reDraw();
     }
 
@@ -258,12 +176,7 @@ public class MainFrame extends VBox {
         statusPane.updateStatus(label);
     }
 
-    public void onMouseDragged(double diffX, double diffY){
-        canvasState.moveFig(diffX,diffY);
-    }
-
-    public void selectFig(Point eventPoint)
-    {
+    public void selectFig(Point eventPoint) {
         StringBuilder sb = new StringBuilder("Se selecciono: ");
         statusPane.updateStatus(canvasState.onSingleSelect(eventPoint, sb));
        /* if(canvasState.getSelectedFigure().isPresent()){
@@ -273,120 +186,40 @@ public class MainFrame extends VBox {
         paintPane.reDraw();
     }
 
-    public void biscelado()
-    {
-        //Set<Figure> set = canvasstate.getSelectedFigs();
-        //foreach fig
-        //fig.biscelar
-    }
-    public void biscelado2()
-    {
-        //canvasState.biscelado
-    }
 
-
-    public void selectFig(Rectangle selectionRect)
-    {
-        if(canvasState.getSelectedFigure().isPresent()){
+    public void selectFig(Rectangle selectionRect) {
+        if (canvasState.getSelectedFigure().isPresent()) {
             return;
         }
         canvasState.multipleSelection(selectionRect);
         paintPane.reDraw();
     }
 
-    public void group()
-    {
-        canvasState.group();
-    }
 
-    public void ungroup()
-    {
-        canvasState.ungroup();
-    }
-
-
-
-    public void deleteFig()
-    {
-        canvasState.deleteFigure();
-        paintPane.reDraw();
-    }
-
-    public void addLabel(Figure fig, String[] lines)
-    {
-      //  canvasState.setLabels(lines);
-    }
-//Diego me fui a duchar Saludos!
-    public void UpdateTextArea(boolean activated, String text)
-    {
+    //Diego me fui a duchar Saludos!
+    public void UpdateTextArea(boolean activated, String text) {
         paintPane.txtArea.setDisable(activated);
 
         paintPane.getSaveButton().setDisable(activated);
-        if(!activated){
+        if (!activated) {
             paintPane.txtArea.setText(text);
         }
     }
 
 
+    public void rotAndScale(CanvasStateRotAndScale func) {
+        func.apply(canvasState);
+        paintPane.reDraw();
 
-    public void rotAndScale(CanvasStateRotAndScale func)
-    {
-       func.apply(canvasState);
-       paintPane.reDraw();
-
-       //cada boton llama a rotAndScale del mainFrame con una interfaz funcional que pide
+        //cada boton llama a rotAndScale del mainFrame con una interfaz funcional que pide
         //una funcion del canvasState para hacer apply
         //la funcion en cuestion es siempre rotAndScale de canvasState pero le cambio el parametro
         //(la interfaz funcional que toma rotAndScale de canvas state es diferente)
     }
 
-    public void rotateH() {
-        //canvasState.rotateH();
-
-
-        canvasState.rotAndScale(fig -> fig.moveHorizontal()); //can be replaced with method reference
-        // pero para no confundirnos lo dejo asi.
-
-        //le estoy diciendo que cuando haga el apply(fig) a la interfaz funcional
-        //que haga fig.moveHorizontal
-        //lo mismo con las otras pero cada una con su respectiva funcion
-
-        //termine usando la funcion de arriba porque podemos hacer lo mismo que hacemos con el canvas state
-        //pero tambien con el mainFrame entonces queda como una composicion medio rara, pero estas
-        //funciones son mas faciles de entender primero
-
-
-        paintPane.reDraw(); //agregue esto porque sino esperaba a la proxima para hacerlo
-    }
-
-    public void rotateV() {
-       // canvasState.rotateV();
-        canvasState.rotAndScale(fig -> fig.moveVertical());
-        paintPane.reDraw();
-    }
-
-    public void turnR(){
-        canvasState.rotAndScale(fig -> fig.turnR());
-        paintPane.reDraw();
-    }
-
-    public void scaleUp(){
-        //canvasState.scaleUp();
-        canvasState.rotAndScale(fig -> fig.scale(1.25));
-        paintPane.reDraw();
-    }
-
-    public void scaleDown() {
-        //canvasState.scaleDown();
-        canvasState.rotAndScale(fig -> fig.scaleDown());
-        paintPane.reDraw();
-    }
 
     public void UpdateChoiceBox(boolean active) {
         paintPane.layerBox.setDisable(active);
     }
 
-//    public void save(String txt) {
-//        canvasState.saveLabel(txt);
-//    }
 }

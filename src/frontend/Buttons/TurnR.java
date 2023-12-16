@@ -8,7 +8,12 @@ public class TurnR extends ToolButton {
     public TurnR(ToggleGroup tools, MainFrame mainFrame) {
         super(tools, mainFrame);
         setText("TurnR");
-        setOnAction(event -> mainFrame.applyToSelected(canvasState -> canvasState.applyToSelected(fig -> fig.turnR())));
+
+        setOnAction(event ->
+        {
+            mainFrame.applyToSelected(canvasState -> canvasState.applyToSelected(fig -> fig.turnR()));
+            setSelected(false);
+        });
     }
 
 }

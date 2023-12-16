@@ -90,7 +90,7 @@ public class CanvasState {
         }
         updateCheckBoxes();
         mainFrame.UpdateTextArea(false, "");
-
+        mainFrame.UpdateChoiceBox(false);
     }
 
 
@@ -114,12 +114,13 @@ public class CanvasState {
         if(multSelectionFig.isEmpty()) {
             emptySelectedFig();
         }
-        deActivate = multSelectionFig.onlyOne();
+        deActivate = !multSelectionFig.onlyOne();
         if(deActivate){
             textAreaTest = getLabels();
         }
 
-        mainFrame.UpdateTextArea(!deActivate, textAreaTest);
+        mainFrame.UpdateTextArea(deActivate, textAreaTest);
+        mainFrame.UpdateChoiceBox(multSelectionFig.checkFigLayer());
         updateCheckBoxes();
     }
 
@@ -172,6 +173,7 @@ public class CanvasState {
 
 
         mainFrame.UpdateTextArea(false, multSelectionFig.getSelectedFigLabel());
+        mainFrame.UpdateChoiceBox(false);
         updateCheckBoxes();
         return ret.isPresent()? label.toString() : defaultStr;
     }

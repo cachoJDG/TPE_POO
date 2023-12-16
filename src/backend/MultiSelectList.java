@@ -27,4 +27,27 @@ public class MultiSelectList extends ArrayList<Figure> {
         Figure fig = getFirstCustom().get();
         return fig.getLabelsString();
     }
+
+    public boolean checkFigLayer() {
+        Optional<Figure> first = getFirstCustom();
+        if(first.isEmpty()){return false;}
+        int firstLayerFound = first.get().getLayer();
+        for (Figure fig : this)
+        {
+            if(fig.getLayer() != firstLayerFound){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void setSelectedLayer(int layer)
+    {
+        for (Figure fig:this) {
+            fig.setLayer(layer);
+        }
+
+        //no se si lo vamos a usar capaz conviene usar el extended set
+        //mañana vemos
+    }
 }

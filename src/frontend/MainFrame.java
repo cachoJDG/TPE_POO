@@ -385,6 +385,10 @@ public class MainFrame extends VBox {
         paintPane.reDraw();
     }
 
+    public void UpdateChoiceBox(boolean active) {
+        paintPane.layerBox.setDisable(active);
+    }
+
 //    public void save(String txt) {
 //        canvasState.saveLabel(txt);
 //    }

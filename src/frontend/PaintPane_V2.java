@@ -32,21 +32,21 @@ public class PaintPane_V2 extends BorderPane {
     private StatusPane statusPane;
     private final MainFrame mainFrame;
     private final ToggleGroup tools = new ToggleGroup();
-    DeleteButton deleteButton;
-    GroupButton groupButton;
-    UnGroup unGroupButton;
-    RotateH rotateH;
-    TurnR turnR;
-    RotateV rotateV;
-    ScaleUp scaleUp;
-    ScaleDown scaleDown;
-    SaveButton saveButton;
-    TextArea txtArea;
-    ArrayList<ToggleButton> toolsArr;
-    ToggleButton[] arr;
+    private DeleteButton deleteButton;
+    private GroupButton groupButton;
+    private UnGroup unGroupButton;
+    private RotateH rotateH;
+    private TurnR turnR;
+    private RotateV rotateV;
+    private ScaleUp scaleUp;
+    private ScaleDown scaleDown;
+    private SaveButton saveButton;
+    private TextArea txtArea;
+    private ArrayList<ToggleButton> toolsArr;
+    private ToggleButton[] arr;
     private final int MINHELDFRAMES = 10;
-    VBox buttonBox;
-    ChoiceBox<Layer> layerBox;
+    private VBox buttonBox;
+    private ChoiceBox<Layer> layerBox;
 
 
 
@@ -138,6 +138,13 @@ public class PaintPane_V2 extends BorderPane {
 
         });
 
+    }
+
+    public TextArea getTxtArea(){
+        return txtArea;
+    }
+    public ChoiceBox<Layer> getLayerBox() {
+        return layerBox;
     }
 
     public SaveButton getSaveButton(){

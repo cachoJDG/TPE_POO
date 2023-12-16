@@ -23,28 +23,28 @@ import javafx.scene.paint.Color;
 
 public class MainFrame extends VBox {
 
-    Label effectsLabel;
-    EffectsCheckBox shadow;
-    EffectsCheckBox belved;
-    EffectsCheckBox gradient;
+    private Label effectsLabel;
+    private EffectsCheckBox shadow;
+    private EffectsCheckBox belved;
+    private EffectsCheckBox gradient;
 
-    TextArea textAreaDown;
-    RadioButton allLabelButton;
-    RadioButton onlyOneLabelButton;
+    private TextArea textAreaDown;
+    private RadioButton allLabelButton;
+    private RadioButton onlyOneLabelButton;
 
-    ToggleGroup labelGroup = new ToggleGroup();
+    private ToggleGroup labelGroup = new ToggleGroup();
 
     private EnumMap<FigureEffects, EffectsCheckBox> effectsBoxMap;
 
-    CanvasState canvasState;
-    StatusPane statusPane;
-    PaintPane_V2 paintPane;
+    private CanvasState canvasState;
+    private StatusPane statusPane;
+    private PaintPane_V2 paintPane;
 
     private final HBox checkBoxLayer;
 
-    LayerCheckBox layer1;
-    LayerCheckBox layer2;
-    LayerCheckBox layer3;
+    private LayerCheckBox layer1;
+    private LayerCheckBox layer2;
+    private LayerCheckBox layer3;
 
     public MainFrame() {
 
@@ -192,11 +192,11 @@ public class MainFrame extends VBox {
     }
 
     public void UpdateTextArea(boolean activated, String text) {
-        paintPane.txtArea.setDisable(activated);
+        paintPane.getTxtArea().setDisable(activated);
 
         paintPane.getSaveButton().setDisable(activated);
         if (!activated) {
-            paintPane.txtArea.setText(text);
+            paintPane.getTxtArea().setText(text);
         }
     }
 
@@ -219,7 +219,7 @@ public class MainFrame extends VBox {
 
 
     public void UpdateChoiceBox(boolean active) {
-        paintPane.layerBox.setDisable(active);
+        paintPane.getLayerBox().setDisable(active);
     }
 
 }

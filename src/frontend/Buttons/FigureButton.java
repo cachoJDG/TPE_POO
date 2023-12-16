@@ -26,6 +26,9 @@ public abstract class FigureButton extends ToolButton{
     @Override
     public void onMouseRelease(Point start, Point end, Color color,EnumMap<FigureEffects,Boolean> map, int layer)
     {
+        if(!getMainFrame().layerActive(layer)){
+            return; //si la layer esta desactivada que no me haga la figura
+        }
         Drawable newFig = createFigure(start,end,color, gc, map, layer);
         getMainFrame().drawFigure(newFig);
     }

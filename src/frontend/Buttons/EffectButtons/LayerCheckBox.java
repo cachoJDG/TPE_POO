@@ -10,18 +10,23 @@ public class LayerCheckBox extends CheckBox {
     private PaintPane_V2 paintPane;
     private CanvasState canvasState;
 
+    private int layer;
+
     //capaz ni los usamos estos
-    public LayerCheckBox(String name, PaintPane_V2 paintPane, CanvasState canvasState, int lay, boolean isActivate)
+    public LayerCheckBox(String name, PaintPane_V2 paintPane, CanvasState canvasState, int layer, boolean isActivate)
     {
         super(name);
-
+        this.layer = layer;
         this.paintPane = paintPane;
         this.canvasState = canvasState;
         setSelected(true);
         setOnAction(event -> {
             // canvasState.shadow(shadow.isSelected());
-            canvasState.setLayerActive(lay, isSelected());
+            canvasState.setLayerActive(layer, isSelected());
             this.paintPane.reDraw();
         });
+    }
+    public int getLayer(){
+        return layer;
     }
 }

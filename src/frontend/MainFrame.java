@@ -133,6 +133,19 @@ public class MainFrame extends VBox {
 
     }
 
+    public boolean layerActive(int layer)
+    {
+        for (Node n : checkBoxLayer.getChildren())
+        {
+            LayerCheckBox box = (LayerCheckBox) n;
+            if(box.getLayer() == layer)
+            {
+                return box.isSelected();
+            }
+        }
+        throw new IllegalStateException("Layer " + layer + " Not found");
+    }
+
     public void updateCheckBox(FigureEffects effect,int state)
     {
         //si tienen ganas se podria hacer un enum que sea solo para los posibles estados

@@ -332,6 +332,8 @@ public class CanvasState {
         }
     }
 
+
+
 //    public void saveLabel(String txt) {
 //        if (multSelectionFig.isEmpty()){
 //            return;

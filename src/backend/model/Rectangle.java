@@ -9,15 +9,12 @@ public class Rectangle extends Figure {
 
     private  final Point topLeft, bottomRight;
 
-
-
     public Rectangle(Point topLeft, Point bottomRight, EnumMap<FigureEffects,Boolean> map, int layer) {
         super(new Point[]{topLeft}, map,layer);
         this.topLeft = topLeft;
         this.bottomRight = bottomRight;
 
     }
-
     public Rectangle(Point topLeft, Point bottomRight) {
         super(new Point[]{topLeft});
         this.topLeft = topLeft;
@@ -52,7 +49,6 @@ public class Rectangle extends Figure {
 
     @Override
     public boolean isFullContained(Rectangle rectangle) {
-       // return this.contains(rectangle.getBottomRight()) && this.contains(rectangle.getTopLeft()); // todo test this
         return rectangle.contains(getBottomRight()) && rectangle.contains(getTopLeft());
     }
 

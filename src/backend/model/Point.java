@@ -3,9 +3,7 @@ package backend.model;
 import backend.Movable;
 
 public class Point implements Movable {
-
     private double x, y;
-
     public Point(double x, double y) {
         this.x = x;
         this.y = y;
@@ -15,10 +13,6 @@ public class Point implements Movable {
         this.x = p.getX();
         this.y = p.getY();
     }
-
-//    public void setY(double y) {
-//        this.y = y;
-//    }
 
     public double getX() {
         return x;

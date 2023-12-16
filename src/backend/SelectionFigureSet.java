@@ -14,13 +14,6 @@ public class SelectionFigureSet extends HashSet<Figure> {
         super();
     }
 
-    public void move(double diffX, double diffY)
-    {
-        for (Figure fig:this) {
-            fig.move(diffX,diffY);
-        }
-    }
-
     public void applyToSet(FigureSetApply func)
     {
         for (Figure fig : this){

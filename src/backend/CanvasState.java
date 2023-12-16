@@ -58,8 +58,6 @@ public class CanvasState {
         return figMap.get(layer).getFigList();
     }
 
-
-
     public void emptySelectedFig()
     {
         multSelectionFig = new SelectionFigureSet();
@@ -70,8 +68,6 @@ public class CanvasState {
         mainFrame.UpdateTextArea(false, "");
         mainFrame.UpdateChoiceBox(false);
     }
-
-
 
     public void multipleSelection(Rectangle selectionRect)
     {
@@ -133,10 +129,7 @@ public class CanvasState {
         ret.ifPresent(figure -> {figure.setSelected(true);
         multSelectionFig.add(figure);});
 
-
         multSelectionFig.getFirstCustom().ifPresent(fig -> System.out.println(fig.getLayer()));
-
-
 
         mainFrame.UpdateTextArea(false, multSelectionFig.getSelectedFigLabel());
         mainFrame.UpdateChoiceBox(false);

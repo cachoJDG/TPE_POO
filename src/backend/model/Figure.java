@@ -34,8 +34,6 @@ public abstract class Figure implements Movable {
          return isActiveLayer && isActiveLabels;
      }
 
-
-     //Returns true if figure has "text" as label
      public boolean hasLabel(String text){
          return labels.contains(text);
      }
@@ -45,7 +43,6 @@ public abstract class Figure implements Movable {
      {
          throw new UnsupportedOperationException();
      }
-
 
     protected Figure(Point[] points, EnumMap<FigureEffects,Boolean> map, int layer) {
         this.points = points;
@@ -58,7 +55,7 @@ public abstract class Figure implements Movable {
     }
 
     public Figure(Point[] points) {
-        this(points, new EnumMap<FigureEffects,Boolean>(FigureEffects.class),0);
+        this(points, new EnumMap<>(FigureEffects.class),0);
     }
     public void setLabels(List<String> labels){
 
@@ -80,8 +77,6 @@ public abstract class Figure implements Movable {
         return labels;
     }
 
-
-    //Returns true if figure has "effect" effect
     public boolean hasEffect(FigureEffects effect)
     {
         return effectsMap.get(effect);
@@ -108,7 +103,6 @@ public abstract class Figure implements Movable {
         isSelected = selected;
 
     }
-
     public abstract boolean contains(Point eventPoint);
 
     public boolean isGroupedFig() {
@@ -119,7 +113,6 @@ public abstract class Figure implements Movable {
         this.groupedFig = groupedFig;
     }
 
-    // returns true if this Figure is fully contained
     public abstract boolean isFullContained(Rectangle rectangle);
 
     public abstract void moveHorizontal();

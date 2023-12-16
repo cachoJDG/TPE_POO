@@ -52,8 +52,6 @@ public class PaintPane_V2 extends BorderPane {
 
     public PaintPane_V2(StatusPane statusPane, MainFrame mainFrame,CanvasState canvasState)
     {
-
-
         this.mainFrame = mainFrame;
         this.statusPane = statusPane;
         this.canvasState = canvasState;
@@ -173,7 +171,6 @@ public class PaintPane_V2 extends BorderPane {
         }
         return aux;
     }
-
 
     private VBox createButtonBox()
     {
